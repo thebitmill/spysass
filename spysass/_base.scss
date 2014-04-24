@@ -1,0 +1,71 @@
+//
+// Base Variables
+//
+
+$make-image-inline-block: false !default;
+$include-base-classes: true !default;
+$include-animation-classes: false !default;
+// NOTE: No need to change this conditional statement, $text-direction variable controls it all.
+$default-float: left !default;
+$opposite-direction: right !default;
+
+//
+// Base Type Variables
+//
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with brower-based text zoom or user-set defaults.
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be different and not have it effect the grid breakpoints,
+// set $em-base to $base-font-size and make sure $base-font-size is a px value.
+$base-font-size: 100% !default;
+
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 150% !default;
+
+// This is the default html and body font-size for the base em value.
+$em-base: 16 !default;
+
+$body-bg: #fff !default;
+$body-font-color: #222 !default;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+
+$font-smoothing: subpixel-antialiased !default;
+
+//
+// Base Functions
+//
+
+@import "functions";
+
+//
+// Media Queries
+//
+
+$small-screen-min: emCalc(0px) !default;
+$medium-screen-min: emCalc(640px) !default;
+$large-screen-min: emCalc(1024px) !default;
+$xlarge-screen-min: emCalc(1440px) !default;
+
+$small-screen-max: $medium-screen-min - emCalc(1px) !default;
+$medium-screen-max: $large-screen-min - emCalc(1px) !default;
+$large-screen-max: $xlarge-screen-min - emCalc(1px) !default;
+
+$screen: "only screen" !default;
+$small-only: "only screen and (min-width: #{$small-screen-min}) and (max-width: #{$small-screen-max})" !default;
+$small-min: "only screen and (min-width: #{$small-screen-min})" !default;
+$small-max: "only screen and (max-width: #{$small-screen-max})" !default;
+$medium-only: "only screen and (min-width: #{$medium-screen-min}) and (max-width: #{$medium-screen-max})" !default;
+$medium-min: "only screen and (min-width: #{$medium-screen-min})" !default;
+$medium-max: "only screen and (max-width: #{$medium-screen-max})" !default;
+$large-only: "only screen and (min-width: #{$large-screen-min}) and (max-width: #{$large-screen-max})" !default;
+$large-min: "only screen and (min-width: #{$large-screen-min})" !default;
+$large-max: "only screen and (max-width: #{$large-screen-max})" !default;
+$xlarge-only: "only screen and (min-width: #{$xlarge-screen-min})" !default;
+$xlarge-min: "only screen and (min-width: #{$xlarge-screen-min})" !default;
+$landscape: "only screen and (orientation: landscape)" !default;
+$portrait: "only screen and (orientation: portrait)" !default;
+
