@@ -1,0 +1,73 @@
+*,
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+html,
+body { font-size: $base-font-size; }
+
+// Default body styles
+body {
+	background: $body-bg;
+	color: $body-font-color;
+	padding: 0;
+	margin: 0;
+	font-family: $body-font-family;
+	font-weight: $body-font-weight;
+	font-style: $body-font-style;
+	line-height: 1; // Set to $base-line-height to take on browser default of 150%
+	position: relative;
+}
+
+// Override outline from normalize, we don't like it
+a:focus { outline: none; }
+
+// Grid Defaults to get images and embeds to work properly
+img,
+object,
+embed { max-width: 100%; height: auto; }
+
+object,
+embed { height: 100%; }
+img { -ms-interpolation-mode: bicubic; }
+
+@if $make-image-inline-block {
+	// Get rid of gap under images by making them display: inline-block; by default
+	img {
+		display:inline-block;
+		vertical-align: middle;
+	}
+}
+
+#map_canvas,
+.map_canvas {
+	img,
+	embed,
+	object { max-width: none !important; }
+}
+
+@if $include-base-classes {
+	// Miscellaneous useful HTML classes
+	.-cb	{ clear: both !important; }
+	.-cl	{ clear: left !important; }
+	.-cr	{ clear: right !important; }
+	.-fl	{ float: left !important; }
+	.-fr	{ float: right !important; }
+	.-tl	{ text-align: left !important; }
+	.-tr	{ text-align: right !important; }
+	.-tc	{ text-align: center !important; }
+	.-tj	{ text-align: justify !important; }
+	.-h   { display: none; }//hide
+	.-nm	{ margin: 0 !important; }
+}
+@if $include-animation-classes {
+	.Dh, .Dw	{ overflow: hidden; }
+	.-m		{ height: 0 !important; }
+}
+
+// Font smoothing
+// Antialiased font smoothing works best for light text on a dark background.
+// Apply to single elements instead of globally to body.
+// Note this only applies to webkit-based desktop browsers on the Mac.
+.antialiased { -webkit-font-smoothing: antialiased; }

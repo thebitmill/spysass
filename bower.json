@@ -1,0 +1,16 @@
+{
+  "name": "spysass",
+  "version": "0.1.0",
+  "authors": [
+    "Linus Miller <linus.miller@thecodebureau.com>"
+  ],
+  "description": "SASS from the Code Bureau",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
