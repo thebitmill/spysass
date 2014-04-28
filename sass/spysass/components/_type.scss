@@ -1,0 +1,124 @@
+$heading-font-family: $body-font-family !default;
+$heading-font-weight: bold !default;
+$heading-font-style: normal !default;
+$heading-font-color: $color-main-1 !default;
+$heading-text-rendering: optimizeLegibility !default;
+$heading-top-margin: 0.2em !default;
+$heading-bottom-margin: 0.5em !default;
+$heading-line-height: 1.2 !default;
+
+$paragraph-font-family: $body-font-family !default;
+$paragraph-font-weight: normal !default;
+$paragraph-font-size: emCalc(16px) !default;
+$paragraph-line-height: 1.6 !default;
+$paragraph-margin-top: 0 !default;
+$paragraph-margin-bottom: 1.25em !default;
+$paragraph-text-rendering: optimizeLegibility !default;
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+	font-style: $heading-font-style;
+	color: $heading-font-color;
+	text-rendering: $heading-text-rendering;
+	//margin-top: $heading-top-margin;
+	//margin-bottom: $heading-bottom-margin;
+	line-height: $heading-line-height - emCalc(3);
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0 0 0.67em 0;
+}
+h2 {
+	font-size: 1.5em;
+	margin: 0 0 0.83em 0;
+}
+h3 {
+	font-size: 1.17em;
+	margin: 0 0 1em 0;
+}
+h4 {
+	font-size: 1em;
+	margin: 0 0 1.33em 0;
+}
+h5 {
+	font-size: 0.83em;
+	margin: 0 0 1.67em 0;
+}
+h6 {
+	font-size: 0.67em;
+	margin: 0 0 2.33em 0;
+}
+p {
+	font-family: $paragraph-font-family;
+	font-weight: $paragraph-font-weight;
+	font-size: $paragraph-font-size;
+	line-height: $paragraph-line-height;
+	margin-top: $paragraph-margin-top;
+	margin-bottom: $paragraph-margin-bottom;
+	text-rendering: $paragraph-text-rendering;
+}
+
+em,
+i {
+	font-style: italic;
+	line-height: inherit;
+}
+
+strong,
+b {
+	font-weight: bold;
+	line-height: inherit;
+}
+
+small {
+	font-size: 0.8em;
+	line-height: inherit;
+}
+
+/* Lists */
+ul,
+ol,
+dl {
+	line-height: $paragraph-line-height;
+	margin: 1em 0;
+}
+
+/* Unordered Lists */
+ul {
+	list-style-type: disc;
+	margin-left: 40px;
+	li {
+		ul,
+		ol {
+			margin-bottom: 0;
+			font-size: 1em; /* Override nested font-size change */
+		}
+	}
+	&.square,
+	&.circle,
+	&.disc,
+	&.no-bullet {
+		li ul { list-style: inherit; }
+	}
+
+	&.square { list-style-type: square; }
+	&.circle { list-style-type: circle; }
+	&.disc { list-style-type: disc; }
+	&.no-bullet { list-style: none; }
+}
+
+/* Ordered Lists */
+ol {
+	list-style-type: decimal;
+	margin-left: 40px;
+	li {
+		ul,
+		ol {
+			margin-bottom: 0;
+			font-size: 1em; /* Override nested font-size change */
+		}
+	}
+}

@@ -2,9 +2,6 @@
 // Base Variables
 //
 
-$make-image-inline-block: false !default;
-$include-base-classes: true !default;
-$include-animation-classes: false !default;
 // NOTE: No need to change this conditional statement, $text-direction variable controls it all.
 $default-float: left !default;
 $opposite-direction: right !default;
@@ -27,13 +24,14 @@ $base-line-height: 150% !default;
 // This is the default html and body font-size for the base em value.
 $em-base: 16 !default;
 
-$body-bg: #fff !default;
-$body-font-color: #222 !default;
-$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
-$body-font-weight: normal !default;
-$body-font-style: normal !default;
+//
+// Base Color Variables
+//
 
-$font-smoothing: subpixel-antialiased !default;
+$color-main-1: #222 !default;
+$color-message: #eee !default;
+$color-error: #ffbaba !default;
+$color-success: #dff2bf !default;
 
 //
 // Base Functions

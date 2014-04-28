@@ -1,3 +1,15 @@
+$make-image-inline-block: false !default;
+$include-base-classes: true !default;
+$include-animation-classes: false !default;
+
+$body-bg: #fff !default;
+$body-font-color: #222 !default;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+
+$font-smoothing: subpixel-antialiased !default;
+
 *,
 *:before,
 *:after {
@@ -49,21 +61,21 @@ img { -ms-interpolation-mode: bicubic; }
 
 @if $include-base-classes {
 	// Miscellaneous useful HTML classes
-	.-cb	{ clear: both !important; }
-	.-cl	{ clear: left !important; }
-	.-cr	{ clear: right !important; }
-	.-fl	{ float: left !important; }
-	.-fr	{ float: right !important; }
-	.-tl	{ text-align: left !important; }
-	.-tr	{ text-align: right !important; }
-	.-tc	{ text-align: center !important; }
-	.-tj	{ text-align: justify !important; }
-	.-h   { display: none; }//hide
-	.-nm	{ margin: 0 !important; }
+	.clear-both	{ clear: both !important; }
+	.clear-left	{ clear: left !important; }
+	.clear-right	{ clear: right !important; }
+	.float-left	{ float: left !important; }
+	.float-right	{ float: right !important; }
+	.text-left	{ text-align: left !important; }
+	.text-right	{ text-align: right !important; }
+	.text-center	{ text-align: center !important; }
+	.text-justify	{ text-align: justify !important; }
+	.hide   { display: none; }//hide
+	.no-margin	{ margin: 0 !important; }
 }
 @if $include-animation-classes {
-	.Dh, .Dw	{ overflow: hidden; }
-	.-m		{ height: 0 !important; }
+	.dynamic-height, .dynamic-width	{ overflow: hidden; }
+	.min		{ height: 0 !important; }
 }
 
 // Font smoothing
