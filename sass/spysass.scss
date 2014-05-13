@@ -2,7 +2,6 @@
 // Base Variables
 //
 
-// NOTE: No need to change this conditional statement, $text-direction variable controls it all.
 $default-float: left !default;
 $opposite-direction: right !default;
 
@@ -43,14 +42,14 @@ $color-success: #dff2bf !default;
 // Media Queries
 //
 
-$small-screen-min: emCalc(0px) !default;
-$medium-screen-min: emCalc(640px) !default;
-$large-screen-min: emCalc(1024px) !default;
-$xlarge-screen-min: emCalc(1440px) !default;
+$small-screen-min: em-calc(0px) !default;
+$medium-screen-min: em-calc(640px) !default;
+$large-screen-min: em-calc(1024px) !default;
+$xlarge-screen-min: em-calc(1440px) !default;
 
-$small-screen-max: $medium-screen-min - emCalc(1px) !default;
-$medium-screen-max: $large-screen-min - emCalc(1px) !default;
-$large-screen-max: $xlarge-screen-min - emCalc(1px) !default;
+$small-screen-max: $medium-screen-min - em-calc(1px) !default;
+$medium-screen-max: $large-screen-min - em-calc(1px) !default;
+$large-screen-max: $xlarge-screen-min - em-calc(1px) !default;
 
 $screen: "only screen" !default;
 $small-only: "only screen and (min-width: #{$small-screen-min}) and (max-width: #{$small-screen-max})" !default;
