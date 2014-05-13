@@ -1,6 +1,4 @@
 $make-image-inline-block: false !default;
-$include-base-classes: true !default;
-$include-animation-classes: false !default;
 
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
@@ -9,6 +7,8 @@ $body-font-weight: normal !default;
 $body-font-style: normal !default;
 
 $font-smoothing: subpixel-antialiased !default;
+
+$global-radius: 5px !default;
 
 *,
 *:before,
@@ -59,24 +59,23 @@ img { -ms-interpolation-mode: bicubic; }
 	object { max-width: none !important; }
 }
 
-@if $include-base-classes {
-	// Miscellaneous useful HTML classes
-	.clear-both	{ clear: both !important; }
-	.clear-left	{ clear: left !important; }
-	.clear-right	{ clear: right !important; }
-	.float-left	{ float: left !important; }
-	.float-right	{ float: right !important; }
-	.text-left	{ text-align: left !important; }
-	.text-right	{ text-align: right !important; }
-	.text-center	{ text-align: center !important; }
-	.text-justify	{ text-align: justify !important; }
-	.hide   { display: none; }//hide
-	.no-margin	{ margin: 0 !important; }
-}
-@if $include-animation-classes {
-	.dynamic-height, .dynamic-width	{ overflow: hidden; }
-	.min		{ height: 0 !important; }
-}
+// Miscellaneous useful HTML classes
+.clear-both	{ clear: both !important; }
+.clear-left	{ clear: left !important; }
+.clear-right	{ clear: right !important; }
+.float-left	{ float: left !important; }
+.float-right	{ float: right !important; }
+.text-left	{ text-align: left !important; }
+.text-right	{ text-align: right !important; }
+.text-center	{ text-align: center !important; }
+.text-justify	{ text-align: justify !important; }
+.hide   { display: none; }//hide
+.no-margin	{ margin: 0 !important; }
+
+// Classes for help with CSS3 animation
+
+.dynamic-height, .dynamic-width	{ overflow: hidden; }
+.min		{ height: 0 !important; }
 
 // Font smoothing
 // Antialiased font smoothing works best for light text on a dark background.

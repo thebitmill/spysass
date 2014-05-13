@@ -10,31 +10,53 @@
 	@return $value;
 }
 
-// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#)
+// Converts "px" to "rem" using the ($)em-base
+@function convert-to-rem($value, $base-value: $em-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+
+// Working in rems is annoying. Think in pixels by using this handy function
 // Just enter the number, no need to mention "px"
-@function emCalc($values...) {
+@function rem-calc($values, $base-value: $em-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $rem-values: ();
+  @for $i from 1 through $max {
+    $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $rem-values;
+}
+
+// Working in ems is annoying. Think in pixels by using this handy function
+// Just enter the number, no need to mention "px"
+@function em-calc($values, $base-value: $em-base) {
 	$max: length($values); // Get the total number of parameters passed
 
 	// If there is only 1 parameter, then return it as an integer.
 	// This is done because a list can't be multiplied or divided even if it contains a single value
 	@if $max == 1 { @return convert-to-em(nth($values, 1)); }
 
-	$emValues: (); // This will eventually store the converted $values in a list
+	$em-values: (); // This will eventually store the converted $values in a list
 	@for $i from 1 through $max {
-		$emValues: append($emValues, convert-to-em(nth($values, $i)));
+		$em-values: append($em-values, convert-to-em(nth($values, $i)));
 	}
-	@return $emValues;
+	@return $em-values;
 }
 
-//
-// Grid Calc Function
-//
+@mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($color-main-1, .25)) {
+  transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
 
-@function gridCalc($colNumber, $totalColumns) {
-	@return percentage(($colNumber / $totalColumns));
+  &:#{$selector} {
+    box-shadow: 0 0 5px $glowing-effect-color;
+    border-color: $glowing-effect-color;
+  }
 }
 
-@mixin css-triangle($triangle-height, $triangle-direction, $triangle-width:2*$triangle-height, $triangle-color:$c-main-1) {
+@mixin css-triangle($triangle-height, $triangle-direction, $triangle-width:2*$triangle-height, $triangle-color:$color-main-1) {
 	width: 0;
 	height: 0;
 	@if ($triangle-direction == top) {
