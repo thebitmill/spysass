@@ -2,7 +2,6 @@
 // Grid Variables
 //
 
-$include-html-grid-classes: true !default;
 $row-width: 960px !default;
 $column-gutter: 30px !default;
 $total-columns: 12 !default;
@@ -11,11 +10,11 @@ $total-columns: 12 !default;
 // Grid Calc Function
 //
 
-@function gridCalc($colNumber, $totalColumns, $responsive:true) {
+@function grid-calc($col-number, $total-columns, $responsive:true) {
 	@if $responsive {
-		@return percentage(($colNumber / $totalColumns));
+		@return percentage(($col-number / $total-columns));
 	} @else {
-		@return (($colNumber / $totalColumns) * $row-width) - $column-gutter;
+		@return (($col-number / $total-columns) * $row-width) - $column-gutter;
 	}
 }
 
@@ -94,18 +93,18 @@ $total-columns: 12 !default;
 
 	// If a column number is given, calculate width
 	@if $columns {
-		width: gridCalc($columns, $total-columns, $responsive);
+		width: grid-calc($columns, $total-columns, $responsive);
 
 		// If last column, float naturally instead of to the right
 		@if $last-column { float: $opposite-direction; }
 	}
 
 	// If offset, calculate appropriate margins
-	@if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
+	@if $offset { margin-#{$default-float}: grid-calc($offset, $total-columns); }
 
 	// Source Ordering, adds left/right depending on which you use.
-	@if $push { #{$default-float}: gridCalc($push, $total-columns, $responsive); #{$opposite-direction}: auto; }
-	@if $pull { #{$opposite-direction}: gridCalc($pull, $total-columns, $responsive); #{$default-float}: auto; }
+	@if $push { #{$default-float}: grid-calc($push, $total-columns, $responsive); #{$opposite-direction}: auto; }
+	@if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns, $responsive); #{$default-float}: auto; }
 
 	// If centered, get rid of float and add appropriate margins
 	@if $center {
