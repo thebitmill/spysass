@@ -7,50 +7,41 @@ $heading-top-margin: 0.2em !default;
 $heading-bottom-margin: 0.5em !default;
 $heading-line-height: 1.2 !default;
 
+$h1-font-size: 2.5em;
+$h2-font-size: 2.0em;
+$h3-font-size: 1.7em;
+$h4-font-size: 1.4em;
+$h5-font-size: 1.2em;
+$h6-font-size: 1.0em;
+
 $paragraph-font-family: $body-font-family !default;
 $paragraph-font-weight: normal !default;
-$paragraph-font-size: emCalc(16px) !default;
+$paragraph-font-size: 1.0em !default;
 $paragraph-line-height: 1.6 !default;
 $paragraph-margin-top: 0 !default;
 $paragraph-margin-bottom: 1.25em !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
-h1, h2, h3, h4, h5, h6 {
-	font-weight: bold;
-	font-family: $heading-font-family;
-	font-weight: $heading-font-weight;
-	font-style: $heading-font-style;
-	color: $heading-font-color;
-	text-rendering: $heading-text-rendering;
-	//margin-top: $heading-top-margin;
-	//margin-bottom: $heading-bottom-margin;
-	line-height: $heading-line-height - emCalc(3);
+/* Default header styles */
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $heading-font-family;
+		font-weight: $heading-font-weight;
+		font-style: $heading-font-style;
+		color: $heading-font-color;
+		text-rendering: $heading-text-rendering;
+		margin-top: $heading-top-margin;
+		margin-bottom: $heading-bottom-margin;
+		line-height: $heading-line-height;
+
 }
 
-h1 {
-	font-size: 2em;
-	margin: 0 0 0.67em 0;
-}
-h2 {
-	font-size: 1.5em;
-	margin: 0 0 0.83em 0;
-}
-h3 {
-	font-size: 1.17em;
-	margin: 0 0 1em 0;
-}
-h4 {
-	font-size: 1em;
-	margin: 0 0 1.33em 0;
-}
-h5 {
-	font-size: 0.83em;
-	margin: 0 0 1.67em 0;
-}
-h6 {
-	font-size: 0.67em;
-	margin: 0 0 2.33em 0;
-}
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
 p {
 	font-family: $paragraph-font-family;
 	font-weight: $paragraph-font-weight;

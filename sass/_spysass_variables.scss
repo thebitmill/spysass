@@ -20,17 +20,9 @@
 // $default-float: left;
 // $opposite-direction: right;
 
-//
-// Base Type Variables
-//
-
-// $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Times New Roman", serif;
-// $body-font-weight: normal;
-// $body-font-style: normal;
-
 // $font-smoothing: subpixel-antialiased;
+
+// $make-image-inline-block: false;
 
 //
 // Base Color Variables
@@ -42,10 +34,20 @@
 // $color-success: #dff2bf;
 
 //
+// Base Type Variables
+//
+
+// $body-bg: #fff;
+// $body-font-color: #222;
+// $body-font-family: "Times New Roman", serif;
+// $body-font-weight: normal;
+// $body-font-style: normal;
+
+//
 // Heading & Paragraph Type Variables
 //
 
-// $heading-font-family: "Times New Roman", serif;
+// $heading-font-family: $body-font-family;
 // $heading-font-weight: bold;
 // $heading-font-style: normal;
 // $heading-font-color: $color-main-1;
@@ -54,9 +56,16 @@
 // $heading-bottom-margin: 0.5em;
 // $heading-line-height: 1.2;
 
+// $h1-font-size: 2.5em;
+// $h2-font-size: 2.0em;
+// $h3-font-size: 1.7em;
+// $h4-font-size: 1.4em;
+// $h5-font-size: 1.2em;
+// $h6-font-size: 1.0em;
+
 // $paragraph-font-family: $body-font-family;
 // $paragraph-font-weight: normal;
-// $paragraph-font-size: emCalc(16px);
+// $paragraph-font-size: 1.0em;
 // $paragraph-line-height: 1.6;
 // $paragraph-margin-top: 0;
 // $paragraph-margin-bottom: 1.25em;
