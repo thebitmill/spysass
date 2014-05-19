@@ -1,0 +1,140 @@
+body {
+	background: url('../../img/bg-body.png') repeat-y;
+}
+header {
+	position: relative;
+	@include pie-clearfix;
+	.company {
+		float: left;
+		padding: 10px;
+		> h1 {
+			margin: 0;
+			color: white;
+		}
+	}
+	.user {
+		position: absolute;
+		height: 100%;
+		background: #333;
+		color: white;
+		top: 0;
+		bottom: 0;
+		right: 40px;
+	}
+	background: black;
+}
+.container {
+	width: auto;
+	overflow: hidden;
+}
+body > nav {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		> li {
+			> a {
+				line-height: 1;
+				text-decoration: none;
+			}
+		}
+	}
+	&.main {
+		float: left;
+		> ul {
+			> li {
+				background-color: red;
+				width: 80px;
+				height: 70px;
+				border-bottom: 1px solid #777;
+				> a {
+					background-color: #555;
+					height: 100%;
+					width: 100%;
+					display: block;
+					color: white;
+					font-size: 14px;
+					&:before {
+						content: "";
+						display: block;
+						width: 100%;
+						height: 50px;
+						background-position: center center;
+						background-repeat: no-repeat;
+
+					}
+					> span {
+						display: block;
+						height: 20px;
+						overflow: hidden;
+						width: 100%;
+						text-align: center;
+					}
+				}
+				&.current, &:hover {
+					> a {
+						background-color: #777;
+					}
+				}
+				&.dashboard {
+					> a:before {
+						background-image: url('../../img/iconmonstr-dashboard-4-icon.svg');
+					}
+				}
+				&.content {
+					> a:before {
+						background-image: url('../../img/iconmonstr-font-size-icon.svg');
+					}
+				}
+				&.pages {
+					> a:before {
+						background-image: url('../../img/iconmonstr-text-file-3-icon.svg');
+					}
+				}
+				&.reports {
+					> a:before {
+						background-image: url('../../img/iconmonstr-bar-chart-6-icon.svg');
+					}
+				}
+				&.errors {
+					> a:before {
+						background-image: url('../../img/iconmonstr-warning-6-icon.svg');
+					}
+				}
+				&.passport {
+					> a:before {
+						background-image: url('../../img/iconmonstr-user-14-icon.svg');
+					}
+				}
+				&.settings {
+					> a:before {
+						background-image: url('../../img/iconmonstr-gear-9-icon.svg');
+					}
+				}
+			}
+		}
+	}
+	&.sub {
+		float: left;
+		width: 120px;
+		min-height: 200px;
+		> ul {
+			> li {
+				width: 120px;
+				border-bottom: 1px solid #ccc;
+				> a {
+					padding: 7px;
+					display: block;
+					color: #555;
+					background: #eee;
+				}
+				&.current, &:hover {
+					> a {
+						background: #ccc;
+					}
+				}
+				
+			}
+		}
+	}
+}
