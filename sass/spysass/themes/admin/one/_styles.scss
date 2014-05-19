@@ -1,0 +1,43 @@
+.c {
+	input:not([type="radio"]):not([type="checkbox"]), textarea {
+		width: 100%;
+	}
+}
+[contentEditable="true"] {
+	padding: 5px;
+	border: 1px dashed black;
+}
+.message {
+	padding: 20px;
+	margin-bottom: 10px;
+
+	width: 100%;
+	@include border-radius(5px);
+	background: $color-message;
+	color: darken($color-message, 47%);
+	border: 1px solid darken($color-message, 10%);
+	color: #777;
+	> h4 {
+		color: inherit;
+		font-size: 1.2em;
+		margin: 0;
+		+ p {
+			margin-top: 4px;
+		}
+	}
+	> p {
+		color: inherit;
+		margin: 0;
+	}
+	&.error {
+		background: $color-error;
+		color: darken($color-error, 47%);
+		border-color: darken($color-error, 10%);
+	}
+	&.success {
+		background: $color-success;
+		color: darken($color-success, 52%);
+		border-color: darken($color-success, 15%);
+	}
+	
+}
