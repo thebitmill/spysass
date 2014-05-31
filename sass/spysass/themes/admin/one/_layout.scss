@@ -1,5 +1,5 @@
 body {
-	background: url('../../img/bg-body.png') repeat-y;
+	background: image-url('admin/bg.png') repeat-y;
 }
 header {
 	position: relative;
@@ -78,37 +78,52 @@ body > nav {
 				}
 				&.dashboard {
 					> a:before {
-						background-image: url('../../img/iconmonstr-dashboard-4-icon.svg');
+						background-image: image-url('admin/nav-dashboard.svg');
 					}
 				}
 				&.content {
 					> a:before {
-						background-image: url('../../img/iconmonstr-font-size-icon.svg');
+						background-image: image-url('admin/nav-content.svg');
 					}
 				}
 				&.pages {
 					> a:before {
-						background-image: url('../../img/iconmonstr-text-file-3-icon.svg');
+						background-image: image-url('admin/nav-pages.svg');
 					}
 				}
 				&.reports {
 					> a:before {
-						background-image: url('../../img/iconmonstr-bar-chart-6-icon.svg');
+						background-image: image-url('admin/nav-reports.svg');
 					}
 				}
 				&.errors {
 					> a:before {
-						background-image: url('../../img/iconmonstr-warning-6-icon.svg');
+						background-image: image-url('admin/nav-errors.svg');
+					}
+				}
+				&.trips {
+					> a:before {
+						background-image: image-url('admin/nav-trips.svg');
+					}
+				}
+				&.orders {
+					> a:before {
+						background-image: image-url('admin/nav-orders.svg');
+					}
+				}
+				&.newsletter {
+					> a:before {
+						background-image: image-url('admin/nav-newsletter.svg');
 					}
 				}
 				&.passport {
 					> a:before {
-						background-image: url('../../img/iconmonstr-user-14-icon.svg');
+						background-image: image-url('admin/nav-passport.svg');
 					}
 				}
 				&.settings {
 					> a:before {
-						background-image: url('../../img/iconmonstr-gear-9-icon.svg');
+						background-image: image-url('admin/nav-settings.svg');
 					}
 				}
 			}
@@ -137,4 +152,9 @@ body > nav {
 			}
 		}
 	}
+}
+footer {
+	text-align: center;
+	padding-top: 50px !important;
+	padding-bottom: 15px !important;
 }

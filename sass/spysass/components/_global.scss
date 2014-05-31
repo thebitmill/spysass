@@ -74,7 +74,7 @@ img { -ms-interpolation-mode: bicubic; }
 
 // Classes for help with CSS3 animation
 
-.dynamic-height, .dynamic-width	{ overflow: hidden; }
+[data-dynamic-height], [data-dynamic-width]	{ overflow: hidden; }
 .min		{ height: 0 !important; }
 
 // Font smoothing

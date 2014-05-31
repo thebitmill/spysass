@@ -13,9 +13,9 @@
 
 	width: 100%;
 	@include border-radius(5px);
-	background: $color-message;
-	color: darken($color-message, 47%);
-	border: 1px solid darken($color-message, 10%);
+	background: lighten($color-message, 47%);
+	color: $color-message;
+	border: 1px solid lighten($color-message, 20%);
 	color: #777;
 	> h4 {
 		color: inherit;
@@ -30,14 +30,13 @@
 		margin: 0;
 	}
 	&.error {
-		background: $color-error;
-		color: darken($color-error, 47%);
-		border-color: darken($color-error, 10%);
+		background: lighten($color-error, 47%);
+		color: $color-error;
+		border-color: lighten($color-error, 20%);
 	}
 	&.success {
-		background: $color-success;
-		color: darken($color-success, 52%);
-		border-color: darken($color-success, 15%);
+		background: lighten($color-success, 47%);
+		color: $color-success;
+		border-color: lighten($color-success, 20%);
 	}
-	
 }
