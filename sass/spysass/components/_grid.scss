@@ -9,42 +9,162 @@
 // @title
 //   Grid
 //
-@import "../mixins/grid";
 
 // Right and Left "auto" for grid
 %right-auto { #{$opposite-direction}: auto; }
 %left-auto { #{$default-float}: auto; }
 
+//
+// Grid Variables
+//
+
+$row-width: 960px !default;
+$column-gutter: 30px !default;
+$total-columns: 12 !default;
+
+//
+// Grid Calc Function
+//
+
+@function grid-calc($col-number, $total-columns, $responsive:true) {
+	@if $responsive {
+		@return percentage(($col-number / $total-columns));
+	} @else {
+		@return (($col-number / $total-columns) * $row-width) - $column-gutter;
+	}
+}
+
+// Right and Left "auto" for grid
+%right-auto { #{$opposite-direction}: auto; }
+%left-auto { #{$default-float}: auto; }
+
+//
+// Grid Mixins
+//
+
+// Create default, nested, and collapsed rows
+@mixin grid-row($behavior: false,$responsive:true) {
+
+	// use @include grid-row(nest); to include a nested row
+	@if $behavior == nest {
+		margin-#{$default-float}: -($column-gutter/2);
+		margin-#{$opposite-direction}: -($column-gutter/2);
+		max-width: none;
+		width: auto;
+		padding: 0;
+	}
+
+// use @include grid-row(collapse); to collapsed a container row margins
+	@else if $behavior == collapse {
+		margin-#{$default-float}: 0;
+		margin-#{$opposite-direction}: 0;
+		@if $responsive {
+			max-width: $row-width;
+			width: 100%;
+		} @else {
+			width: $row-width;
+		}
+	}
+
+	// use @include grid-row(nest-collapse); to collapse outer margins on a nested row
+	@else if $behavior == nest-collapse {
+		margin-#{$default-float}: 0;
+		margin-#{$opposite-direction}: 0;
+		max-width: none;
+		width: auto;
+	}
+
+	// use @include grid-row; to use a container row
+	@else {
+		margin-#{$default-float}: auto;
+		margin-#{$opposite-direction}: auto;
+		margin-top: 0;
+		margin-bottom: 0;
+		@if $responsive {
+			max-width: $row-width;
+			width: 100%;
+		} @else {
+			width: $row-width;
+		}
+	}
+	@include pie-clearfix;// LKM: switched to compass clearfix
+}
+
+
+// For creating columns - @include these inside a media query to control small vs. large grid layouts
+@mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:true, $include-position-relative: false, $responsive: true) {
+
+	// If collapsed, get rid of gutter padding
+	@if $collapse {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// Gutter padding whenever a column isn't set to collapse
+	// (use $collapse:null to do nothing)
+	@else if $collapse == false {
+		padding-left: $column-gutter / 2;
+		padding-right: $column-gutter / 2;
+	}
+
+	// If a column number is given, calculate width
+	@if $columns {
+		width: grid-calc($columns, $total-columns, $responsive);
+
+		// If last column, float naturally instead of to the right
+		@if $last-column { float: $opposite-direction; }
+	}
+
+	// If offset, calculate appropriate margins
+	@if $offset { margin-#{$default-float}: grid-calc($offset, $total-columns); }
+
+	// Source Ordering, adds left/right depending on which you use.
+	@if $push { #{$default-float}: grid-calc($push, $total-columns, $responsive); #{$opposite-direction}: auto; }
+	@if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns, $responsive); #{$default-float}: auto; }
+
+	// If centered, get rid of float and add appropriate margins
+	@if $center {
+		margin-#{$default-float}: auto;
+		margin-#{$opposite-direction}: auto;
+		float: none !important;
+	}
+
+	@if $float {
+		@if $float == left or $float == true { float: $default-float; }
+		@else if $float == right { float: $opposite-direction; }
+		@else { float: none; }
+	}
+
+	// This helps us not need to repeat "position:relative" everywehere
+	@if $include-position-relative { position: relative; }
+}
 /* Grid HTML Classes */
-.r {
+.row {
 	@include grid-row;
 
 	&.collapse {
-		.c { @include grid-column($collapse:true); }
+		.col { @include grid-column($collapse:true); }
 	}
 
-	.r { @include grid-row($behavior:nest);
+	.row { @include grid-row($behavior:nest);
 		&.collapse { @include grid-row($behavior:nest-collapse); }
 	}
 	// -wf = width: full
-	&.-wf {
+	&.full-width {
 		max-width: none;
 	}
-	&.c {
+	&.col {
 		@include grid-column($float: false,$include-position-relative: true);
 		float: none !important;
 		width: auto !important;
 	}
 }
 
-.r > .c {
+.row > .col {
 	@include grid-column($include-position-relative: true);
-	&:last-child:not(:first-child), &.-e {
-		float: $opposite-direction;
-	}
 }
-.c { width: 100%; } // moved this out from .r > .c, otherwise selector above is more specific so it overrides all widths generated below
 
+.col { width: 100%; } // moved this out from .r > .c, otherwise selector above is more specific so it overrides all widths generated below
 
 @media #{$screen} {
 
@@ -56,10 +176,10 @@
 		.-s-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
 	}
 
-	[class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
-	[class*="column"] + [class*="column"]._e { float: $default-float; }
+	.col + .col:last-child { float: $opposite-direction; }
+	.col + .col.end { float: $default-float; }
 
-	.c.-s_c { @include grid-column($center:true, $collapse:null, $float:false); }
+	.col.-s-centered { @include grid-column($center:true, $collapse:null, $float:false); }
 }
 
 @media #{$medium-min} {
@@ -77,9 +197,9 @@
 		.-m-pull#{-$i} { @include grid-column($pull:$i, $collapse:null, $float:false); }
 	}
 
-	.c.-m_c { @include grid-column($center:true, $collapse:null, $float:false); }
+	.col.-m-centered { @include grid-column($center:true, $collapse:null, $float:false); }
 
-	.c.-m_uc {
+	.col.-m-uncentered {
 		margin-#{$default-float}: 0;
 		margin-#{$opposite-direction}: 0;
 		float: $default-float !important;
@@ -102,9 +222,9 @@
 		.-l-pull#{-$i} { @include grid-column($pull:$i, $collapse:null, $float:false); }
 	}
 
-	.c.-l_c { @include grid-column($center:true, $collapse:null, $float:false); }
+	.col.-l-centered { @include grid-column($center:true, $collapse:null, $float:false); }
 
-	.c.-l_uc {
+	.col.-l-uncentered {
 		margin-#{$default-float}: 0;
 		margin-#{$opposite-direction}: 0;
 		float: $default-float !important;

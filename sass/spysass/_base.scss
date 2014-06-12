@@ -1,0 +1,133 @@
+//
+// Base Variables
+//
+
+$default-float: left !default;
+$opposite-direction: right !default;
+$global-radius: 0px !default;
+$make-image-inline-block: false !default;
+
+// Base Color Variables
+
+$color-body-background: #fff !default;
+
+$color-main-1: #222 !default;
+$color-message: #333 !default;
+$color-error: #c90000 !default;
+$color-success: #628b1c !default;
+
+//
+// Base Type Variables
+//
+
+// This needs to be a px value since rem-calc and em-calc use it.
+$base-font-size: 16px !default;
+
+$base-line-height: 1 !default;
+
+$body-font-color: #222 !default;
+$body-font-family: "Times New Roman", sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+
+$font-smoothing: subpixel-antialiased !default;
+
+//
+// Base Functions
+//
+
+
+//
+// Media Queries
+//
+
+$small-screen-min: rem-calc(0px) !default;
+$medium-screen-min: rem-calc(640px) !default;
+$large-screen-min: rem-calc(1024px) !default;
+$xlarge-screen-min: rem-calc(1440px) !default;
+
+$small-screen-max: $medium-screen-min - rem-calc(1px) !default;
+$medium-screen-max: $large-screen-min - rem-calc(1px) !default;
+$large-screen-max: $xlarge-screen-min - rem-calc(1px) !default;
+
+$screen: "only screen" !default;
+$small-only: "only screen and (min-width: #{$small-screen-min}) and (max-width: #{$small-screen-max})" !default;
+$small-min: "only screen and (min-width: #{$small-screen-min})" !default;
+$small-max: "only screen and (max-width: #{$small-screen-max})" !default;
+$medium-only: "only screen and (min-width: #{$medium-screen-min}) and (max-width: #{$medium-screen-max})" !default;
+$medium-min: "only screen and (min-width: #{$medium-screen-min})" !default;
+$medium-max: "only screen and (max-width: #{$medium-screen-max})" !default;
+$large-only: "only screen and (min-width: #{$large-screen-min}) and (max-width: #{$large-screen-max})" !default;
+$large-min: "only screen and (min-width: #{$large-screen-min})" !default;
+$large-max: "only screen and (max-width: #{$large-screen-max})" !default;
+$xlarge-only: "only screen and (min-width: #{$xlarge-screen-min})" !default;
+$xlarge-min: "only screen and (min-width: #{$xlarge-screen-min})" !default;
+$landscape: "only screen and (orientation: landscape)" !default;
+$portrait: "only screen and (orientation: portrait)" !default;
+
+*,
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+html,
+body { font-size: $base-font-size; }
+
+// Default body styles
+body {
+	background: $color-body-background;
+	color: $body-font-color;
+	padding: 0;
+	margin: 0;
+	font-family: $body-font-family;
+	font-weight: $body-font-weight;
+	font-style: $body-font-style;
+	line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+	position: relative;
+}
+
+// Override outline from normalize, we don't like it
+a:focus { outline: none; }
+
+// Grid Defaults to get images and embeds to work properly
+img,
+object,
+embed { max-width: 100%; height: auto; }
+
+object,
+embed { height: 100%; }
+img { -ms-interpolation-mode: bicubic; }
+
+@if $make-image-inline-block {
+	// Get rid of gap under images by making them display: inline-block; by default
+	img {
+		display:inline-block;
+		vertical-align: middle;
+	}
+}
+
+#map_canvas,
+.map_canvas {
+	img,
+	embed,
+	object { max-width: none !important; }
+}
+
+// Miscellaneous useful HTML classes
+.clear-both	{ clear: both !important; }
+.clear-left	{ clear: left !important; }
+.clear-right	{ clear: right !important; }
+.float-left	{ float: left !important; }
+.float-right	{ float: right !important; }
+.text-left	{ text-align: left !important; }
+.text-right	{ text-align: right !important; }
+.text-center	{ text-align: center !important; }
+.text-justify	{ text-align: justify !important; }
+.hide   { display: none; }//hide
+.no-margin	{ margin: 0 !important; }
+
+// Classes for help with CSS3 animation
+
+[data-dynamic-height], [data-dynamic-width]	{ overflow: hidden; }
+.min		{ height: 0 !important; }
