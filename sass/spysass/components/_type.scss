@@ -7,12 +7,12 @@ $heading-top-margin: 0.2em !default;
 $heading-bottom-margin: 0.5em !default;
 $heading-line-height: 1.2 !default;
 
-$h1-font-size: 2.5em;
-$h2-font-size: 2.0em;
-$h3-font-size: 1.7em;
-$h4-font-size: 1.4em;
-$h5-font-size: 1.2em;
-$h6-font-size: 1.0em;
+$h1-font-size: 2.5em !default;
+$h2-font-size: 2.0em !default;
+$h3-font-size: 1.7em !default;
+$h4-font-size: 1.4em !default;
+$h5-font-size: 1.2em !default;
+$h6-font-size: 1.0em !default;
 
 $paragraph-font-family: $body-font-family !default;
 $paragraph-font-weight: normal !default;
@@ -23,16 +23,15 @@ $paragraph-margin-bottom: 1.25em !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 /* Default header styles */
-	h1, h2, h3, h4, h5, h6 {
-		font-family: $heading-font-family;
-		font-weight: $heading-font-weight;
-		font-style: $heading-font-style;
-		color: $heading-font-color;
-		text-rendering: $heading-text-rendering;
-		margin-top: $heading-top-margin;
-		margin-bottom: $heading-bottom-margin;
-		line-height: $heading-line-height;
-
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+	font-style: $heading-font-style;
+	color: $heading-font-color;
+	text-rendering: $heading-text-rendering;
+	margin-top: $heading-top-margin;
+	margin-bottom: $heading-bottom-margin;
+	line-height: $heading-line-height;
 }
 
 h1 { font-size: $h1-font-size; }

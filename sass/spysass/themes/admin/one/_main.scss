@@ -5,9 +5,9 @@
 
 // import user defined spysass variables.
 @import 'spysass_variables';
-@import 'spysass/components/global';
-@import 'spysass/components/grid';
+@import 'spysass/components/flex_grid';
 @import 'spysass/components/type';
+@import 'spysass/themes/form/foundation';
 
 @import 'layout';
 @import 'styles';

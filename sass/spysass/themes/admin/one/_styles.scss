@@ -1,12 +1,3 @@
-.c {
-	input:not([type="radio"]):not([type="checkbox"]), textarea {
-		width: 100%;
-	}
-}
-[contentEditable="true"] {
-	padding: 5px;
-	border: 1px dashed black;
-}
 .message {
 	padding: 20px;
 	margin-bottom: 10px;
@@ -38,5 +29,14 @@
 		background: lighten($color-success, 47%);
 		color: $color-success;
 		border-color: lighten($color-success, 20%);
+	}
+}
+input[type="submit"], input[type="button"], .button, button {
+	@include button-clean-gray;
+	&.small {
+		@include button-size($size: 'small');
+	}
+	&.large {
+		@include button-size($size: 'large');
 	}
 }
