@@ -346,9 +346,6 @@ select {
 	-webkit-appearance: none !important;
 	width: 100%;
 	background-color: $select-bg-color;
-	background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
-	background-repeat: no-repeat;
-	background-position: 97% center;
 	border: $input-border-width $input-border-style $input-border-color;
 	padding: rem-calc($form-spacing / 2);
 	font-size: rem-calc($input-font-size);
@@ -358,7 +355,12 @@ select {
 		background-color: $select-hover-bg-color;
 		border-color: $input-focus-border-color;
 	}
-	height: rem-calc($input-font-size + ($form-spacing * 1.5) - 1);
+    &:not([size]) {
+        background-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==');
+        background-repeat: no-repeat;
+        background-position: 97% center;
+        height: rem-calc($input-font-size + ($form-spacing * 1.5) - 1);
+    }
 }
 
 /* Adjust margin for form elements below */

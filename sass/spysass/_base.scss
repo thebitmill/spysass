@@ -41,14 +41,14 @@ $font-smoothing: subpixel-antialiased !default;
 // Media Queries
 //
 
-$small-screen-min: rem-calc(0px) !default;
-$medium-screen-min: rem-calc(640px) !default;
-$large-screen-min: rem-calc(1024px) !default;
-$xlarge-screen-min: rem-calc(1440px) !default;
+$small-screen-min: 0px !default;
+$medium-screen-min: 640px !default;
+$large-screen-min: 1024px !default;
+$xlarge-screen-min: 1440px !default;
 
-$small-screen-max: $medium-screen-min - rem-calc(1px) !default;
-$medium-screen-max: $large-screen-min - rem-calc(1px) !default;
-$large-screen-max: $xlarge-screen-min - rem-calc(1px) !default;
+$small-screen-max: $medium-screen-min - 1px !default;
+$medium-screen-max: $large-screen-min - 1px !default;
+$large-screen-max: $xlarge-screen-min - 1px !default;
 
 $screen: "only screen" !default;
 $small-only: "only screen and (min-width: #{$small-screen-min}) and (max-width: #{$small-screen-max})" !default;
