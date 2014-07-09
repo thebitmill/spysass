@@ -22,8 +22,6 @@ $paragraph-margin-top: 0 !default;
 $paragraph-margin-bottom: 1.25em !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
-$list-margin-left: 18px !default;
-
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
 	font-family: $heading-font-family;
@@ -81,7 +79,7 @@ dl {
 /* Unordered Lists */
 ul {
 	list-style-type: disc;
-	margin-left: $list-margin-left;
+	margin-left: 40px;
 	li {
 		ul,
 		ol {
@@ -105,7 +103,7 @@ ul {
 /* Ordered Lists */
 ol {
 	list-style-type: decimal;
-	margin-left: $list-margin-left;
+	margin-left: 40px;
 	li {
 		ul,
 		ol {
