@@ -6,9 +6,12 @@ body, html {
 }
 .row, .col {
 	display: flex;
-    &.wrap {
-        flex-wrap: wrap;
-    }
+	> .cell {
+		flex: 1;
+		&.static {
+			flex: none;
+		}
+	}
 	//&.justify-start { justify-content: flex-start; }//(default): items are packed toward the start line
 	&.justify-end { justify-content: flex-end; }//items are packed toward to end line
 	&.justify-center { justify-content: flex-center; }//items are centered along the line
@@ -19,45 +22,6 @@ body, html {
 	&.align-center { align-items: center; }//items are centered in the cross-axis
 	&.align-baseline { align-items: baseline; }//items are aligned such as their baselines align
 	//&.align-stretch { align-items: stretch; }//(default): stretch to fill the container (still respect min-width/max-width)
-    &.base-flex-2 {
-        > .cell {
-            flex: 2;
-        }
-    }
-    &.base-flex-3 {
-        > .cell {
-            flex: 3;
-        }
-    }
-    &.base-flex-4 {
-        > .cell {
-            flex: 4;
-        }
-    }
-    &.base-flex-5 {
-        > .cell {
-            flex: 5;
-        }
-    }
-
-	> .cell {
-		flex: 1;
-        &.flex-2 {
-            flex: 2;
-        }
-        &.flex-3 {
-            flex: 3;
-        }
-        &.flex-4 {
-            flex: 4;
-        }
-        &.flex-5 {
-            flex: 5;
-        }
-		&.static {
-			flex: none;
-		}
-	}
 }
 .row {
 }

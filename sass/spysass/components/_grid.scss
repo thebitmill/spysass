@@ -87,7 +87,7 @@ $total-columns: 12 !default;
 			width: $row-width;
 		}
 	}
-	@include pie-clearfix;// LKM: switched to compass clearfix
+	@include clear;
 }
 
 
