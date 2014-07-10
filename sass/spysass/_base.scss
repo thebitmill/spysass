@@ -41,27 +41,25 @@ $font-smoothing: subpixel-antialiased !default;
 // Media Queries
 //
 
-$small-screen-min: rem-calc(0px) !default;
-$medium-screen-min: rem-calc(640px) !default;
-$large-screen-min: rem-calc(1024px) !default;
-$xlarge-screen-min: rem-calc(1440px) !default;
-
-$small-screen-max: $medium-screen-min - rem-calc(1px) !default;
-$medium-screen-max: $large-screen-min - rem-calc(1px) !default;
-$large-screen-max: $xlarge-screen-min - rem-calc(1px) !default;
+$small-range: (rem-calc(0), rem-calc(639)) !default;
+$medium-range: (rem-calc(640), rem-calc(1023)) !default;
+$large-range: (rem-calc(1024), rem-calc(1439)) !default;
+$xlarge-range: (rem-calc(1440), rem-calc(1920)) !default;
+$xxlarge-range: (rem-calc(1921), 999999em) !default;
 
 $screen: "only screen" !default;
-$small-only: "only screen and (min-width: #{$small-screen-min}) and (max-width: #{$small-screen-max})" !default;
-$small-min: "only screen and (min-width: #{$small-screen-min})" !default;
-$small-max: "only screen and (max-width: #{$small-screen-max})" !default;
-$medium-only: "only screen and (min-width: #{$medium-screen-min}) and (max-width: #{$medium-screen-max})" !default;
-$medium-min: "only screen and (min-width: #{$medium-screen-min})" !default;
-$medium-max: "only screen and (max-width: #{$medium-screen-max})" !default;
-$large-only: "only screen and (min-width: #{$large-screen-min}) and (max-width: #{$large-screen-max})" !default;
-$large-min: "only screen and (min-width: #{$large-screen-min})" !default;
-$large-max: "only screen and (max-width: #{$large-screen-max})" !default;
-$xlarge-only: "only screen and (min-width: #{$xlarge-screen-min})" !default;
-$xlarge-min: "only screen and (min-width: #{$xlarge-screen-min})" !default;
+
+$screen: "only screen" !default;
+$small-only: "only screen and (min-width: #{lower-bound($small-range)}) and (max-width: #{upper-bound($small-range)})" !default;
+$small-up: "only screen and (min-width: #{lower-bound($small-range)})" !default;
+$medium-only: "only screen and (min-width: #{lower-bound($medium-range)}) and (max-width: #{upper-hound($medium-range)})" !default;
+$medium-up: "only screen and (min-width: #{lower-bound($medium-range)})" !default;
+$medium-down: "only screen and (max-width: #{upper-bound($medium-range)})" !default;
+$large-only: "only screen and (min-width: #{lower-bound($large-range)}) and (max-width: #{upper-bound($large-range)})" !default;
+$large-up: "only screen and (min-width: #{lower-bound($large-range)})" !default;
+$large-down: "only screen and (max-width: #{lower-bound($large-range)})" !default;
+//$xlarge-only: "only screen and (min-width: #{lower-bound($xlarge-range)})" !default;
+$xlarge-up: "only screen and (min-width: #{lower-bound($xlarge-range)})" !default;
 $landscape: "only screen and (orientation: landscape)" !default;
 $portrait: "only screen and (orientation: portrait)" !default;
 
