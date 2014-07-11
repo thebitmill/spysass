@@ -1,24 +1,19 @@
-// It strips the unit of measure and returns it
 @function strip-unit($num) {
 	@return $num / ($num * 0 + 1);
 }
 
-// Converts "px" to "em" using the ($)base-font-size
 @function convert-to-em($value,$base-font-size: $base-font-size)  {
 	$value: strip-unit($value) / strip-unit($base-font-size) * 1em;
-	@if ($value == 0em) { $value: 0; } // Turn 0em into 0
+	@if ($value == 0em) { $value: 0; }
 	@return $value;
 }
 
-// Converts "px" to "rem" using the ($)base-font-size
 @function convert-to-rem($value)  {
     $value: strip-unit($value) / strip-unit($base-font-size) * 1rem;
-    @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+    @if ($value == 0rem) { $value: 0; }
     @return $value;
 }
 
-// Working in rems is annoying. Think in pixels by using this handy function
-// Just enter the number, no need to mention "px"
 @function rem($values) {
     $max: length($values);
 
@@ -38,12 +33,10 @@
     @return $rem-values;
 }
 
-// Working in ems is annoying. Think in pixels by using this handy function
-// Just enter the number, no need to mention "px"
 @function em($values, $base-value: $base-font-size) {
-	$max: length($values); // Get the total number of parameters passed
+	$max: length($values);
 
-	$em-values: (); // This will eventually store the converted $values in a list
+	$em-values: ();
 	@for $i from 1 through $max {
         $value: nth($values, $i);
         @if not (unit($value) == 'rem' or unit($value) == 'em') {
@@ -57,20 +50,4 @@
     @if $max == 1 { $em-values: nth($em-values, 1); }
 
 	@return $em-values;
-}
-
-// RANGES
-// We use these functions to define ranges for various things, like media queries. 
-@function lower-bound($range){
-  @if length($range) <= 0 {
-    @return 0;
-  }
-  @return nth($range,1);
-}
-
-@function upper-bound($range) {
-  @if length($range) < 2 {
-    @return 999999999999;
-  }
-  @return nth($range, 2);
 }
