@@ -6,11 +6,13 @@
 		clear: both;
 	}
 }
+
 // TODO add check for relative assets;
 @mixin svg-bg($image) {
     background-image: image-url(#{$image});
     background-image: none, image-url(#{$image});
 }
+
 @mixin triangle($triangle-height, $triangle-direction, $triangle-width:2*$triangle-height, $triangle-color:$color-main-1) {
 	width: 0;
 	height: 0;
@@ -35,6 +37,7 @@
 		border-bottom: $triangle-width / 2 solid transparent;
 	}
 }
+
 @mixin right-angle-triangle($triangle-size, $triangle-color, $triangle-direction) {
 	width: 0;
 	height: 0;
@@ -55,4 +58,12 @@
 		border-color: transparent $triangle-color transparent transparent;
 		border-right-style: solid;
 	}
+}
+
+@mixin side-radius($direction, $radius) {
+    @if($direction == left) {
+        @include border-left-radius($radius);
+    } @else {
+        @include border-right-radius($radius);
+    }
 }
