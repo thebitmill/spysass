@@ -2,8 +2,10 @@
 // Base Variables
 //
 
+$make-image-inline-block: false !default;
 $default-float: left !default;
 $opposite-direction: right !default;
+$text-direction: left !default;
 $global-radius: 0px !default;
 $make-image-inline-block: false !default;
 
@@ -41,6 +43,7 @@ $font-smoothing: subpixel-antialiased !default;
 // Media Queries
 //
 
+// Need to be in pixels for IE8
 $small-range: 0px, 639px !default;
 $medium-range: 640px, 1023px !default;
 $large-range: 1024px, 1439px !default;
