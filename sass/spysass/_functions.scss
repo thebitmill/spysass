@@ -23,7 +23,6 @@
         @if not (unit($value) == 'rem' or unit($value) == 'em') {
             $rem-values: append($rem-values, convert-to-rem($value));
         } @else {
-            @warn 'Unit is not unitless or a pixel value, (#{unit($value)}). Not converting.';
             $rem-values: append($rem-values, $values);
         }
     }
@@ -42,7 +41,6 @@
         @if not (unit($value) == 'rem' or unit($value) == 'em') {
             $em-values: append($em-values, convert-to-em($value, $base-value));
         } @else {
-            @warn 'Unit is not unitless or a pixel value, (#{unit($value)}). Not converting.';
             $em-values: append($em-values, $values);
         }
 	}
