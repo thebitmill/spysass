@@ -41,11 +41,11 @@ $font-smoothing: subpixel-antialiased !default;
 // Media Queries
 //
 
-$small-range: 0rem, rem(639) !default;
-$medium-range: rem(640), rem(1023) !default;
-$large-range: rem(1024), rem(1439) !default;
-$xlarge-range: rem(1440), rem(1920) !default;
-$xxlarge-range: rem(1921), 999999em !default;
+$small-range: 0px, 639px !default;
+$medium-range: 640px, 1023px !default;
+$large-range: 1024px, 1439px !default;
+$xlarge-range: 1440px, 1920px !default;
+$xxlarge-range: 1921px, 999999px !default;
 
 $screen: "only screen" !default;
 $small-only: "#{$screen} and (min-width: #{min($small-range...)}) and (max-width: #{max($small-range...)})" !default;
