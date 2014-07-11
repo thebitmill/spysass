@@ -61,9 +61,6 @@ $xlarge-up: "#{$screen} and (min-width: #{min($xlarge-range...)})" !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait: "#{$screen} and (orientation: portrait)" !default;
 
-.boinker {
-    width: $small-range;
-}
 *,
 *:before,
 *:after {
