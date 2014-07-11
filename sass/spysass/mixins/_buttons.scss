@@ -8,7 +8,10 @@
 
 // We use this to control the display property.
 $button-display: inline-block !default;
-$button-margin-bottom: 20px !default;
+$button-margin-bottom: 0px !default;
+$button-padding-vertical: 1em !default;
+$button-padding-horizontal: 2em !default;
+$button-border-width: 1px !default;//NOTE some button styles use border, others do not. this is needed to calculate correct height
 
 // We use these to control button text styles.
 $button-font-family: $body-font-family !default;
@@ -17,10 +20,11 @@ $button-font-align: center !default;
 $button-font-color: #fff !default;
 $button-font-color-alt: #333 !default;
 
-$button-font-size-tiny: 11px !default;
-$button-font-size-small: 13px !default;
-$button-font-size-medium: 16px !default;
-$button-font-size-large: 20px !default;
+$button-font-size-tiny: 11 / 16 * $base-font-size !default;
+$button-font-size-small: 13 / 16 * $base-font-size !default;
+$button-font-size-medium: $base-font-size !default;
+$button-font-size-large: 20 / 16 * $base-font-size !default;
+
 
 $button-height-tiny: 20px !default;
 $button-height-small: 30px !default;
@@ -48,17 +52,17 @@ $button-disabled-opacity: 0.7 !default;
 // $display - Used to control display property. Default: $button-display || inline-block
 
 @mixin button-base($style:true, $display:$button-display) {
-  @if $style {
-    cursor: pointer;
-    font-family: $button-font-family;
-    font-weight: $button-font-weight;
-    line-height: 1;
-    margin: 0 0 $button-margin-bottom;
-    position: relative;
-    text-decoration: none;
-    text-align: $button-font-align;
-  }
-  @if $display { display: $display; }
+    @if $style {
+        cursor: pointer;
+        font-family: $button-font-family;
+        font-weight: $button-font-weight;
+        line-height: 1;
+        margin: 0 0 $button-margin-bottom;
+        position: relative;
+        text-decoration: none;
+        text-align: $button-font-align;
+    }
+    @if $display { display: $display; }
 }
 
 // @MIXIN
@@ -68,30 +72,38 @@ $button-disabled-opacity: 0.7 !default;
 // $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
 // $full-width - We can set $full-width:true to remove side padding extend width - Default: false
 
-@mixin button-size($size: false, $height: $button-height-medium, $font-size: $button-font-size-medium, $padding: $button-padding-medium, $full-width:false) {
+@mixin button-size(
+    $size: false,
+    $height: false,
+    $font-size: $button-font-size-medium,
+    $padding-vertical: $button-padding-vertical,
+    $padding-horizontal: $button-padding-horizontal,
+    $full-width: false
+) {
 
 	@if $size == tiny {
-		height: rem($button-height-tiny);
-		padding: rem(( $button-height-tiny - $button-font-size-tiny ) / 2 - 1 $button-padding-tiny);
-		font-size: rem($button-font-size-tiny);
+        $font-size: $button-font-size-tiny;
 	} @else  if $size == small {
-		height: rem($button-height-small);
-		padding: rem(( $button-height-small - $button-font-size-small ) / 2 - 1 $button-padding-small);
-		font-size: rem($button-font-size-small);
+        $font-size: $button-font-size-small;
 	} @else  if $size == medium {
-		height: rem($button-height-medium);
-		padding: rem(( $button-height-medium - $button-font-size-medium ) / 2 - 1 $button-padding-medium);
-		font-size: rem($button-font-size-medium);
+        $font-size: $button-font-size-medium;
 	} @else  if $size == large {
-		height: rem($button-height-large);
-		padding: rem(( $button-height-large - $button-font-size-large ) / 2 - 1 $button-padding-large);
-		font-size: rem($button-font-size-large);
+        $font-size: $button-font-size-large;
 	} @else {
-		height: rem($height);
-		padding: rem(( $height - $font-size ) / 2 - 1 $padding);
-		font-size: rem($font-size);
+        $font-size: $font-size;
 	}
+    font-size: rem-calc($font-size);
+
+    @if $height == false {
+        padding: $padding-vertical $padding-horizontal;
+    } @else {
+        height: $height;
+        padding: ($height - $font-size) / 2 - $button-border-width $padding-horizontal 0 $padding-horizontal;
+    }
+
 	@if $full-width {
+        padding-left: 0;
+        padding-right: 0;
 		width: 100%;
 	}
 }
@@ -118,7 +130,7 @@ $button-disabled-opacity: 0.7 !default;
 }
 
 // modified thoughtbot
-@mixin button-style-glossy($height: 40px, $color: $color-main-1) {
+@mixin button-style-glossy($color: $color-main-1) {
 	background: $color;
 	@include background(linear-gradient(180deg, lighten($color, 10%) 0%, $color 50%, darken($color, 5%) 50%, darken($color, 15%) 100%));
 	border: 1px solid darken($color, 15%);
@@ -132,7 +144,8 @@ $button-disabled-opacity: 0.7 !default;
 	}
 
 	&:active {
-		@include background(linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%));
+		@include background(linear-gradient(top, darken($color, 4%) 0%, darken($color,2%) 50%, darken($color, 10%) 50%, darken($color, 18%) 100%));
+		//@include background(linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%));
 		@include box-shadow(inset 0 0 0 1px rgba(lighten($color, 20%), 0.4));
 	}
 }
@@ -207,8 +220,8 @@ $button-disabled-opacity: 0.7 !default;
 
 }
 
-@mixin button-foundation($padding:$button-med, $bg:$color-main-1, $radius:false, $full-width:false, $disabled:false, $is-prefix:false) {
-  @include button-foundation-base;
-  @include button-foundation-size($padding, $full-width);
-  @include button-foundation-style($bg, $radius, $disabled);
+@mixin button-foundation($bg:$color-main-1, $radius:false, $full-width:false, $disabled:false) {
+  @include button-base;
+  @include button-size($size: medium);
+  @include button-style-foundation($bg, $radius, $disabled);
 }
