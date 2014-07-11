@@ -6,6 +6,11 @@
 		clear: both;
 	}
 }
+// TODO add check for relative assets;
+@mixin svg-bg($image) {
+    background-image: image-url(#{$image});
+    background-image: none, image-url(#{$image});
+}
 @mixin triangle($triangle-height, $triangle-direction, $triangle-width:2*$triangle-height, $triangle-color:$color-main-1) {
 	width: 0;
 	height: 0;
