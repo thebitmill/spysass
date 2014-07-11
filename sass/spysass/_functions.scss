@@ -11,7 +11,7 @@
 }
 
 // Converts "px" to "rem" using the ($)base-font-size
-@function convert-to-rem($value, $base-value: $base-font-size)  {
+@function convert-to-rem($value)  {
     $value: strip-unit($value) / strip-unit($base-font-size) * 1rem;
     @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
     @return $value;
@@ -19,16 +19,23 @@
 
 // Working in rems is annoying. Think in pixels by using this handy function
 // Just enter the number, no need to mention "px"
-@function rem($values, $base-value: $base-font-size) {
-  $max: length($values);
+@function rem($values) {
+    $max: length($values);
 
-  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+    $rem-values: ();
+    @for $i from 1 through $max {
+        $value: nth($values, $i);
+        @if not (unit($value) == 'rem' or unit($value) == 'em') {
+            $rem-values: append($rem-values, convert-to-rem($value));
+        } @else {
+            @warn 'Unit is not unitless or a pixel value, (#{unit($value)}). Not converting.';
+            $rem-values: append($rem-values, $values);
+        }
+    }
 
-  $rem-values: ();
-  @for $i from 1 through $max {
-    $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
-  }
-  @return $rem-values;
+    @if $max == 1 { $rem-values: nth($rem-values, 1); }
+
+    @return $rem-values;
 }
 
 // Working in ems is annoying. Think in pixels by using this handy function
@@ -36,14 +43,19 @@
 @function em($values, $base-value: $base-font-size) {
 	$max: length($values); // Get the total number of parameters passed
 
-	// If there is only 1 parameter, then return it as an integer.
-	// This is done because a list can't be multiplied or divided even if it contains a single value
-	@if $max == 1 { @return convert-to-em(nth($values, 1)); }
-
 	$em-values: (); // This will eventually store the converted $values in a list
 	@for $i from 1 through $max {
-		$em-values: append($em-values, convert-to-em(nth($values, $i)));
+        $value: nth($values, $i);
+        @if not (unit($value) == 'rem' or unit($value) == 'em') {
+            $em-values: append($em-values, convert-to-em($value, $base-value));
+        } @else {
+            @warn 'Unit is not unitless or a pixel value, (#{unit($value)}). Not converting.';
+            $em-values: append($em-values, $values);
+        }
 	}
+
+    @if $max == 1 { $em-values: nth($em-values, 1); }
+
 	@return $em-values;
 }
 
