@@ -12,15 +12,14 @@
 
 // Converts "px" to "rem" using the ($)base-font-size
 @function convert-to-rem($value, $base-value: $base-font-size)  {
-    @warn unit($value);
-    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    $value: strip-unit($value) / strip-unit($base-font-size) * 1rem;
     @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
     @return $value;
 }
 
 // Working in rems is annoying. Think in pixels by using this handy function
 // Just enter the number, no need to mention "px"
-@function rem-calc($values, $base-value: $base-font-size) {
+@function rem($values, $base-value: $base-font-size) {
   $max: length($values);
 
   @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
@@ -34,7 +33,7 @@
 
 // Working in ems is annoying. Think in pixels by using this handy function
 // Just enter the number, no need to mention "px"
-@function em-calc($values, $base-value: $base-font-size) {
+@function em($values, $base-value: $base-font-size) {
 	$max: length($values); // Get the total number of parameters passed
 
 	// If there is only 1 parameter, then return it as an integer.

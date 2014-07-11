@@ -102,10 +102,10 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // $bg - Default: $alert-color (Found in settings file)
 @mixin form-error-message($bg:$color-error) {
 	display: block;
-	padding: rem-calc($input-error-message-padding);
+	padding: rem($input-error-message-padding);
 	margin-top: $input-error-message-top;
-	margin-bottom: rem-calc($form-spacing);
-	font-size: rem-calc($input-error-message-font-size);
+	margin-bottom: rem($form-spacing);
+	font-size: rem($input-error-message-font-size);
 	font-weight: $input-error-message-font-weight;
 	font-style: $input-error-message-font-style;
 
@@ -118,10 +118,10 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 
 /* Standard Forms */
-form { margin: rem-calc(0 0 $form-spacing); }
+form { margin: rem(0 0 $form-spacing); }
 
 form p {
-	font-size: rem-calc($form-label-font-size);
+	font-size: rem($form-label-font-size);
 }
 
 /* Using forms within rows, we need to set some defaults */
@@ -153,20 +153,20 @@ form .row {
 
 /* Label Styles */
 label {
-	font-size: rem-calc($form-label-font-size);
+	font-size: rem($form-label-font-size);
 	color: $form-label-font-color;
 	cursor: $form-label-pointer;
 	display: block;
 	font-weight: $form-label-font-weight;
 	line-height: $form-label-line-height;
-	margin-bottom: rem-calc($form-label-bottom-margin);
+	margin-bottom: rem($form-label-bottom-margin);
 	&.right {
 		float: none;
 		text-align: right;
 	}
 	&.inline { 
-		margin: rem-calc(0 0 $form-spacing 0);
-		padding: rem-calc($form-spacing / 2 + $input-border-width 0);
+		margin: rem(0 0 $form-spacing 0);
+		padding: rem($form-spacing / 2 + $input-border-width 0);
 	}
 	/* Styles for required inputs */
 	small {
@@ -244,12 +244,12 @@ select::-ms-expand {
 	z-index: 2;
 	text-align: center;
 	width: 100%;
-	padding: rem-calc(($input-font-size + ($form-spacing * 1.5) - 1 - $form-label-font-size) / 2 - $input-prefix-border-size);
+	padding: rem(($input-font-size + ($form-spacing * 1.5) - 1 - $form-label-font-size) / 2 - $input-prefix-border-size);
 	border-style: $input-prefix-border-type;
 	border-width: $input-prefix-border-size;
 	overflow: $input-prefix-overflow;
 	font-size: $form-label-font-size;
-	height: rem-calc($input-font-size + ($form-spacing * 1.5) - 1);
+	height: rem($input-font-size + ($form-spacing * 1.5) - 1);
 	line-height: 1;
 }
 
@@ -305,11 +305,11 @@ textarea,
 	box-shadow: $input-box-shadow;
 	color: $input-font-color;
 	display: block;
-	font-size: rem-calc($input-font-size);
-	margin: rem-calc(0 0 $form-spacing 0);
-	padding: rem-calc($form-spacing / 2);
+	font-size: rem($input-font-size);
+	margin: rem(0 0 $form-spacing 0);
+	padding: rem($form-spacing / 2);
 	line-height: 1;
-	height: rem-calc($input-font-size + ($form-spacing * 1.5) - 1);
+	height: rem($input-font-size + ($form-spacing * 1.5) - 1);
 	width: 100%;
 	@if $input-include-glowing-effect {
 		@include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
@@ -350,15 +350,15 @@ select {
 	background-repeat: no-repeat;
 	background-position: 97% center;
 	border: $input-border-width $input-border-style $input-border-color;
-	padding: rem-calc($form-spacing / 2);
-	font-size: rem-calc($input-font-size);
+	padding: rem($form-spacing / 2);
+	font-size: rem($input-font-size);
 	@include border-radius($input-border-radius);
 	&.radius { @include border-radius($global-radius); }
 	&:hover {
 		background-color: $select-hover-bg-color;
 		border-color: $input-focus-border-color;
 	}
-	height: rem-calc($input-font-size + ($form-spacing * 1.5) - 1);
+	height: rem($input-font-size + ($form-spacing * 1.5) - 1);
 }
 
 /* Adjust margin for form elements below */
@@ -393,9 +393,9 @@ fieldset {
 	legend {
 		font-weight: $legend-font-weight;
 		background: $legend-bg;
-		padding: rem-calc($legend-padding);
+		padding: rem($legend-padding);
 		margin: 0;
-		margin-#{$default-float}: rem-calc(-3);
+		margin-#{$default-float}: rem(-3);
 	}
 }
 

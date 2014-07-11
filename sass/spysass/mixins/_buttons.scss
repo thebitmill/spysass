@@ -71,25 +71,25 @@ $button-disabled-opacity: 0.7 !default;
 @mixin button-size($size: false, $height: $button-height-medium, $font-size: $button-font-size-medium, $padding: $button-padding-medium, $full-width:false) {
 
 	@if $size == tiny {
-		height: rem-calc($button-height-tiny);
-		padding: rem-calc(( $button-height-tiny - $button-font-size-tiny ) / 2 - 1 $button-padding-tiny);
-		font-size: rem-calc($button-font-size-tiny);
+		height: rem($button-height-tiny);
+		padding: rem(( $button-height-tiny - $button-font-size-tiny ) / 2 - 1 $button-padding-tiny);
+		font-size: rem($button-font-size-tiny);
 	} @else  if $size == small {
-		height: rem-calc($button-height-small);
-		padding: rem-calc(( $button-height-small - $button-font-size-small ) / 2 - 1 $button-padding-small);
-		font-size: rem-calc($button-font-size-small);
+		height: rem($button-height-small);
+		padding: rem(( $button-height-small - $button-font-size-small ) / 2 - 1 $button-padding-small);
+		font-size: rem($button-font-size-small);
 	} @else  if $size == medium {
-		height: rem-calc($button-height-medium);
-		padding: rem-calc(( $button-height-medium - $button-font-size-medium ) / 2 - 1 $button-padding-medium);
-		font-size: rem-calc($button-font-size-medium);
+		height: rem($button-height-medium);
+		padding: rem(( $button-height-medium - $button-font-size-medium ) / 2 - 1 $button-padding-medium);
+		font-size: rem($button-font-size-medium);
 	} @else  if $size == large {
-		height: rem-calc($button-height-large);
-		padding: rem-calc(( $button-height-large - $button-font-size-large ) / 2 - 1 $button-padding-large);
-		font-size: rem-calc($button-font-size-large);
+		height: rem($button-height-large);
+		padding: rem(( $button-height-large - $button-font-size-large ) / 2 - 1 $button-padding-large);
+		font-size: rem($button-font-size-large);
 	} @else {
-		height: rem-calc($height);
-		padding: rem-calc(( $height - $font-size ) / 2 - 1 $padding);
-		font-size: rem-calc($font-size);
+		height: rem($height);
+		padding: rem(( $height - $font-size ) / 2 - 1 $padding);
+		font-size: rem($font-size);
 	}
 	@if $full-width {
 		width: 100%;

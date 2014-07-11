@@ -20,7 +20,7 @@ $color-success: #628b1c !default;
 // Base Type Variables
 //
 
-// This needs to be a px value since rem-calc and em-calc use it.
+// This needs to be a px value since rem and em-calc use it.
 $base-font-size: 16px !default;
 
 $base-line-height: 1 !default;
@@ -41,11 +41,11 @@ $font-smoothing: subpixel-antialiased !default;
 // Media Queries
 //
 
-$small-range: 0rem, rem-calc(639) !default;
-$medium-range: (rem-calc(640), rem-calc(1023)) !default;
-$large-range: (rem-calc(1024), rem-calc(1439)) !default;
-$xlarge-range: (rem-calc(1440), rem-calc(1920)) !default;
-$xxlarge-range: (rem-calc(1921), 999999em) !default;
+$small-range: 0rem, rem(639) !default;
+$medium-range: (rem(640), rem(1023)) !default;
+$large-range: (rem(1024), rem(1439)) !default;
+$xlarge-range: (rem(1440), rem(1920)) !default;
+$xxlarge-range: (rem(1921), 999999em) !default;
 
 $screen: "only screen" !default;
 $small-only: "#{$screen} and (min-width: #{min($small-range...)}) and (max-width: #{max($small-range...)})" !default;
