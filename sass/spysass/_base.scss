@@ -42,12 +42,13 @@ $font-smoothing: subpixel-antialiased !default;
 //
 
 $small-range: 0rem, rem(639) !default;
-$medium-range: (rem(640), rem(1023)) !default;
-$large-range: (rem(1024), rem(1439)) !default;
-$xlarge-range: (rem(1440), rem(1920)) !default;
-$xxlarge-range: (rem(1921), 999999em) !default;
+$medium-range: rem(640), rem(1023) !default;
+$large-range: rem(1024), rem(1439) !default;
+$xlarge-range: rem(1440), rem(1920) !default;
+$xxlarge-range: rem(1921), 999999em !default;
 
 $screen: "only screen" !default;
+@warn $small-range;
 $small-only: "#{$screen} and (min-width: #{min($small-range...)}) and (max-width: #{max($small-range...)})" !default;
 $small-up: "#{$screen} and (min-width: #{min($small-range...)})" !default;
 $medium-only: "#{$screen} and (min-width: #{min($medium-range...)}) and (max-width: #{max($medium-range...)})" !default;
