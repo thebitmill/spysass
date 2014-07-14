@@ -1,17 +1,17 @@
 $heading-font-family: $body-font-family !default;
 $heading-font-weight: bold !default;
 $heading-font-style: normal !default;
-$heading-font-color: $color-main-1 !default;
+$heading-font-color: $body-font-color !default;
 $heading-text-rendering: optimizeLegibility !default;
-$heading-top-margin: 0.2rem !default;
-$heading-bottom-margin: 0.5rem !default;
+$heading-top-margin: 0.2em !default;
+$heading-bottom-margin: 0.5em !default;
 $heading-line-height: 1.2 !default;
 
-$h1-font-size: 2.5rem !default;
-$h2-font-size: 2.0rem !default;
-$h3-font-size: 1.7rem !default;
-$h4-font-size: 1.4rem !default;
-$h5-font-size: 1.2rem !default;
+$h1-font-size: 2.5rem !default;//40px when base-font-size is 16px
+$h2-font-size: 2.0rem !default;//32px when base-font-size is 16px
+$h3-font-size: 1.7rem !default;//27.2px when base-font-size is 16px
+$h4-font-size: 1.4rem !default;//22.4px when base-font-size is 16px
+$h5-font-size: 1.2rem !default;//19.2px when base-font-size is 16px
 $h6-font-size: 1.0rem !default;
 
 $paragraph-font-family: $body-font-family !default;
@@ -19,7 +19,7 @@ $paragraph-font-weight: normal !default;
 $paragraph-font-size: 1.0rem !default;
 $paragraph-line-height: 1.6 !default;
 $paragraph-margin-top: 0 !default;
-$paragraph-margin-bottom: 1.25rem !default;
+$paragraph-margin-bottom: 1.25em !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 /* Default header styles */

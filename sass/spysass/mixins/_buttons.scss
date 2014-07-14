@@ -1,19 +1,15 @@
-// Foundation by ZURB
-// foundation.zurb.com
-// Licensed under MIT Open Source
+// Based on Foundation 5 buttons
 
 //
 // @variables
 //
 
-// We use this to control the display property.
 $button-display: inline-block !default;
 $button-margin-bottom: 0px !default;
 $button-padding-vertical: 1em !default;
 $button-padding-horizontal: 2em !default;
 $button-border-width: rem(1px) !default;//NOTE some button styles use border, others do not. this is needed to calculate correct height
 
-// We use these to control button text styles.
 $button-font-family: $body-font-family !default;
 $button-font-weight: bold !default;
 $button-font-align: center !default;

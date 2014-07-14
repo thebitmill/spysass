@@ -6,14 +6,12 @@ $make-image-inline-block: false !default;
 $default-float: left !default;
 $opposite-direction: right !default;
 $text-direction: left !default;
-$global-radius: 0px !default;
+$global-radius: 0 !default;
 $make-image-inline-block: false !default;
 
 // Base Color Variables
 
-$color-body-background: #fff !default;
-
-$color-main-1: #222 !default;
+$color-main-1: #0066c6 !default;
 $color-message: #333 !default;
 $color-error: #c90000 !default;
 $color-success: #628b1c !default;
@@ -22,7 +20,8 @@ $color-success: #628b1c !default;
 // Base Type Variables
 //
 
-// This needs to be a px value since rem and em-calc use it.
+// This needs to be a px value since rem and em-calc use it. It is translated
+// to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
 $base-font-size: 16px !default;
 
 $base-line-height: 1 !default;
@@ -31,6 +30,8 @@ $body-font-color: #222 !default;
 $body-font-family: "Times New Roman", sans-serif !default;
 $body-font-weight: normal !default;
 $body-font-style: normal !default;
+$body-bg: #fff !default;
+
 
 $font-smoothing: subpixel-antialiased !default;
 
@@ -71,11 +72,11 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 }
 
 html,
-body { font-size: $base-font-size; }
+body { font-size: strip-unit($base-font-size) / 16 * 100%; }
 
 // Default body styles
 body {
-	background: $color-body-background;
+	background: $body-bg;
 	color: $body-font-color;
 	padding: 0;
 	margin: 0;
