@@ -38,7 +38,9 @@ $button-disabled-opacity: 0.7 !default;
 
 @mixin button-base($style:true, $display:$button-display) {
     @if $style {
-        cursor: pointer;
+        &:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
         font-family: $button-font-family;
         font-weight: $button-font-weight;
         line-height: 1;
@@ -138,27 +140,33 @@ $button-disabled-opacity: 0.7 !default;
 	@include button-size($size: medium);
 	@include button-style-glossy;
 }
-
-@mixin button-style-clean-gray() {
-	background-color: #eeeeee;
-	@include background(linear-gradient(180deg, #eeeeee, #cccccc));
-	border: 1px solid #bbb;
-	border-bottom-color: #aaa;
+@mixin button-style-clean-gray($color: #ccc) {
+	background-color: $color;
+	@include background(linear-gradient(180deg, lighten($color, 13.3333%), $color));
+	border: 1px solid darken($color, 6.6667%);
+	border-bottom-color: darken($color, 13.3333%);
 	@include border-radius(3px);
-	color: #333;
+	color: darken($color, 60%);
 	@include text-shadow(0 1px 0 #eee);
-	&:hover {
-		background-color: #dddddd;
-		@include background(linear-gradient(top, #dddddd, #bbbbbb));
-		border-color: #aaa;
+	&:hover:not(:disabled):not(.disabled) {
+		background-color: lighten($color, 6.6667%);
+		@include background(linear-gradient(top, lighten($color, 6.6667%), darken($color, 6.6667%)));
+		border-color: darken($color, 13.3333%);
 		border-bottom-color: #888;
 		@include text-shadow( 0 1px 0 #ddd); 
 	}
-	&:active {
+	&:active:not(:disabled):not(.disabled) {
 		border: 1px solid #999;
 		border-bottom: 1px solid #777;
 		@include box-shadow(inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee);
 	}
+    &:disabled, &.disabled {
+        background-color: lighten($color, 6.6667%);
+        @include background(linear-gradient(180deg, lighten($color, 20%), lighten($color, 6.6667%)));
+        border-color: lighten($color, 6.6667%);
+        border-bottom-color: $color;
+        color: darken($color, 13.3333%);
+    }
 }
 @mixin button-clean-gray() {
 	@include button-base;
@@ -203,7 +211,6 @@ $button-disabled-opacity: 0.7 !default;
   @else if $radius { @include radius($radius); }
 
 }
-
 @mixin button-foundation($bg:$color-main-1, $radius:false, $full-width:false, $disabled:false) {
   @include button-base;
   @include button-size($size: medium);

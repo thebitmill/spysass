@@ -1,17 +1,17 @@
 body, html {
-	height: 100%;
-	> .col {
+    height: 100%;
+	> .col.full-height {
 		min-height: 100%;
 	}
 }
+.col {
+	flex-direction: column;
+}
 .row, .col {
 	display: flex;
-	> .cell {
-		flex: 1;
-		&.static {
-			flex: none;
-		}
-	}
+    &.wrap {
+        flex-wrap: wrap;
+    }
 	//&.justify-start { justify-content: flex-start; }//(default): items are packed toward the start line
 	&.justify-end { justify-content: flex-end; }//items are packed toward to end line
 	&.justify-center { justify-content: flex-center; }//items are centered along the line
@@ -22,9 +22,24 @@ body, html {
 	&.align-center { align-items: center; }//items are centered in the cross-axis
 	&.align-baseline { align-items: baseline; }//items are aligned such as their baselines align
 	//&.align-stretch { align-items: stretch; }//(default): stretch to fill the container (still respect min-width/max-width)
-}
-.row {
-}
-.col {
-	flex-direction: column;
+    &.flex-all {
+        > * {
+            flex: 1;
+        }
+    }
+    //@for $i from 2 through 12 {
+    //    &.flex-all-#{$i} {
+    //        > * {
+    //            flex: $i;
+    //        }
+    //    }
+    //}
+	> .flex {
+		flex: 1;
+	}
+    @for $i from 2 through 12 {
+        > .flex-#{$i} {
+            flex: $i;
+        }
+    }
 }
