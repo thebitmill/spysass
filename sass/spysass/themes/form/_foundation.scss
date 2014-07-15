@@ -238,7 +238,7 @@ input[type="search"],
 input[type="tel"],
 input[type="time"],
 input[type="url"],
-textarea {
+textarea, [spytext-field] {
     -webkit-appearance: none;
     background-color: $input-bg-color;
     font-family: $input-font-family;
@@ -279,7 +279,7 @@ input[type="submit"] {
 }
 
 /* Respect enforced amount of rows for textarea */
-textarea[rows] {
+textarea[rows], [spytext-field] {
     height: auto;
 }
 
