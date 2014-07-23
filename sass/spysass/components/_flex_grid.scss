@@ -1,14 +1,30 @@
-body, html {
+html {
     height: 100%;
-	> .col.full-height {
-		min-height: 100%;
-	}
+    > body {
+        height: 100%;
+        > .col.full-height {
+            min-height: 100%;
+        }
+    }
+    &.IE11 {
+        > body {
+            height: 100%;
+            > .col.full-height {
+                min-height: none;
+                height: 100%;
+            }
+        }
+    }
 }
 .col {
+	display: flex;
 	flex-direction: column;
 }
-.row, .col {
+.row {
 	display: flex;
+    flex-direction: row;
+}
+.row, .col {
     &.wrap {
         flex-wrap: wrap;
     }
@@ -24,7 +40,7 @@ body, html {
 	//&.align-stretch { align-items: stretch; }//(default): stretch to fill the container (still respect min-width/max-width)
     &.flex-all {
         > * {
-            flex: 1;
+            flex-grow: 1;
         }
     }
     //@for $i from 2 through 12 {
@@ -35,11 +51,13 @@ body, html {
     //    }
     //}
 	> .flex {
-		flex: 1;
+        flex-basis: auto;
+		flex-grow: 1;
 	}
     @for $i from 2 through 12 {
         > .flex-#{$i} {
-            flex: $i;
+            flex-basis: auto;
+            flex-grow: $i;
         }
     }
 }
