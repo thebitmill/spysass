@@ -31,7 +31,7 @@
 		border-color: lighten($color-success, 20%);
 	}
 }
-input[type="submit"], input[type="button"], .button, button {
+input[type="submit"], input[type="button"], .button, button.standard {
 	@include button-clean-gray;
 	&.small {
 		@include button-size($size: 'small');
