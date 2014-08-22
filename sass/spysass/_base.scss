@@ -2,6 +2,9 @@
 // Base Variables
 //
 
+$include-reset: true !default;
+$include-normalize: false !default;
+
 $make-image-inline-block: false !default;
 $default-float: left !default;
 $opposite-direction: right !default;
@@ -9,22 +12,16 @@ $text-direction: left !default;
 $global-radius: 0 !default;
 $make-image-inline-block: false !default;
 
-// Base Color Variables
-
 $color-main-1: #0066c6 !default;
 $color-message: #333 !default;
 $color-error: #c90000 !default;
 $color-success: #628b1c !default;
 
-//
-// Base Type Variables
-//
-
 // This needs to be a px value since rem and em-calc use it. It is translated
 // to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
 $base-font-size: 16px !default;
-
-$base-line-height: 1 !default;
+$base-line-height: 1.6 !default;
+$base-line-height-computed: $base-line-height * 1rem !default;
 
 $body-font-color: #222 !default;
 $body-font-family: "Times New Roman", sans-serif !default;
@@ -32,17 +29,7 @@ $body-font-weight: normal !default;
 $body-font-style: normal !default;
 $body-bg: #fff !default;
 
-
 $font-smoothing: subpixel-antialiased !default;
-
-//
-// Base Functions
-//
-
-
-//
-// Media Queries
-//
 
 // Need to be in pixels for IE8
 $small-range: 0px, 639px !default;
@@ -50,6 +37,10 @@ $medium-range: 640px, 1023px !default;
 $large-range: 1024px, 1439px !default;
 $xlarge-range: 1440px, 1920px !default;
 $xxlarge-range: 1921px, 999999px !default;
+
+//
+// Media Queries
+//
 
 $screen: "only screen" !default;
 $small-only: "#{$screen} and (min-width: #{min($small-range...)}) and (max-width: #{max($small-range...)})" !default;
@@ -65,6 +56,8 @@ $xlarge-up: "#{$screen} and (min-width: #{min($xlarge-range...)})" !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait: "#{$screen} and (orientation: portrait)" !default;
 
+@import "utilities/reset";
+@import "utilities/normalize";
 *,
 *:before,
 *:after {
