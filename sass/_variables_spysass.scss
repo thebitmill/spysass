@@ -2,8 +2,11 @@
 @import "spysass/functions";
 
 //
-// Base Variables
+// Base
 //
+
+//$include-reset: true;
+//$include-normalize: false;
 
 //$make-image-inline-block: false;
 //$default-float: left;
@@ -12,21 +15,16 @@
 //$global-radius: 0;
 //$make-image-inline-block: false;
 
-// Base Color Variables
-
 //$color-main-1: #0066c6;
 //$color-message: #333;
 //$color-error: #c90000;
 //$color-success: #628b1c;
 
-//
-// Base Type Variables
-//
-
 // This needs to be a px value since rem and em-calc use it. It is translated
 // to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
 //$base-font-size: 16px;
-//$base-line-height: 1;
+//$base-line-height: 1.6;
+//$base-line-height-computed: $base-line-height * 1rem;
 
 //$body-font-color: #222;
 //$body-font-family: "Times New Roman", sans-serif;
@@ -36,8 +34,23 @@
 
 //$font-smoothing: subpixel-antialiased;
 
+// Need to be in pixels for IE8
+//$small-range: 0px, 639px;
+//$medium-range: 640px, 1023px;
+//$large-range: 1024px, 1439px;
+//$xlarge-range: 1440px, 1920px;
+//$xxlarge-range: 1921px, 999999px;
+
 //
-// Heading & Paragraph Type Variables
+// Grid
+//
+
+//$column-gutter: rem(30);
+//$row-width: rem(1000);
+//$total-columns: 12;
+
+// 
+// Type
 //
 
 //$heading-font-family: $body-font-family;
@@ -45,8 +58,8 @@
 //$heading-font-style: normal;
 //$heading-font-color: $body-font-color;
 //$heading-text-rendering: optimizeLegibility;
-//$heading-top-margin: 0.2em;
-//$heading-bottom-margin: 0.5em;
+//$heading-top-margin: $base-line-height-computed;
+//$heading-bottom-margin: $base-line-height-computed / 2;
 //$heading-line-height: 1.2;
 
 //$h1-font-size: 2.5rem;//40px when base-font-size is 16px
@@ -59,42 +72,7 @@
 //$paragraph-font-family: $body-font-family;
 //$paragraph-font-weight: normal;
 //$paragraph-font-size: 1.0rem;
-//$paragraph-line-height: 1.6;
-//$paragraph-margin-top: 0;
-//$paragraph-margin-bottom: 1.25em;
+//$paragraph-line-height: $base-line-height;
+//$paragraph-margin: 0 0 ($base-line-height-computed / 2);
 //$paragraph-text-rendering: optimizeLegibility;
 
-//
-// Grid Variables
-//
-
-//$column-gutter: rem(30);
-//$row-width: rem(1000);
-//$total-columns: 12;
-
-//
-// Button Variables
-//
-
-//$button-display: inline-block;
-//$button-margin-bottom: 0px;
-//$button-padding-vertical: 1em;
-//$button-padding-horizontal: 2em;
-//$button-border-width: rem(1px);//NOTE some button styles use border, others do not. this is needed to calculate correct height
-
-//$button-font-family: $body-font-family;
-//$button-font-weight: bold;
-//$button-font-align: center;
-//$button-font-color: #fff;
-//$button-font-color-alt: #333;
-
-//$button-font-size-tiny: 0.6875rem;//11px when base font size is 16
-//$button-font-size-small: 0.8126rem;//13px when base font size is 16
-//$button-font-size-medium: 1rem;
-//$button-font-size-large: 1.25rem;//20px when base font size is 16
-
-// We use these to control various hover effects.
-//$button-function-factor: -20%;
-
-// We use this to set default opacity for disabled buttons.
-//$button-disabled-opacity: 0.7;

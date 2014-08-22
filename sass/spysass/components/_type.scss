@@ -3,8 +3,8 @@ $heading-font-weight: bold !default;
 $heading-font-style: normal !default;
 $heading-font-color: $body-font-color !default;
 $heading-text-rendering: optimizeLegibility !default;
-$heading-top-margin: 0.2em !default;
-$heading-bottom-margin: 0.5em !default;
+$heading-top-margin: $base-line-height-computed !default;
+$heading-bottom-margin: $base-line-height-computed / 2 !default;
 $heading-line-height: 1.2 !default;
 
 $h1-font-size: 2.5rem !default;//40px when base-font-size is 16px
@@ -17,9 +17,8 @@ $h6-font-size: 1.0rem !default;
 $paragraph-font-family: $body-font-family !default;
 $paragraph-font-weight: normal !default;
 $paragraph-font-size: 1.0rem !default;
-$paragraph-line-height: 1.6 !default;
-$paragraph-margin-top: 0 !default;
-$paragraph-margin-bottom: 1.25em !default;
+$paragraph-line-height: $base-line-height !default;
+$paragraph-margin: 0 0 ($base-line-height-computed / 2) !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 /* Default header styles */
@@ -41,13 +40,32 @@ h4 { font-size: $h4-font-size; }
 h5 { font-size: $h5-font-size; }
 h6 { font-size: $h6-font-size; }
 
+section, article, nav, aside {
+	h1 { font-size: $h2-font-size; }
+	h2 { font-size: $h3-font-size; }
+	h3 { font-size: $h4-font-size; }
+	h4 { font-size: $h5-font-size; }
+	h5 { font-size: $h5-font-size; }
+	section, article, nav, aside {
+		h1 { font-size: $h3-font-size; }
+		h2 { font-size: $h4-font-size; }
+		h3 { font-size: $h5-font-size; }
+		h4 { font-size: $h6-font-size; }
+		section, article, nav, aside {
+			h1 { font-size: $h4-font-size; }
+			h2 { font-size: $h5-font-size; }
+			h3 { font-size: $h6-font-size; }
+		}
+	}
+}
+
+
 p {
 	font-family: $paragraph-font-family;
 	font-weight: $paragraph-font-weight;
 	font-size: $paragraph-font-size;
 	line-height: $paragraph-line-height;
-	margin-top: $paragraph-margin-top;
-	margin-bottom: $paragraph-margin-bottom;
+	margin: $paragraph-margin;
 	text-rendering: $paragraph-text-rendering;
 }
 
@@ -68,49 +86,57 @@ small {
 	line-height: inherit;
 }
 
-/* Lists */
-ul,
-ol,
-dl {
-	line-height: $paragraph-line-height;
-	margin: 1em 0;
-}
+// Lists
+// -------------------------
 
-/* Unordered Lists */
+// Unordered and Ordered lists
+ul,
+ol {
+	line-height: $paragraph-line-height;
+  margin-top: 0;
+  margin-bottom: ($base-line-height-computed / 2);
+	padding-left: $base-line-height-computed;
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
 ul {
 	list-style-type: disc;
-	margin-left: 40px;
-	li {
-		ul,
-		ol {
-			margin-bottom: 0;
-			margin-top: 0;
-			font-size: 1em; /* Override nested font-size change */
-		}
-	}
-	&.square,
-	&.circle,
-	&.disc,
-	&.no-bullet {
-		li ul { list-style: inherit; }
-	}
+}
+ol { list-style-type: decimal; }
 
-	&.square { list-style-type: square; }
-	&.circle { list-style-type: circle; }
-	&.disc { list-style-type: disc; }
-	&.no-bullet { list-style: none; }
+// List options
+
+.clear-list-styles {
+	padding-left: 0;
+	list-style: none;
+	margin: 0;
+}
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+ul, ol {
+	&.clean {
+		@extend .clear-list-styles;
+	}
+}
+nav {
+	ul, ol {
+		@extend .clear-list-styles;
+	}
 }
 
-/* Ordered Lists */
-ol {
-	list-style-type: decimal;
-	margin-left: 40px;
-	li {
-		ul,
-		ol {
-			margin-bottom: 0;
-			margin-top: 0;
-			font-size: 1em; /* Override nested font-size change */
-		}
-	}
+// Description Lists
+dl {
+  margin-top: 0; // Remove browser default
+  margin-bottom: $base-line-height-computed;
+}
+dt,
+dd {
+	line-height: $paragraph-line-height;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 0; // Undo browser default
 }

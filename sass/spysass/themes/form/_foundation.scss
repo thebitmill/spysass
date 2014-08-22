@@ -238,7 +238,7 @@ input[type="search"],
 input[type="tel"],
 input[type="time"],
 input[type="url"],
-textarea, [spytext-field] {
+textarea, [spytext-field], .spytext-field {
     -webkit-appearance: none;
     background-color: $input-bg-color;
     font-family: $input-font-family;
@@ -279,8 +279,8 @@ input[type="submit"] {
 }
 
 /* Respect enforced amount of rows for textarea */
-textarea[rows], [spytext-field] {
-    height: auto;
+textarea[rows], [spytext-field], .spytext-field {
+	height: auto;
 }
 
 /* Add height value for select elements to match text input height */
