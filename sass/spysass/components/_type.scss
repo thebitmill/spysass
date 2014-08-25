@@ -119,11 +119,6 @@ ul, ol {
 		@extend .clear-list-styles;
 	}
 }
-nav {
-	ul, ol {
-		@extend .clear-list-styles;
-	}
-}
 
 // Description Lists
 dl {
