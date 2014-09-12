@@ -64,7 +64,7 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 	@include box-sizing(border-box);
 }
 
-body { font-size: strip-unit($base-font-size) / 16 * 100%; }
+html, body { font-size: $base-font-size; }
 
 // Default body styles
 body {
