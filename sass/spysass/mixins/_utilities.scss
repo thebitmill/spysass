@@ -13,28 +13,28 @@
     background-image: none, image-url(#{$image});
 }
 
-@mixin triangle($triangle-height, $triangle-direction, $triangle-width:2*$triangle-height, $triangle-color:$color-main-1) {
+@mixin triangle($triangle-height, $triangle-base:2*$triangle-height, $triangle-direction: left, $triangle-color:$color-main-1) {
 	width: 0;
 	height: 0;
 	@if ($triangle-direction == top) {
-		border-left: $triangle-width / 2 solid transparent;
+		border-left: $triangle-base / 2 solid transparent;
 		border-bottom: $triangle-height solid $triangle-color;
-		border-right: $triangle-width / 2 solid transparent;
+		border-right: $triangle-base / 2 solid transparent;
 	}
 	@if ($triangle-direction == bottom) {
-		border-left: $triangle-width / 2 solid transparent;
+		border-left: $triangle-base / 2 solid transparent;
 		border-top: $triangle-height solid $triangle-color;
-		border-right: $triangle-width / 2 solid transparent;
+		border-right: $triangle-base / 2 solid transparent;
 	}
 	@if ($triangle-direction == left) {
-		border-top: $triangle-width / 2 solid transparent;
+		border-top: $triangle-base / 2 solid transparent;
 		border-right: $triangle-height solid $triangle-color;
-		border-bottom: $triangle-width / 2 solid transparent;
+		border-bottom: $triangle-base / 2 solid transparent;
 	}
 	@if ($triangle-direction == right) {
-		border-top: $triangle-width / 2 solid transparent;
+		border-top: $triangle-base / 2 solid transparent;
 		border-left: $triangle-height solid $triangle-color;
-		border-bottom: $triangle-width / 2 solid transparent;
+		border-bottom: $triangle-base / 2 solid transparent;
 	}
 }
 
