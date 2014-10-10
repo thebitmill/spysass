@@ -1,0 +1,23 @@
+{
+  "name": "tcb-spysass",
+  "version": "0.6.0-pre",
+  "description": "SASS from the Code Bureau.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thecodebureau/spysass"
+  },
+  "keywords": [
+    "SASS",
+    "CSS3"
+  ],
+  "author": "The Code Bureau <info@thecodebureau.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thecodebureau/spysass/issues"
+  },
+  "homepage": "https://github.com/thecodebureau/spysass"
+}
