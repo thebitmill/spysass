@@ -79,14 +79,13 @@ $button-disabled-opacity: 0.7 !default;
 	} @else {
         $font-size: rem($font-size);
 	}
-    font-size: rem($font-size);
 
-    @if $height == false {
-        padding: $padding-vertical $padding-horizontal;
-    } @else {
-        height: $height;
-        padding: ($height - $font-size) / 2 - $button-border-width $padding-horizontal 0 $padding-horizontal;
-    }
+	@if $height == false {
+			padding: $padding-vertical $padding-horizontal;
+	} @else {
+			height: $height;
+			padding: ($height - $font-size) / 2 - $button-border-width $padding-horizontal 0 $padding-horizontal;
+	}
 
 	@if $full-width {
         padding-left: 0;

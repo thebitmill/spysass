@@ -111,7 +111,7 @@ ol { list-style-type: decimal; }
 // Unstyled keeps list items block level, just removes default browser padding and list-style
 ul, ol {
 	&.clean {
-		@include clear-list-styles;
+		@include wipe-list;
 	}
 }
 
