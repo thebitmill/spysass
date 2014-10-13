@@ -38,7 +38,7 @@
 	$em-values: ();
 	@for $i from 1 through $max {
 		$value: nth($values, $i);
-		@ifunit($value) != 'rem' and unit($value) 1= 'em') {
+		@if unit($value) != 'rem' and unit($value) != 'em' {
 			$em-values: append($em-values, convert-to-em($value, $base-value));
 		} @else {
 			$em-values: append($em-values, $value);
