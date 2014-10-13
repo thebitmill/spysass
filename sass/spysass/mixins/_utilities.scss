@@ -68,19 +68,19 @@
     }
 }
 
-@mixin clear-list-styles {
+@mixin wipe-list {
 	padding-left: 0;
 	list-style: none;
 	margin: 0;
 }
-@mixin clear-button-styles {
-	@include clear-styles;
+@mixin wipe-button {
+	@include wipe;
 	&::-moz-focus-inner {
     border: 0;
     padding: 0;
 	}
 }
-@mixin clear-styles {
+@mixin wipe {
 	/*Reset's every elements apperance*/
 	background: none repeat scroll 0 0 transparent;
 	border: medium none;
