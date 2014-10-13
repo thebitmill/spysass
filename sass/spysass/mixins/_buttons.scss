@@ -69,16 +69,17 @@ $button-disabled-opacity: 0.7 !default;
 ) {
 
 	@if $size == tiny {
-        $font-size: $button-font-size-tiny;
+		$font-size: $button-font-size-tiny;
 	} @else  if $size == small {
-        $font-size: $button-font-size-small;
+		$font-size: $button-font-size-small;
 	} @else  if $size == medium {
-        $font-size: $button-font-size-medium;
+		$font-size: $button-font-size-medium;
 	} @else  if $size == large {
-        $font-size: $button-font-size-large;
+		$font-size: $button-font-size-large;
 	} @else {
-        $font-size: rem($font-size);
+		$font-size: rem($font-size);
 	}
+	font-size: rem($font-size);
 
 	@if $height == false {
 			padding: $padding-vertical $padding-horizontal;
@@ -139,6 +140,7 @@ $button-disabled-opacity: 0.7 !default;
 	@include button-size($size: medium);
 	@include button-style-glossy;
 }
+
 @mixin button-style-clean-gray($color: #ccc) {
 	background-color: $color;
 	@include background(linear-gradient(180deg, lighten($color, 13.3333%), $color));
@@ -172,6 +174,7 @@ $button-disabled-opacity: 0.7 !default;
 	@include button-size($size: medium);
 	@include button-style-clean-gray;
 }
+
 @mixin button-style-foundation($bg:$color-main-1, $radius:false, $disabled:false) {
 
   @if $bg {
