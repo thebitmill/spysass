@@ -1,38 +1,48 @@
 // SASSY MATH
-// https://github.com/Team-Sass/Sassy-math
+
 @charset "UTF-8";
 
-//
+//////////////////////////////
 // Variables
-//
-
+//////////////////////////////
 $pi: 3.1415926535897932384626433832795028841971693993751;
 $e: 2.71828182845904523536028747135266249775724709369995;
-$iterations: 50; // 
+
+$iter: 50;
 
 
-//
+//////////////////////////////
+// Percent
+//////////////////////////////
+@function percent($number) {
+  @return $number * 0.01; 
+}
+
+//////////////////////////////
 // Exponent
-//
+//////////////////////////////
+@function exponent($base, $exponent) {
+  // reset value
+  $value: $base;
+  // positive intergers get multiplied
+  @if $exponent > 1 {
+    @for $i from 2 through $exponent {
+      $value: $value * $base; } }
+  // negitive intergers get divided. A number divided by itself is 1
+  @if $exponent < 1 {
+    @for $i from 0 through -$exponent {
+      $value: $value / $base; } }
+  // return the last value written
+  @return $value; 
+}
 
-// available in compass
-//@function pow($base, $exponent) {
-//  // reset value
-//  $value: $base;
-//  // positive intergers get multiplied
-//  @if $exponent > 1 {
-//    @for $i from 2 through $exponent {
-//      $value: $value * $base; } }
-//  // negitive intergers get divided. A number divided by itself is 1
-//  @if $exponent < 1 {
-//    @for $i from 0 through -$exponent {
-//      $value: $value / $base; } }
-//  // return the last value written
-//  @return $value; 
-//}
+@function pow($base, $exponent) {
+  @return exponent($base, $exponent);
+}
 
+//////////////////////////////
 // Factorial
-
+//////////////////////////////
 @function factorial($number) {
   // reset value
   $value: 1;
@@ -45,21 +55,26 @@ $iterations: 50; //
   @return $value;
 }
 
-//
-// Polynomial Approximation
-//
+@function fact($number) {
+  @return factorial($number); 
+}
 
+
+//////////////////////////////
+// Polynomial Approximation
+//////////////////////////////
+// Maclaurin series can be used to estimate Sine and Consine
 @function maclaurin($start, $key, $number) {
   $value: $start;
   $add: 0;
   
-  @for $i from 1 through $iterations {
+  @for $i from 1 through $iter {
     @if $add == 0 {
-      $value: $value - ( pow($number, $key) / factorial($key) );
+      $value: $value - ( exponent($number, $key) / factorial($key) );
       $add: 1;
     }
     @else {
-      $value: $value + ( pow($number, $key) / factorial($key) );
+      $value: $value + ( exponent($number, $key) / factorial($key) );
       $add: 0;
     }
     
@@ -68,29 +83,25 @@ $iterations: 50; //
   
   @return $value;
 }
-
 // Taylor series can be used to estiamte ln
-
 @function taylor($number) {
   @return taylor;
 }
 
-//
+//////////////////////////////
 // Basic Trig Functions
-//
+//////////////////////////////
+// Bundled in Compass: http://compass-style.org/reference/compass/helpers/trig/
+// References for implementing using MacLaurin series below:
 
-// Bundled in Compass: http://compass-style.org/reference/compass/helpers/trig/ (References for implementing using MacLaurin series below);
-//@function sin($number) {
-//	$unit: unit($number);
+//@function sin($number, $unit: 'deg') {
 //  @if $unit == 'deg' {
 //    $number: deg-to-rad($number);
 //  }
 //  @return maclaurin($number, 3, $number);
 //}
 //
-//@function cos($number) {
-//	$unit: unit($number);
-//
+//@function cos($number, $unit: 'deg') {
 //  @if $unit == 'deg' {
 //    $number: deg-to-rad($number);
 //  }
@@ -98,52 +109,61 @@ $iterations: 50; //
 //}
 //
 //// Trig Identity: Tangent = Sine divided by Cosine.
-//@function tan($number) {
+//@function tan($number, $unit: 'deg') {
+//  @if $unit == 'deg' {
+//    $number: deg-to-rad($number);
+//  }
 //  @return sin($number) / cos($number); 
 //}
 
-//
+//////////////////////////////
 // Reciprocal Trig Functions
-//
-
-@function cosec($number) {
+//////////////////////////////
+@function csc($number, $unit: 'deg') {
+  @if $unit == 'deg' {
+    $number: deg-to-rad($number);
+  }
   @return 1 / sin($number);
 }
 
-@function sec($number) {
+@function scs($number, $unit: 'deg') {
+  @if $unit == 'deg' {
+    $number: deg-to-rad($number);
+  }
   @return 1 / cos($number);
 }
 
-@function cot($number) {
+@function cot($number, $unit: 'deg') {
+  @if $unit == 'deg' {
+    $number: deg-to-rad($number);
+  }
   @return 1 / tan($number);
 }
 
-//
+//////////////////////////////
 // Hyperbolic Functions
-//
-
+//////////////////////////////
 @function sinh($number) {
-  $top: pow($e, (2 * $number)) - 1;
-  $bottom: 2 * pow($e, $number);
+  $top: exponent($e, (2 * $number)) - 1;
+  $bottom: 2 * exponent($e, $number);
   @return  $top / $bottom;
 }
 
 @function cosh($number) {
-  $top: pow($e, (2 * $number)) + 1;
-  $bottom: 2 * pow($e, $number);
+  $top: exponent($e, (2 * $number)) + 1;
+  $bottom: 2 * exponent($e, $number);
   @return  $top / $bottom;
 }
 
 @function tanh($number) {
-  $top: pow($e, (2 * $number)) - 1;
-  $bottom: pow($e, (2 * $number)) + 1;
+  $top: exponent($e, (2 * $number)) - 1;
+  $bottom: exponent($e, (2 * $number)) + 1;
   @return  $top / $bottom;
 }
 
-//
+//////////////////////////////
 // Reciprocal Hyperbolic Functions
-//
-
+//////////////////////////////
 @function csch($number) {
   @return 1 / sinh($number);
 }
@@ -156,43 +176,34 @@ $iterations: 50; //
   @return 1/ tanh($number);
 }
 
-//
-// Logarithmic
-//
 
-@function log($number, $base: false) {
-	// logarithm is function bundled in compass
-  @return logarithm($number, $base); 
+@function log($number) {
+  @return $number; 
 }
+
 @function ln($number) {
-	// logarithm is function bundled in compass
-	@return logarithm($number, $e);
+  @if $number > 0 and $number < 1 {
+    $value: 0;
+    @for $i from 1 through $iter {
+      $value: $value + ( pow(-1, $i) * pow(-1 * (1 - $number), $i)) / $i;
+    }
+    $value: -1 * $value;
+
+    @return $value;
+  }
+  @else if $number == 1 {
+    @return 0;
+  }
+  @else {
+    @return ERROR;
+    @warn ln input must be greater than zero and less than or equal to 1; 
+  }
 }
 
-//@function ln($number) {
-//  @if $number > 0 and $number < 1 {
-//    $value: 0;
-//    @for $i from 1 through $iterations {
-//      $value: $value + ( pow(-1, $i) * pow(-1 * (1 - $number), $i)) / $i;
-//    }
-//    $value: -1 * $value;
-//
-//    @return $value;
-//  }
-//  @else if $number == 1 {
-//    @return 0;
-//  }
-//  @else {
-//    @return ERROR;
-//    @warn ln input must be greater than zero and less than or equal to 1; 
-//  }
-//}
 
-
-//
+//////////////////////////////
 // Degree/Radian Conversion
-//
-
+//////////////////////////////
 @function deg-to-rad($number) {
   @return $number * $pi / 180deg; 
 }
@@ -201,57 +212,63 @@ $iterations: 50; //
   @return $number * 180deg / $pi; 
 }
 
-//
+//////////////////////////////
 // Root Functions
-//
+//////////////////////////////
 // Basic General-Purpose Root Function
-
-@function root($number, $n) {
+@function n-root($number, $n) {
   @if $number < 1 {
     @return ERROR;
     @warn ROOT ERROR; 
   }
   // If a whole number, generate it quickly
   @for $i from 1 through $number {
-    @if pow($i, $n) == $number {
+    @if exponent($i, $n) == $number {
       @return $i; 
     } 
   }
   // Else, run through other options
   @for $i from 1 through $number * 1000 / 2 {
-    @if round(pow($i / 1000, $n) * 100) == round($number * 100) {
+    @if round(exponent($i / 1000, $n) * 100) == round($number * 100) {
       @return $i / 1000; 
     } 
   } 
 }
 
-// Square Roots
-
-
-// implemented in compass
-//@function sqrt($number) {
-//  $guess: 4;
-//  $root: $guess;
-//  @for $i from 1 through $iterations {
-//    $root: $root - (pow($root, 2) - $number) / (2 * $root);
-//  }
-//  @return $root;
-//}
-
-//
-// Golden Ratio
-//
-
-@function golden-ratio() {
-  @return (1 + sqrt(5)) / 2;
+@function root($number, $n) {
+  @return n-root($number, $n);
 }
 
-$golden-ratio: golden-ratio();
+// Square Roots
+@function √($number) {
+  @return sqrt($number); 
+}
 
-//
+@function sqrt($number) {
+  $guess: 4;
+  $root: $guess;
+  @for $i from 1 through $iter {
+    $root: $root - (pow($root, 2) - $number) / (2 * $root);
+  }
+  @return $root;
+}
+
+//////////////////////////////
+// Golden Ratio
+//////////////////////////////
+@function golden() {
+  @return 1/2 + sqrt(5) / 2;
+}
+@function ϕ() {
+  @return golden();
+}
+
+$golden-ratio: golden();
+$ϕ: $golden-ratio;
+
+//////////////////////////////
 // Is Int and Is Float
-//
-
+//////////////////////////////
 @function is-int($number) {
   @if type-of($number) != 'number' {
     @warn '#{$number} is not a number! It cannot be an integer if it is not a number!';

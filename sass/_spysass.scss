@@ -1,3 +1,155 @@
-@import "spysass/functions";
-@import "spysass/mixins/utilities";
-@import "spysass/base";
+//
+// FUNCTIONS
+//
+
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function convert-to-em($value,$base-font-size: $base-font-size)  {
+	$value: strip-unit($value) / strip-unit($base-font-size) * 1em;
+	@if ($value == 0em) { $value: 0; }
+	@return $value;
+}
+
+@function convert-to-rem($value)  {
+	$value: strip-unit($value) / strip-unit($base-font-size) * 1rem;
+	@if ($value == 0rem) { $value: 0; }
+	@return $value;
+}
+
+@function rem($values) {
+	$max: length($values);
+
+	$rem-values: ();
+	@for $i from 1 through $max {
+		$value: nth($values, $i);
+		@if unit($value) != 'rem' and unit($value) != 'em' {
+			$rem-values: append($rem-values, convert-to-rem($value));
+		} @else {
+			$rem-values: append($rem-values, $value);
+		}
+	}
+
+	@if $max == 1 { $rem-values: nth($rem-values, 1); }
+
+	@return $rem-values;
+}
+
+@function em($values, $base-value: $base-font-size) {
+	$max: length($values);
+
+	$em-values: ();
+	@for $i from 1 through $max {
+		$value: nth($values, $i);
+		@if unit($value) != 'rem' and unit($value) != 'em' {
+			$em-values: append($em-values, convert-to-em($value, $base-value));
+		} @else {
+			$em-values: append($em-values, $value);
+		}
+	}
+
+	@if $max == 1 { $em-values: nth($em-values, 1); }
+
+	@return $em-values;
+}
+
+//
+// MIXINS
+//
+
+// Variable settings for /addons/prefixer.scss
+$prefix-for-webkit:    true !default;
+$prefix-for-mozilla:   true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera:     true !default;
+$prefix-for-spec:      true !default; // required for keyframe mixin
+
+// FROM BOURBON
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      @if $prefix-for-webkit {
+        -webkit-#{$property}: $value;
+      }
+    }
+    @else if $prefix == moz {
+      @if $prefix-for-mozilla {
+        -moz-#{$property}: $value;
+      }
+    }
+    @else if $prefix == ms {
+      @if $prefix-for-microsoft {
+        -ms-#{$property}: $value;
+      }
+    }
+    @else if $prefix == o {
+      @if $prefix-for-opera {
+        -o-#{$property}: $value;
+      }
+    }
+    @else if $prefix == spec {
+      @if $prefix-for-spec {
+        #{$property}: $value;
+      }
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+// FROM BOURBON
+@mixin disable-prefix-for-all() {
+  $prefix-for-webkit:    false !global;
+  $prefix-for-mozilla:   false !global;
+  $prefix-for-microsoft: false !global;
+  $prefix-for-opera:     false !global;
+  $prefix-for-spec:      false !global;
+}
+
+@mixin clear {
+	&:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+	}
+}
+
+// TODO add check for relative assets;
+@mixin svg-bg($image) {
+    background-image: image-url(#{$image});
+    background-image: none, image-url(#{$image});
+}
+
+@mixin wipe {
+	/*Reset's every elements apperance*/
+	background: none repeat scroll 0 0 transparent;
+	border: medium none;
+	border-spacing: 0;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0;
+}
+
+@mixin wipe-list {
+	padding-left: 0;
+	list-style: none;
+	margin: 0;
+}
+
+@mixin wipe-button {
+	@include wipe;
+	&::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+	}
+}
+
