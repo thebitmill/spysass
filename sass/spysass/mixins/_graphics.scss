@@ -1,18 +1,3 @@
-@mixin clear {
-	&:after {
-		content: "";
-		display: block;
-		height: 0;
-		clear: both;
-	}
-}
-
-// TODO add check for relative assets;
-@mixin svg-bg($image) {
-    background-image: image-url(#{$image});
-    background-image: none, image-url(#{$image});
-}
-
 @mixin triangle($triangle-height, $triangle-base:2*$triangle-height, $triangle-direction: left, $triangle-color:$color-main-1) {
 	width: 0;
 	height: 0;
@@ -60,38 +45,3 @@
 	}
 }
 
-@mixin side-radius($direction, $radius) {
-    @if($direction == left) {
-        @include border-left-radius($radius);
-    } @else {
-        @include border-right-radius($radius);
-    }
-}
-
-@mixin wipe-list {
-	padding-left: 0;
-	list-style: none;
-	margin: 0;
-}
-@mixin wipe-button {
-	@include wipe;
-	&::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-	}
-}
-@mixin wipe {
-	/*Reset's every elements apperance*/
-	background: none repeat scroll 0 0 transparent;
-	border: medium none;
-	border-spacing: 0;
-	font-family: inherit;
-	font-size: inherit;
-	font-weight: inherit;
-	line-height: inherit;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	text-decoration: none;
-	text-indent: 0;
-}

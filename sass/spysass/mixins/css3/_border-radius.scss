@@ -1,10 +1,9 @@
-//************************************************************************//
-// Shorthand Border-radius mixins
-//************************************************************************//
+// FROM BOURBON
 @mixin border-radius($radii) {
   @include prefixer(border-radius, $radii, spec);
   @include prefixer(border-radius, $radii, spec);
 }
+
 // FROM BOURBON
 @mixin border-top-radius($radii) {
   @include prefixer(border-top-left-radius, $radii, spec);
@@ -28,3 +27,12 @@
   @include prefixer(border-top-right-radius, $radii, spec);
   @include prefixer(border-bottom-right-radius, $radii, spec);
 }
+
+@mixin side-radius($direction, $radius) {
+    @if($direction == left) {
+        @include border-left-radius($radius);
+    } @else {
+        @include border-right-radius($radius);
+    }
+}
+
