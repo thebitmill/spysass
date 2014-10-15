@@ -17,20 +17,20 @@ html {
 	}
 }
 .col {
-	display: flex;
-	flex-direction: column;
+	@include display(flex);
+	@include flex-direction(column);
 }
 .row {
-	display: flex;
-	flex-direction: row;
+	@include display(flex);
+	@include flex-direction(row);
 }
 .row, .col {
 	> * {
-		flex-shrink: 0;
+		@include flex-shrink(0);
 	}
 
 	&.wrap {
-		flex-wrap: wrap;
+		@include flex-wrap(wrap);
 	}
 	//&.justify-start { justify-content: flex-start; }//(default): items are packed toward the start line
 	&.justify-end { justify-content: flex-end; }//items are packed toward to end line
@@ -44,21 +44,21 @@ html {
 	//&.align-stretch { align-items: stretch; }//(default): stretch to fill the container (still respect min-width/max-width)
 	&.flex-all {
 		> * {
-			flex-basis: auto;
-			flex-grow: 1;
-			flex-shrink: 1;
+			@include flex-basis(auto);
+			@include flex-grow(1);
+			@include flex-shrink(1);
 		}
 	}
 	> .flex {
-		flex-basis: auto;
-		flex-grow: 1;
-		flex-shrink: 1;
+		@include flex-basis(auto);
+		@include flex-grow(1);
+		@include flex-shrink(1);
 	}
 	@for $i from 2 through 12 {
 		> .flex-#{$i} {
-			flex-basis: auto;
-			flex-grow: $i;
-			flex-shrink: 1;
+			@include flex-basis(auto);
+			@include flex-grow($i);
+			@include flex-shrink(1);
 		}
 	}
 }
