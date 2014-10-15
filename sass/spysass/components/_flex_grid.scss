@@ -1,29 +1,13 @@
-html {
-	height: 100%;
-	> body {
-		height: 100%;
-		> .col.full-height {
-			min-height: 100%;
-		}
-	}
-	&.IE11 {
-		> body {
-			height: 100%;
-			> .col.full-height {
-				min-height: none;
-				height: 100%;
-			}
-		}
-	}
-}
 .col {
 	@include display(flex);
 	@include flex-direction(column);
 }
+
 .row {
 	@include display(flex);
 	@include flex-direction(row);
 }
+
 .row, .col {
 	> * {
 		@include flex-shrink(0);
@@ -32,16 +16,16 @@ html {
 	&.wrap {
 		@include flex-wrap(wrap);
 	}
-	//&.justify-start { justify-content: flex-start; }//(default): items are packed toward the start line
-	&.justify-end { justify-content: flex-end; }//items are packed toward to end line
-	&.justify-center { justify-content: flex-center; }//items are centered along the line
-	&.justify-space-between { justify-content: space-between; }//items are evenly distributed in the line; first item is on the start line, last item on the end line
-	&.justify-space-around { justify-content: space-around; }//items are evenly distributed in the line with equal space around them
-	&.align-start {align-items: flex-start; }//cross-start margin edge of the items is placed on the cross-start line
-	&.align-end { align-items: flex-end; }//cross-end margin edge of the items is placed on the cross-end line
-	&.align-center { align-items: center; }//items are centered in the cross-axis
-	&.align-baseline { align-items: baseline; }//items are aligned such as their baselines align
-	//&.align-stretch { align-items: stretch; }//(default): stretch to fill the container (still respect min-width/max-width)
+	//&.justify-start { @include justify-content(flex-start); }//(default): items are packed toward the start line
+	&.justify-end { @include justify-content(flex-end); }//items are packed toward to end line
+	&.justify-center { @include justify-content(flex-center); }//items are centered along the line
+	&.justify-space-between { @include justify-content(space-between); }//items are evenly distributed in the line; first item is on the start line, last item on the end line
+	&.justify-space-around { @include justify-content(space-around); }//items are evenly distributed in the line with equal space around them
+	&.align-start { @include align-items(flex-start); }//cross-start margin edge of the items is placed on the cross-start line
+	&.align-end { @include align-items(flex-end); }//cross-end margin edge of the items is placed on the cross-end line
+	&.align-center { @include align-items(center); }//items are centered in the cross-axis
+	&.align-baseline { @include align-items(baseline); }//items are aligned such as their baselines align
+	//&.align-stretch { @include align-items(stretch); }//(default): stretch to fill the container (still respect min-width/max-width)
 	&.flex-all {
 		> * {
 			@include flex-basis(auto);
