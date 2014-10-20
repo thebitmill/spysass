@@ -90,53 +90,44 @@ $iter: 50;
 
 //////////////////////////////
 // Basic Trig Functions
+// Modified by sup3rman to better take care of rad / degree
 //////////////////////////////
-// Bundled in Compass: http://compass-style.org/reference/compass/helpers/trig/
-// References for implementing using MacLaurin series below:
 
-//@function sin($number, $unit: 'deg') {
-//  @if $unit == 'deg' {
-//    $number: deg-to-rad($number);
-//  }
-//  @return maclaurin($number, 3, $number);
-//}
-//
-//@function cos($number, $unit: 'deg') {
-//  @if $unit == 'deg' {
-//    $number: deg-to-rad($number);
-//  }
-//  @return maclaurin(1, 2, $number);
-//}
-//
-//// Trig Identity: Tangent = Sine divided by Cosine.
-//@function tan($number, $unit: 'deg') {
-//  @if $unit == 'deg' {
-//    $number: deg-to-rad($number);
-//  }
-//  @return sin($number) / cos($number); 
-//}
-
-//////////////////////////////
-// Reciprocal Trig Functions
-//////////////////////////////
-@function csc($number, $unit: 'deg') {
+@function sin($number) {
+	$unit: unit($number);
   @if $unit == 'deg' {
     $number: deg-to-rad($number);
   }
+  @return maclaurin($number, 3, $number);
+}
+
+@function cos($number) {
+	$unit: unit($number);
+
+  @if $unit == 'deg' {
+    $number: deg-to-rad($number);
+  }
+  @return maclaurin(1, 2, $number);
+}
+
+// Trig Identity: Tangent = Sine divided by Cosine.
+@function tan($number) {
+  @return sin($number) / cos($number); 
+}
+
+//////////////////////////////
+// Reciprocal Trig Functions 
+// Also modified by sup3rman for better rad / degree
+//////////////////////////////
+@function cosec($number) {
   @return 1 / sin($number);
 }
 
-@function scs($number, $unit: 'deg') {
-  @if $unit == 'deg' {
-    $number: deg-to-rad($number);
-  }
+@function sec($number) {
   @return 1 / cos($number);
 }
 
-@function cot($number, $unit: 'deg') {
-  @if $unit == 'deg' {
-    $number: deg-to-rad($number);
-  }
+@function cot($number) {
   @return 1 / tan($number);
 }
 
