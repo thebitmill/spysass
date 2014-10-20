@@ -128,6 +128,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 	background: none repeat scroll 0 0 transparent;
 	border: medium none;
 	border-spacing: 0;
+	@include border-radius(0);
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: inherit;
