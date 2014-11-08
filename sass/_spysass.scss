@@ -1,156 +1,135 @@
+@import "spysass/base/functions/gradient-positions-parser";
+@import "spysass/base/functions/linear-angle-parser";
+@import "spysass/base/functions/linear-gradient-parser";
+@import "spysass/base/functions/linear-positions-parser";
+@import "spysass/base/functions/linear-side-corner-parser";
+@import "spysass/base/functions/radial-arg-parser";
+@import "spysass/base/functions/radial-gradient-parser";
+@import "spysass/base/functions/radial-positions-parser";
+@import "spysass/base/functions/render-gradients";
+@import "spysass/base/functions/units";
+
+@import "spysass/base/mixins/css3";
+@import "spysass/base/mixins/graphics";
+@import "spysass/base/mixins/prefix";
+@import "spysass/base/mixins/utilities";
+
 //
-// FUNCTIONS
+// Base Variables
 //
 
-@function strip-unit($num) {
-	@return $num / ($num * 0 + 1);
+$include-reset: true !default;
+$include-normalize: false !default;
+
+$include-base-styling: true !default;
+$include-base-classes: true !default;
+
+$make-image-inline-block: false !default;
+$default-float: left !default;
+$opposite-direction: right !default;
+$text-direction: left !default;
+$global-radius: 0 !default;
+
+$color-1: #0066c6 !default;
+$color-message: #333 !default;
+$color-error: #c89999 !default;
+$color-success: #628b1c !default;
+
+// This needs to be a px value since rem and em-calc use it. It is translated
+// to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
+$base-font-size: 16px !default;
+$base-line-height: 1.6 !default;
+$base-line-height-computed: $base-line-height * 1rem !default;
+
+$body-font-color: #222 !default;
+$body-font-family: "Times New Roman", sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+$body-bg: #fff !default;
+
+$font-smoothing: subpixel-antialiased !default;
+
+@if $include-reset {
+	@import "spysass/base/components/reset";
+}
+@if $include-normalize {
+	@import "spysass/base/components/normalize";
 }
 
-@function convert-to-em($value,$base-font-size: $base-font-size)  {
-	$value: strip-unit($value) / strip-unit($base-font-size) * 1em;
-	@if ($value == 0em) { $value: 0; }
-	@return $value;
-}
+//
+// Base Styling
+//
 
-@function convert-to-rem($value)  {
-	$value: strip-unit($value) / strip-unit($base-font-size) * 1rem;
-	@if ($value == 0rem) { $value: 0; }
-	@return $value;
-}
+@if $include-base-styling {
+	*,
+	*:before,
+	*:after {
+		@include box-sizing(border-box);
+	}
 
-@function rem($values) {
-	$max: length($values);
+	html, body { font-size: $base-font-size; }
 
-	$rem-values: ();
-	@for $i from 1 through $max {
-		$value: nth($values, $i);
-		@if unit($value) != 'rem' and unit($value) != 'em' {
-			$rem-values: append($rem-values, convert-to-rem($value));
-		} @else {
-			$rem-values: append($rem-values, $value);
+	// Default body styles
+	body {
+		background: $body-bg;
+		color: $body-font-color;
+		padding: 0;
+		margin: 0;
+		font-family: $body-font-family;
+		font-weight: $body-font-weight;
+		font-style: $body-font-style;
+		line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+		position: relative;
+	}
+
+	// Override outline from normalize, we don't like it
+	a:focus { outline: none; }
+
+	// Grid Defaults to get images and embeds to work properly
+	img,
+	object,
+	embed { max-width: 100%; height: auto; }
+
+	object,
+	embed { height: 100%; }
+	img { -ms-interpolation-mode: bicubic; }
+
+	@if $make-image-inline-block {
+		// Get rid of gap under images by making them display: inline-block; by default
+		img {
+			display:inline-block;
+			vertical-align: middle;
 		}
 	}
 
-	@if $max == 1 { $rem-values: nth($rem-values, 1); }
-
-	@return $rem-values;
-}
-
-@function em($values, $base-value: $base-font-size) {
-	$max: length($values);
-
-	$em-values: ();
-	@for $i from 1 through $max {
-		$value: nth($values, $i);
-		@if unit($value) != 'rem' and unit($value) != 'em' {
-			$em-values: append($em-values, convert-to-em($value, $base-value));
-		} @else {
-			$em-values: append($em-values, $value);
-		}
+	#map_canvas,
+	.map_canvas {
+		img,
+		embed,
+		object { max-width: none !important; }
 	}
-
-	@if $max == 1 { $em-values: nth($em-values, 1); }
-
-	@return $em-values;
 }
 
 //
-// MIXINS
+// Base Classes
 //
 
-// Variable settings for /addons/prefixer.scss
-$prefix-for-webkit:    true !default;
-$prefix-for-mozilla:   true !default;
-$prefix-for-microsoft: true !default;
-$prefix-for-opera:     true !default;
-$prefix-for-spec:      true !default; // required for keyframe mixin
+@if $include-base-classes {
+	// Miscellaneous useful HTML classes
+	.clear-both	{ clear: both !important; }
+	.clear-left	{ clear: left !important; }
+	.clear-right	{ clear: right !important; }
+	.float-left	{ float: left !important; }
+	.float-right	{ float: right !important; }
+	.text-left	{ text-align: left !important; }
+	.text-right	{ text-align: right !important; }
+	.text-center	{ text-align: center !important; }
+	.text-justify	{ text-align: justify !important; }
+	.hide   { display: none; }//hide
+	.no-margin	{ margin: 0 !important; }
 
-// FROM BOURBON
-@mixin prefixer ($property, $value, $prefixes) {
-  @each $prefix in $prefixes {
-    @if $prefix == webkit {
-      @if $prefix-for-webkit {
-        -webkit-#{$property}: $value;
-      }
-    }
-    @else if $prefix == moz {
-      @if $prefix-for-mozilla {
-        -moz-#{$property}: $value;
-      }
-    }
-    @else if $prefix == ms {
-      @if $prefix-for-microsoft {
-        -ms-#{$property}: $value;
-      }
-    }
-    @else if $prefix == o {
-      @if $prefix-for-opera {
-        -o-#{$property}: $value;
-      }
-    }
-    @else if $prefix == spec {
-      @if $prefix-for-spec {
-        #{$property}: $value;
-      }
-    }
-    @else  {
-      @warn "Unrecognized prefix: #{$prefix}";
-    }
-  }
+	// Classes for help with CSS3 animation
+
+	[data-dynamic-height], [data-dynamic-width]	{ overflow: hidden; }
+	.min		{ height: 0 !important; }
 }
-
-// FROM BOURBON
-@mixin disable-prefix-for-all() {
-  $prefix-for-webkit:    false !global;
-  $prefix-for-mozilla:   false !global;
-  $prefix-for-microsoft: false !global;
-  $prefix-for-opera:     false !global;
-  $prefix-for-spec:      false !global;
-}
-
-@mixin clear {
-	&:after {
-		content: "";
-		display: block;
-		height: 0;
-		clear: both;
-	}
-}
-
-// TODO add check for relative assets;
-@mixin svg-bg($image) {
-    background-image: image-url(#{$image});
-    background-image: none, image-url(#{$image});
-}
-
-@mixin wipe {
-	/*Reset's every elements apperance*/
-	background: none repeat scroll 0 0 transparent;
-	border: medium none;
-	border-spacing: 0;
-	@include border-radius(0);
-	font-family: inherit;
-	font-size: inherit;
-	font-weight: inherit;
-	line-height: inherit;
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	text-decoration: none;
-	text-indent: 0;
-}
-
-@mixin wipe-list {
-	padding-left: 0;
-	list-style: none;
-	margin: 0;
-}
-
-@mixin wipe-button {
-	@include wipe;
-	&::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-	}
-}
-
