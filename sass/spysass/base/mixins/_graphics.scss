@@ -1,0 +1,6 @@
+// TODO add check for relative assets;
+@mixin svg-bg($image) {
+    background-image: image-url(#{$image});
+    background-image: none, image-url(#{$image});
+}
+

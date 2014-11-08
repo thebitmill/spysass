@@ -1,20 +1,22 @@
 //
-// Variables: Base Component
+// Base Variables
 //
 
 //$include-reset: true;
 //$include-normalize: false;
+
+//$include-base-styling: true;
+//$include-base-classes: true;
 
 //$make-image-inline-block: false;
 //$default-float: left;
 //$opposite-direction: right;
 //$text-direction: left;
 //$global-radius: 0;
-//$make-image-inline-block: false;
 
-//$color-main-1: #0066c6;
+//$color-1: #0066c6;
 //$color-message: #333;
-//$color-error: #c90000;
+//$color-error: #c89999;
 //$color-success: #628b1c;
 
 // This needs to be a px value since rem and em-calc use it. It is translated
