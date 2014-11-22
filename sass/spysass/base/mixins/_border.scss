@@ -1,0 +1,10 @@
+@mixin side-radius($direction, $radius) {
+	@if($direction == left) {
+		border-top-left-radius: $radius;
+		border-bottom-left-radius: $radius;
+	} @else {
+		border-top-right-radius: $radius;
+		border-bottom-right-radius: $radius;
+	}
+}
+

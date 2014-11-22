@@ -1,17 +1,7 @@
-@import "spysass/base/functions/gradient-positions-parser";
-@import "spysass/base/functions/linear-angle-parser";
-@import "spysass/base/functions/linear-gradient-parser";
-@import "spysass/base/functions/linear-positions-parser";
-@import "spysass/base/functions/linear-side-corner-parser";
-@import "spysass/base/functions/radial-arg-parser";
-@import "spysass/base/functions/radial-gradient-parser";
-@import "spysass/base/functions/radial-positions-parser";
-@import "spysass/base/functions/render-gradients";
 @import "spysass/base/functions/units";
 
-@import "spysass/base/mixins/css3";
+@import "spysass/base/mixins/border";
 @import "spysass/base/mixins/graphics";
-@import "spysass/base/mixins/prefix";
 @import "spysass/base/mixins/utilities";
 
 //
@@ -64,7 +54,7 @@ $font-smoothing: subpixel-antialiased !default;
 	*,
 	*:before,
 	*:after {
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 	}
 
 	html, body { font-size: $base-font-size; }

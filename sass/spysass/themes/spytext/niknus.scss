@@ -84,8 +84,8 @@
 		background-color: $spytext-button-background;
 		color: #333333;
 
-		@include box-shadow(0 1px 0 rgba(255, 255, 255, 0.5) inset);
-		@include transition(background-color 0.3s);
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+		transition: background-color 0.3s;
 		&:disabled {
 			cursor: default;
 			color: #999;
@@ -97,7 +97,7 @@
 			background: #CCC;
 		}
 		&:not(:disabled):not(.active):hover:active {
-			@include box-shadow(0 0 2px 2px #aaa);
+			box-shadow: 0 0 2px 2px #aaa;
 		}
 		&:not(:disabled):not(.active):hover{
 			cursor: pointer;

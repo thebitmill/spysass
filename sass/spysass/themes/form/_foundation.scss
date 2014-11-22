@@ -189,7 +189,7 @@ span.prefix,label.prefix {
     @else { color: $input-prefix-font-color-alt; }
 
     border-color: $input-prefix-border-color;
-    &.radius { @include border-radius(0); @include side-radius($default-float, $global-radius); }
+    &.radius { border-radius: 0; @include side-radius($default-float, $global-radius); }
 }
 span.postfix,label.postfix {
     $bg-lightness: lightness($input-prefix-bg);
@@ -201,7 +201,7 @@ span.postfix,label.postfix {
     @else { color: $input-prefix-font-color-alt; }
 
     border-color: $input-prefix-border-color;
-    &.radius { @include border-radius(0); @include side-radius($opposite-direction, $global-radius); }
+    &.radius { border-radius: 0; @include side-radius($opposite-direction, $global-radius); }
 }
 .postfix.button {
     @include button-size($height:$input-font-size + ($input-padding + $input-border-width) * 2, $font-size: $form-label-font-size);
@@ -251,9 +251,9 @@ textarea, [spytext-field], .spytext-field {
     padding: $input-padding + rem(1) $input-padding $input-padding - rem(1);
     height: $input-font-size + ($input-padding + $input-border-width) * 2;
     width: 100%;
-    @include border-radius(0);
+    border-radius: 0;
 
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     @if $input-include-glowing-effect {
         @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
     }
@@ -267,10 +267,10 @@ textarea, [spytext-field], .spytext-field {
     // Disabled background input background color
     &[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
     @if $input-include-glowing-effect == false {
-        @include single-transition(all, 0.15s, linear);
+        transition: all 0.15s linear;
     }
     &.radius {
-        @include border-radius($input-border-radius);
+        border-radius: $input-border-radius;
     }
 }
 
@@ -301,8 +301,8 @@ select {
     font-size: $input-font-size;
     color: $input-font-color;
     line-height: normal;
-    @include border-radius(0);
-    &.radius { @include border-radius($global-radius); }
+    border-radius: 0;
+    &.radius { border-radius: $global-radius; }
     &:hover {
         background-color: $select-hover-bg-color;
         border-color: $input-focus-border-color;
