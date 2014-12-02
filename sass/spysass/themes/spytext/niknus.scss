@@ -2,19 +2,23 @@
 .spytext-toolbar{
 	@include clear;
 
+	position: fixed;
+	top: -100px;
 	height: $spytext-toolbar-height;
-	width: 100%;
+	width: auto;
 	display: block;
 	font-size: rem(15px);
 	background-color: $spytext-toolbar-background;
 	padding: 5px;
-	margin: 0px;
-	top: 0;
-	position: relative;
+	margin: 0px auto;
 	z-index: 6010;
 	border: 2px solid $spytext-toolbar-border-color;
 	border-left: 0;
 	border-top: 0;
+	transition: top 0.5s;
+	&.active {
+		top: 10px;
+	}
 
 	> ul{
 		@include clear;
