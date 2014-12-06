@@ -1,3 +1,4 @@
+@import "../mixins/flex-box";
 .col {
 	@include display(flex);
 	@include flex-direction(column);

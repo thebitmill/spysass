@@ -1,3 +1,5 @@
+@import "prefixer";
+
 @import "css3/animation";
 @import "css3/appearance";
 @import "css3/backface-visibility";
@@ -10,7 +12,7 @@
 @import "css3/calc";
 @import "css3/columns";
 @import "css3/filter";
-@import "css3/flex-box";
+@import "flex-box";
 @import "css3/font-face";
 @import "css3/font-feature-settings";
 @import "css3/hidpi-media-query";
