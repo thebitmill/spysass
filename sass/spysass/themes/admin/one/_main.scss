@@ -1,9 +1,7 @@
-@import 'spysass';
 @import 'variables_spysass';
 
-@import 'spysass/mixins/css3';
-
-@import 'spysass/components/base';
+@import 'spysass';
+@import 'spysass/mixins/flex-box';
 @import 'spysass/components/flex_grid';
 @import 'spysass/components/type';
 
