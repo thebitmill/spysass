@@ -1,0 +1,11 @@
+@if load-module('effects', 'mixins') {
+	@mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($color-main-1, .25)) {
+		transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
+		&:#{$selector} {
+			box-shadow: 0 0 5px $glowing-effect-color;
+			border-color: $glowing-effect-color;
+		}
+	}
+
+	$tmp: register-module();
+}

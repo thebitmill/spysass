@@ -1,125 +1,69 @@
-@import "spysass/base/functions/units";
+$module-types: 'components', 'functions', 'mixins', 'themes' !default;
+$modules: ((), (), (), ()) !default;
+$loading: () !default;
 
-@import "spysass/base/mixins/border";
-@import "spysass/base/mixins/graphics";
-@import "spysass/base/mixins/utilities";
-
-//
-// Base Variables
-//
-
-$include-reset: true !default;
-$include-normalize: false !default;
-
-$include-base-styling: true !default;
-$include-base-classes: true !default;
-
-$make-image-inline-block: false !default;
-$default-float: left !default;
-$opposite-direction: right !default;
-$text-direction: left !default;
-$global-radius: 0 !default;
-
-$color-1: #0066c6 !default;
-$color-message: #333 !default;
-$color-error: #c89999 !default;
-$color-success: #628b1c !default;
-
-// This needs to be a px value since rem and em-calc use it. It is translated
-// to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
-$base-font-size: 16px !default;
-$base-line-height: 1.6 !default;
-$base-line-height-computed: $base-line-height * 1rem !default;
-
-$body-font-color: #222 !default;
-$body-font-family: "Times New Roman", sans-serif !default;
-$body-font-weight: normal !default;
-$body-font-style: normal !default;
-$body-bg: #fff !default;
-
-$font-smoothing: subpixel-antialiased !default;
-
-@if $include-reset {
-	@import "spysass/base/components/reset";
-}
-@if $include-normalize {
-	@import "spysass/base/components/normalize";
-}
-
-//
-// Base Styling
-//
-
-@if $include-base-styling {
-	*,
-	*:before,
-	*:after {
-		box-sizing: border-box;
-	}
-
-	html, body { font-size: $base-font-size; }
-
-	// Default body styles
-	body {
-		background: $body-bg;
-		color: $body-font-color;
-		padding: 0;
-		margin: 0;
-		font-family: $body-font-family;
-		font-weight: $body-font-weight;
-		font-style: $body-font-style;
-		line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
-		position: relative;
-	}
-
-	// Override outline from normalize, we don't like it
-	a:focus { outline: none; }
-
-	// Grid Defaults to get images and embeds to work properly
-	img,
-	object,
-	embed { max-width: 100%; height: auto; }
-
-	object,
-	embed { height: 100%; }
-	img { -ms-interpolation-mode: bicubic; }
-
-	@if $make-image-inline-block {
-		// Get rid of gap under images by making them display: inline-block; by default
-		img {
-			display:inline-block;
-			vertical-align: middle;
+@function loaded-modules() {
+	$str: 'Spysass Loaded Modules';
+	$nl: '
+';
+	$title-pre: $nl + ' > ';
+	$module-pre: $nl + '    > ';
+	@for $t from 1 through length($module-types) {
+		$list: nth($modules, $t);
+		@if length($list) > 0 {
+			$tmp: nth($module-types, $t);
+			$str: $str + $title-pre + nth($module-types, $t);
+			@for $l from 1 through length($list) {
+				$str: $str + $module-pre + nth($list, $l);
+			}
 		}
 	}
+	@return $str;
+}
 
-	#map_canvas,
-	.map_canvas {
-		img,
-		embed,
-		object { max-width: none !important; }
+@function load-module($name, $type) {
+	$type-index: index($module-types, $type);
+	$list: nth($modules, $type-index);
+	@if length($list) > 0 and index($list, $name) {
+		@warn 'Module already loaded: "' + $name + '" (' + $type + ')';
+		@return false;
+	} @else {
+		$tmp: ($name $type-index);
+		$loading: append($loading, $tmp);
+		@return true;
 	}
 }
 
-//
-// Base Classes
-//
+//@function finish-loading($name: $module-name, $type: $module-type) {
+@function register-module() {
+	$t: nth($loading, length($loading));
+	$name: nth($t, 1);
+	$type-index: nth($t, 2);
+	$list: append(nth($modules, $type-index), $name, 'space');
 
-@if $include-base-classes {
-	// Miscellaneous useful HTML classes
-	.clear-both	{ clear: both !important; }
-	.clear-left	{ clear: left !important; }
-	.clear-right	{ clear: right !important; }
-	.float-left	{ float: left !important; }
-	.float-right	{ float: right !important; }
-	.text-left	{ text-align: left !important; }
-	.text-right	{ text-align: right !important; }
-	.text-center	{ text-align: center !important; }
-	.text-justify	{ text-align: justify !important; }
-	.hide   { display: none; }//hide
-	.no-margin	{ margin: 0 !important; }
+	// Remove last item from $loading list
+	$length: length($loading);
+	$result: ();
+	//@warn "before remove last $loading";
+	//@warn $length;
+	@for $i from 1 through $length {
+		@if $i != $length {
+			$result: append($result, nth($loading, $i));
+		}
+	}
+	$loading: $result;
 
-	// Classes for help with CSS3 animation
 
-	[data-dynamic-height], [data-dynamic-width]	{ overflow: hidden; }
-	.min		{ height: 0 !important; }
+	//@warn "before rebuild $modules";
+	// Rebuild $modules list
+	$result: ();
+	@for $i from 1 through length($modules) {
+		@if $i == $type-index {
+			$result: append($result, $list);
+		} @else {
+			$result: append($result, nth($modules, $i));
+		}
+	}
+	$modules: $result;
+	@return true;
 }
