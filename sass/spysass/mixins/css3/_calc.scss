@@ -1,5 +1,0 @@
-// FROM BOURBON
-@mixin calc($property, $value) {
-  #{$property}: -webkit-calc(#{$value});
-  #{$property}:         calc(#{$value});
-}
