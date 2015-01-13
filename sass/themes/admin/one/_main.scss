@@ -1,0 +1,33 @@
+@import 'variables_spysass';
+
+@import 'spysass';
+
+@import 'components/flex_grid';
+@import 'components/type';
+
+@import 'themes/form/foundation';
+
+@import 'layout';
+@import 'styles';
+
+.frontNav {
+	a {
+		line-height: 1;
+		border: 5px solid white;
+		padding: 0;
+		margin: 0;
+		float: left;
+		display: block;
+		width: 12.5%;
+		height: 100px;
+		padding-top: (100px - 14 - 5 * 2) / 2;
+		text-align: center;
+		background: #ddd;
+	}
+}
+table {
+	width: 100%;
+	tr.form {
+		display: none;
+	}
+}

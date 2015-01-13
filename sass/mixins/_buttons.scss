@@ -1,0 +1,224 @@
+@if load-module('buttons', 'mixins') {
+	// Based on Foundation 5 buttons
+
+	//
+	// @variables
+	//
+
+	$button-display: inline-block !default;
+	$button-margin-bottom: 0px !default;
+	$button-padding-vertical: 1em !default;
+	$button-padding-horizontal: 2em !default;
+	$button-border-width: rem(1px) !default;//NOTE some button styles use border, others do not. this is needed to calculate correct height
+
+	$button-font-family: $body-font-family !default;
+	$button-font-weight: bold !default;
+	$button-font-align: center !default;
+	$button-font-color: #fff !default;
+	$button-font-color-alt: #333 !default;
+
+	$button-font-size-tiny: 0.6875rem !default;//11px when base font size is 16
+	$button-font-size-small: 0.8126rem !default;//13px when base font size is 16
+	$button-font-size-medium: 1rem !default;
+	$button-font-size-large: 1.25rem !default;//20px when base font size is 16
+
+	// We use these to control various hover effects.
+	$button-function-factor: -20% !default;
+
+	// We use this to set default opacity for disabled buttons.
+	$button-disabled-opacity: 0.7 !default;
+
+
+	//
+	// @MIXIN
+	//
+	// We use this mixin to create a default button base.
+	//
+	// $style - Sets base styles. Can be set to false. Default: true.
+	// $display - Used to control display property. Default: $button-display || inline-block
+
+	@mixin button-base($style:true, $display:$button-display) {
+			@if $style {
+					&:not(:disabled):not(.disabled) {
+							cursor: pointer;
+					}
+					font-family: $button-font-family;
+					font-weight: $button-font-weight;
+					line-height: 1;
+					margin: 0 0 $button-margin-bottom;
+					position: relative;
+					text-decoration: none;
+					text-align: $button-font-align;
+			}
+			@if $display { display: $display; }
+	}
+
+	// @MIXIN
+	//
+	// We use this mixin to add button size styles
+	//
+	// $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
+	// $full-width - We can set $full-width:true to remove side padding extend width - Default: false
+
+	@mixin button-size(
+			$size: false,
+			$height: false,
+			$font-size: $button-font-size-medium,
+			$padding-vertical: $button-padding-vertical,
+			$padding-horizontal: $button-padding-horizontal,
+			$full-width: false
+	) {
+
+		@if $size == tiny {
+			$font-size: $button-font-size-tiny;
+		} @else  if $size == small {
+			$font-size: $button-font-size-small;
+		} @else  if $size == medium {
+			$font-size: $button-font-size-medium;
+		} @else  if $size == large {
+			$font-size: $button-font-size-large;
+		} @else {
+			$font-size: rem($font-size);
+		}
+		font-size: rem($font-size);
+
+		@if $height == false {
+				padding: $padding-vertical $padding-horizontal;
+		} @else {
+				height: $height;
+				padding: ($height - $font-size) / 2 - $button-border-width $padding-horizontal 0 $padding-horizontal;
+		}
+
+		@if $full-width {
+					padding-left: 0;
+					padding-right: 0;
+			width: 100%;
+		}
+	}
+	@mixin button-style-thoughtbot() {
+			color: $button-font-color;
+		background-color: #ee432e;
+		background: linear-gradient(180deg, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
+		border: rem(1px) solid #951100; border-radius: rem(5px); box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+		text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+		&:hover {
+			background: linear-gradient(180deg, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+		}
+		&:active {
+			background-color: #d43c28;
+			background: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+			box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4); 
+		}
+	}
+	@mixin button-thoughtbot() {
+		@include button-base;
+		@include button-size($size: medium);
+		@include button-style-thoughtbot;
+	}
+
+	// modified thoughtbot
+	@mixin button-style-glossy($color: $color-main-1) {
+		background: $color;
+		background: linear-gradient(180deg, lighten($color, 10%) 0%, $color 50%, darken($color, 5%) 50%, darken($color, 15%) 100%);
+		border: 1px solid darken($color, 15%);
+		border-radius: 5px;
+		color: #fff;
+		box-shadow: inset 0 0 0 1px rgba(lighten($color, 20%), 0.4), 0 1px 3px #333;
+		text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
+
+		&:hover {
+			@include background(linear-gradient(top, lighten($color, 25%) 0%, lighten($color, 5%) 50%, darken($color, 5%) 50%, darken($color, 20%) 100%));
+		}
+
+		&:active {
+			background: linear-gradient(top, darken($color, 4%) 0%, darken($color,2%) 50%, darken($color, 10%) 50%, darken($color, 18%) 100%);
+			//background: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+			box-shadow: inset 0 0 0 1px rgba(lighten($color, 20%), 0.4);
+		}
+	}
+	@mixin button-glossy() {
+		@include button-base;
+		@include button-size($size: medium);
+		@include button-style-glossy;
+	}
+
+	@mixin button-style-clean-gray($color: #ccc) {
+		background-color: $color;
+		background: linear-gradient(180deg, lighten($color, 13.3333%), $color);
+		border: 1px solid darken($color, 6.6667%);
+		border-bottom-color: darken($color, 13.3333%);
+		border-radius: 3px;
+		color: darken($color, 60%);
+		text-shadow: 0 1px 0 #eee;
+		&:hover:not(:disabled):not(.disabled) {
+			background-color: lighten($color, 6.6667%);
+			background: linear-gradient(top, lighten($color, 6.6667%), darken($color, 6.6667%));
+			border-color: darken($color, 13.3333%);
+			border-bottom-color: #888;
+			text-shadow: 0 1px 0 #ddd; 
+		}
+		&:active:not(:disabled):not(.disabled) {
+			border: 1px solid #999;
+			border-bottom: 1px solid #777;
+			box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+		}
+			&:disabled, &.disabled {
+					background-color: lighten($color, 6.6667%);
+					background: linear-gradient(180deg, lighten($color, 20%), lighten($color, 6.6667%));
+					border-color: lighten($color, 6.6667%);
+					border-bottom-color: $color;
+					color: darken($color, 13.3333%);
+			}
+	}
+	@mixin button-clean-gray() {
+		@include button-base;
+		@include button-size($size: medium);
+		@include button-style-clean-gray;
+	}
+
+	@mixin button-style-foundation($bg:$color-main-1, $radius:false, $disabled:false) {
+
+		@if $bg {
+			// This find the lightness percentage of the background color.
+			$bg-lightness: lightness($bg);
+
+			background-color: $bg;
+			border-color: scale-color($bg, $lightness: $button-function-factor);
+			&:hover,
+			&:focus { background-color: scale-color($bg, $lightness: $button-function-factor); }
+
+			// We control the text color for you based on the background color.
+			@if $bg-lightness > 70% {
+				color: $button-font-color-alt;
+				&:hover,
+				&:focus { color: $button-font-color-alt; }
+			}
+			@else {
+				color: $button-font-color;
+				&:hover,
+				&:focus { color: $button-font-color; }
+			}
+		}
+
+		// We can set $disabled:true to create a disabled transparent button.
+		@if $disabled {
+			cursor: $cursor-default-value;
+			opacity: $button-disabled-opacity;
+			box-shadow: none;
+			&:hover,
+			&:focus { background-color: $bg; }
+		}
+
+		// We can control how much button radius us used.
+		@if $radius == true { @include radius($button-radius); }
+		@else if $radius { @include radius($radius); }
+
+	}
+	@mixin button-foundation($bg:$color-main-1, $radius:false, $full-width:false, $disabled:false) {
+		@include button-base;
+		@include button-size($size: medium);
+		@include button-style-foundation($bg, $radius, $disabled);
+	}
+
+	$tmp: register-module();
+}
