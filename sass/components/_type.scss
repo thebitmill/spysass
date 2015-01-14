@@ -1,4 +1,6 @@
 @if load-module('type', 'components') {
+	@import "mixins/utilities";
+
 	$heading-font-family: $body-font-family !default;
 	$heading-font-weight: bold !default;
 	$heading-font-style: normal !default;
