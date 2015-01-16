@@ -8,6 +8,27 @@
 		}
 	}
 
+	@mixin ratio($ratio, $initial-width: 100%, $pseudo: 'before') {
+		&:#{$pseudo} {
+			content: '';
+			display: block;
+			width: $initial-width;
+			height: 0;
+			padding-top: (1 / $ratio) * $initial-width;
+			@content;
+		}
+	}
+
+	@mixin full-inline($vertical-align: middle, $pseudo: 'before') {
+		&:#{$pseudo} {
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			content: '';
+			vertical-align: $vertical-align;
+		}
+	}
+
 	@mixin wipe {
 		/*Reset's every elements apperance*/
 		background: none repeat scroll 0 0 transparent;
