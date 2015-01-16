@@ -54,6 +54,13 @@ module has not been loaded, the function returns true and all code in the module
 at the end of which the `register-module()` function is called. If the module has already been loaded,
 `load-module()` returns false and nothing is done.
 
+There are currently 4 types of module files:
+
+1. Functions
+2. Mixins
+3. Components
+4. Themes
+
 ### Module Definition
 
 ```
@@ -67,13 +74,6 @@ at the end of which the `register-module()` function is called. If the module ha
 	$tmp: register-module();
 }
 ```
-
-There are currently 4 types of module files:
-
-1. Functions
-2. Mixins
-3. Components
-4. Themes
 
 ### print-modules()
 
