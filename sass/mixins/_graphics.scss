@@ -1,7 +1,7 @@
 @if load-module('graphics', 'mixins') {
 	@mixin svg-bg($image) {
-			background-image: image-url(#{$image});
-			background-image: none, image-url(#{$image});
+			background-image: image-url('#{$image}.png');
+			background-image: none, image-url('#{$image}.svg');
 	}
 
 	@mixin triangle($triangle-height, $triangle-base:2*$triangle-height, $triangle-direction: left, $triangle-color:$color-main-1) {
