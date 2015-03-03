@@ -1,4 +1,6 @@
 @if load-module('forms/foundation', 'themes') {
+	@import 'functions/units';
+	@import 'mixins/border';
 	@import 'mixins/buttons';
 	@import 'mixins/effects';
 
@@ -21,7 +23,7 @@
 	$input-font-color: rgba(0,0,0,0.75) !default;
 	$input-font-size: 0.875rem !default;//14px for base font size 16
 	$input-bg-color: #fff !default;
-	$input-padding: rem(8);
+	$input-padding: rem(0) !default;
 	$input-focus-bg-color: scale-color(#fff, $lightness: -2%) !default;
 	$input-border-color: scale-color(#fff, $lightness: -20%) !default;
 	$input-focus-border-color: scale-color(#fff, $lightness: -40%) !default;

@@ -1,4 +1,5 @@
 @if load-module('type', 'components') {
+	@import "components/base";
 	@import "mixins/utilities";
 
 	$heading-font-family: $body-font-family !default;
