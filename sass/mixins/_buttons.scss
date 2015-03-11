@@ -176,7 +176,7 @@
 		@include button-style-clean-gray;
 	}
 
-	@mixin button-style-foundation($bg:$color-main-1, $radius:false, $disabled:false) {
+	@mixin button-style-foundation($bg:$color, $radius:false, $disabled:false) {
 
 		@if $bg {
 			// This find the lightness percentage of the background color.
@@ -214,7 +214,7 @@
 		@else if $radius { @include radius($radius); }
 
 	}
-	@mixin button-foundation($bg:$color-main-1, $radius:false, $full-width:false, $disabled:false) {
+	@mixin button-foundation($bg:$color, $radius:false, $full-width:false, $disabled:false) {
 		@include button-base;
 		@include button-size($size: medium);
 		@include button-style-foundation($bg, $radius, $disabled);
