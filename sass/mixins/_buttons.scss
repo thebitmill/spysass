@@ -214,9 +214,9 @@
 		@else if $radius { @include radius($radius); }
 
 	}
-	@mixin button-foundation($bg:$color, $radius:false, $full-width:false, $disabled:false) {
+	@mixin button-foundation($bg:$color, $radius:false, $full-width:false, $disabled:false, $size: 'medium') {
 		@include button-base;
-		@include button-size($size: medium);
+		@include button-size($size: $size);
 		@include button-style-foundation($bg, $radius, $disabled);
 	}
 
