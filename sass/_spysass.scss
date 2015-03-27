@@ -2,6 +2,8 @@ $module-types: 'components', 'functions', 'mixins', 'themes' !default;
 $modules: ((), (), (), ()) !default;
 $loading: () !default;
 
+$warn-already-loaded: false !default;
+
 @function loaded-modules() {
 	$str: 'Spysass Loaded Modules';
 	$nl: '
@@ -21,20 +23,28 @@ $loading: () !default;
 	@return $str;
 }
 
+// This function should be called at the beginning of each module file.
+// It tests if the module has already been loaded. If not, it pushes
+// it to the $loading 'stack', and runs the code inside the load-module block.
+//     ex: @if load-module('base', 'components') {
 @function load-module($name, $type) {
 	$type-index: index($module-types, $type);
 	$list: nth($modules, $type-index);
+
 	@if length($list) > 0 and index($list, $name) {
-		@warn 'Module already loaded: "' + $name + '" (' + $type + ')';
+		@if $warn-already-loaded {
+			@warn 'Module already loaded: "' + $name + '" (' + $type + ')';
+		}
 		@return false;
 	} @else {
-		$tmp: ($name $type-index);
-		$loading: append($loading, $tmp);
+		$loading: append($loading, ($name $type-index));
 		@return true;
 	}
 }
 
-//@function finish-loading($name: $module-name, $type: $module-type) {
+// This function needs to be called at the end of each load-module block.
+// It basically pops a module from the $loading 'stack' and registers it in
+// the appropriate list
 @function register-module() {
 	$t: nth($loading, length($loading));
 	$name: nth($t, 1);
@@ -44,17 +54,16 @@ $loading: () !default;
 	// Remove last item from $loading list
 	$length: length($loading);
 	$result: ();
-	//@warn "before remove last $loading";
-	//@warn $length;
+
+	// Pop the last module from $loading
 	@for $i from 1 through $length {
 		@if $i != $length {
 			$result: append($result, nth($loading, $i));
 		}
 	}
+
 	$loading: $result;
 
-
-	//@warn "before rebuild $modules";
 	// Rebuild $modules list
 	$result: ();
 	@for $i from 1 through length($modules) {
@@ -65,5 +74,6 @@ $loading: () !default;
 		}
 	}
 	$modules: $result;
+
 	@return true;
 }
