@@ -1,4 +1,5 @@
 @if load-module('spytext/niknus', 'themes') {
+	@import "mixins/utilities";
 	@import "niknus/variables";
 
 	.spytext-toolbar{
