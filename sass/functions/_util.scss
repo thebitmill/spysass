@@ -1,0 +1,12 @@
+$img-url: '/img' !default;
+@if load-module('util', 'functions') {
+	@function img-url($path) {
+		@if str-index($path, '/') != 1 {
+			$path: '/' + $path;
+		}
+		$path: $img-url + $path;
+		@return url(#{$path});
+	}
+
+	$tmp: register-module();
+}
