@@ -240,7 +240,7 @@
 	input[type="tel"],
 	input[type="time"],
 	input[type="url"],
-	textarea, [spytext-field], .spytext-field {
+	textarea, [data-st-field], [spytext-field], .spytext-field {
 			-webkit-appearance: none;
 			background-color: $input-bg-color;
 			font-family: $input-font-family;
@@ -282,7 +282,7 @@
 	}
 
 	/* Respect enforced amount of rows for textarea */
-	textarea[rows], [spytext-field], .spytext-field {
+	textarea[rows], [data-st-field], [spytext-field], .spytext-field {
 		height: auto;
 	}
 
