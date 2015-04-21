@@ -5,30 +5,6 @@
 	// @variables
 	//
 
-	$button-display: inline-block !default;
-	$button-margin-bottom: 0px !default;
-	$button-padding-vertical: 1em !default;
-	$button-padding-horizontal: 2em !default;
-	$button-border-width: rem(1px) !default;//NOTE some button styles use border, others do not. this is needed to calculate correct height
-
-	$button-font-family: $body-font-family !default;
-	$button-font-weight: bold !default;
-	$button-font-align: center !default;
-	$button-font-color: #fff !default;
-	$button-font-color-alt: #333 !default;
-
-	$button-font-size-tiny: 0.6875rem !default;//11px when base font size is 16
-	$button-font-size-small: 0.8126rem !default;//13px when base font size is 16
-	$button-font-size-medium: 1rem !default;
-	$button-font-size-large: 1.25rem !default;//20px when base font size is 16
-
-	// We use these to control various hover effects.
-	$button-function-factor: -20% !default;
-
-	// We use this to set default opacity for disabled buttons.
-	$button-disabled-opacity: 0.7 !default;
-
-
 	//
 	// @MIXIN
 	//
@@ -37,23 +13,6 @@
 	// $style - Sets base styles. Can be set to false. Default: true.
 	// $display - Used to control display property. Default: $button-display || inline-block
 
-	@mixin button-base($style:true, $display:$button-display) {
-			@if $style {
-					&:not(:disabled):not(.disabled) {
-							cursor: pointer;
-					}
-					font-family: $button-font-family;
-					font-weight: $button-font-weight;
-					line-height: 1;
-					margin: 0 0 $button-margin-bottom;
-					position: relative;
-					text-decoration: none;
-					text-align: $button-font-align;
-			}
-			@if $display { display: $display; }
-	}
-
-	// @MIXIN
 	//
 	// We use this mixin to add button size styles
 	//
@@ -61,42 +20,54 @@
 	// $full-width - We can set $full-width:true to remove side padding extend width - Default: false
 
 	@mixin button-size(
-			$size: false,
-			$height: false,
-			$font-size: $button-font-size-medium,
-			$padding-vertical: $button-padding-vertical,
-			$padding-horizontal: $button-padding-horizontal,
-			$full-width: false
+		$height: false,
+		$font-size: false,
+		$padding: false,
+		$full-width: false
 	) {
+		$error-message: "You have to supply at least two of the following: $font-size, $height, $padding.";
 
-		@if $size == tiny {
-			$font-size: $button-font-size-tiny;
-		} @else  if $size == small {
-			$font-size: $button-font-size-small;
-		} @else  if $size == medium {
-			$font-size: $button-font-size-medium;
-		} @else  if $size == large {
-			$font-size: $button-font-size-large;
+		$line-height: false;
+
+		@if $height != false {
+			@if $font-size != false {
+				$line-height: $height;
+
+				@if $padding == false {
+					$padding: 0 0;
+				}
+
+				$padding: 0 nth($padding, 2);
+			} @else if $padding != false{
+				$font-size: $height - nth($padding, 1);
+				$line-height: $height;
+				$padding: 0 nth($padding, 2);
+			} @else {
+				@warn $error-message;
+			}
+		} @else if $font-size != false {
+			@if $padding == false {
+				@warn $error-message;
+			}
 		} @else {
-			$font-size: rem($font-size);
-		}
-		font-size: rem($font-size);
-
-		@if $height == false {
-				padding: $padding-vertical $padding-horizontal;
-		} @else {
-				height: $height;
-				padding: ($height - $font-size) / 2 - $button-border-width $padding-horizontal 0 $padding-horizontal;
+			@warn $error-message;
 		}
 
-		@if $full-width {
-					padding-left: 0;
-					padding-right: 0;
-			width: 100%;
+		@if $height != false {
+			height: $height;
+		}
+
+		@if $padding != false {
+			padding: $padding;
+		}
+
+		@if $font-size != false {
+			font-size: rem($font-size);
 		}
 	}
+
 	@mixin button-style-thoughtbot() {
-			color: $button-font-color;
+		color: $button-font-color;
 		background-color: #ee432e;
 		background: linear-gradient(180deg, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
 		border: rem(1px) solid #951100; border-radius: rem(5px); box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
@@ -110,12 +81,6 @@
 			box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4); 
 		}
 	}
-	@mixin button-thoughtbot() {
-		@include button-base;
-		@include button-size($size: medium);
-		@include button-style-thoughtbot;
-	}
-
 	// modified thoughtbot
 	@mixin button-style-glossy($color: $color-main-1) {
 		background: $color;
@@ -135,11 +100,6 @@
 			//background: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
 			box-shadow: inset 0 0 0 1px rgba(lighten($color, 20%), 0.4);
 		}
-	}
-	@mixin button-glossy() {
-		@include button-base;
-		@include button-size($size: medium);
-		@include button-style-glossy;
 	}
 
 	@mixin button-style-clean-gray($color: #ccc) {
@@ -162,62 +122,13 @@
 			border-bottom: 1px solid #777;
 			box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
 		}
-			&:disabled, &.disabled {
-					background-color: lighten($color, 6.6667%);
-					background: linear-gradient(180deg, lighten($color, 20%), lighten($color, 6.6667%));
-					border-color: lighten($color, 6.6667%);
-					border-bottom-color: $color;
-					color: darken($color, 13.3333%);
-			}
-	}
-	@mixin button-clean-gray() {
-		@include button-base;
-		@include button-size($size: medium);
-		@include button-style-clean-gray;
-	}
-
-	@mixin button-style-foundation($bg:$color, $radius:false, $disabled:false) {
-
-		@if $bg {
-			// This find the lightness percentage of the background color.
-			$bg-lightness: lightness($bg);
-
-			background-color: $bg;
-			border-color: scale-color($bg, $lightness: $button-function-factor);
-			&:hover,
-			&:focus { background-color: scale-color($bg, $lightness: $button-function-factor); }
-
-			// We control the text color for you based on the background color.
-			@if $bg-lightness > 70% {
-				color: $button-font-color-alt;
-				&:hover,
-				&:focus { color: $button-font-color-alt; }
-			}
-			@else {
-				color: $button-font-color;
-				&:hover,
-				&:focus { color: $button-font-color; }
-			}
+		&:disabled, &.disabled {
+			background-color: lighten($color, 6.6667%);
+			background: linear-gradient(180deg, lighten($color, 20%), lighten($color, 6.6667%));
+			border-color: lighten($color, 6.6667%);
+			border-bottom-color: $color;
+			color: darken($color, 13.3333%);
 		}
-
-		// We can set $disabled:true to create a disabled transparent button.
-		@if $disabled {
-			cursor: $cursor-default-value;
-			opacity: $button-disabled-opacity;
-			box-shadow: none;
-			&:hover,
-			&:focus { background-color: $bg; }
-		}
-
-		// We can control how much button radius us used.
-		@if $radius == true { @include radius($button-radius); }
-		@else if $radius { @include radius($radius); }
-
-	}
-	@mixin button-foundation($bg:$color, $radius:false, $full-width:false, $disabled:false, $size: 'medium') {
-		@include button-base;
-		@include button-size($size: $size);
-		@include button-style-foundation($bg, $radius, $disabled);
 	}
 
 	$tmp: register-module();
