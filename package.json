@@ -1,6 +1,6 @@
 {
   "name": "tcb-spysass",
-  "version": "0.7.5",
+  "version": "0.8.0-pre",
   "description": "SASS from the Code Bureau.",
   "main": "./lib/index.js",
   "scripts": {
