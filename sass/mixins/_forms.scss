@@ -1,0 +1,5 @@
+@if load-module('forms', 'mixins') {
+	@mixin input-size(
+	) {} 
+	$tmp: register-module();
+}
