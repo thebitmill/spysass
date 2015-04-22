@@ -1,5 +1,7 @@
 @if load-module('grid', 'components') {
 	@import "functions/units";
+	@import "mixins/utilities";
+	@import "components/media-queries";
 
 	// Foundation by ZURB
 	// foundation.zurb.com
