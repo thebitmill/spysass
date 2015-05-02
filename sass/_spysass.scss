@@ -1,6 +1,6 @@
 $module-types: 'components', 'functions', 'mixins', 'themes' !default;
-$modules: ((), (), (), ()) !default;
-$loading: () !default;
+$modules: ((), (), (), ()) !global;
+$loading: () !global;
 
 $warn-already-loaded: false !default;
 
@@ -37,7 +37,7 @@ $warn-already-loaded: false !default;
 		}
 		@return false;
 	} @else {
-		$loading: append($loading, ($name $type-index));
+		$loading: append($loading, ($name, $type-index)) !global;
 		@return true;
 	}
 }
@@ -62,7 +62,7 @@ $warn-already-loaded: false !default;
 		}
 	}
 
-	$loading: $result;
+	$loading: $result !global;
 
 	// Rebuild $modules list
 	$result: ();
@@ -73,7 +73,7 @@ $warn-already-loaded: false !default;
 			$result: append($result, nth($modules, $i));
 		}
 	}
-	$modules: $result;
+	$modules: $result !global;
 
 	@return true;
 }
