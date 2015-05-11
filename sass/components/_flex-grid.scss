@@ -1,51 +1,22 @@
+
 @if load-module('flex-grid', 'components') {
-	.col {
+	$global-gutter: 30px !default;
+	.column, .row {
 		display: flex;
+		> * {
+			flex: 1 0 0px;
+			margin: 0 $global-gutter / 2;
+			&:first-child {
+				margin-left: 0;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	.column {
 		flex-direction: column;
 	}
 
-	.row {
-		display: flex;
-		flex-direction: row;
-	}
-
-	.row, .col {
-		> * {
-			flex-shrink: 0;
-		}
-
-		&.wrap {
-			flex-wrap: wrap;
-		}
-		//&.justify-start { justify-content: flex-start; }//(default): items are packed toward the start line
-		&.justify-end { justify-content: flex-end; }//items are packed toward to end line
-		&.justify-center { justify-content: flex-center; }//items are centered along the line
-		&.justify-space-between { justify-content: space-between; }//items are evenly distributed in the line; first item is on the start line, last item on the end line
-		&.justify-space-around { justify-content: space-around; }//items are evenly distributed in the line with equal space around them
-		&.align-start { align-items: flex-start; }//cross-start margin edge of the items is placed on the cross-start line
-		&.align-end { align-items: flex-end; }//cross-end margin edge of the items is placed on the cross-end line
-		&.align-center { align-items: center; }//items are centered in the cross-axis
-		&.align-baseline { align-items: baseline; }//items are aligned such as their baselines align
-		//&.align-stretch { align-items: stretch; }//(default): stretch to fill the container (still respect min-width/max-width)
-		&.flex-all {
-			> * {
-				flex-basis: auto;
-				flex-grow: 1;
-				flex-shrink: 1;
-			}
-		}
-		> .flex {
-			flex-basis: auto;
-			flex-grow: 1;
-			flex-shrink: 1;
-		}
-		@for $i from 2 through 12 {
-			> .flex-#{$i} {
-				flex-basis: auto;
-				flex-grow: $i;
-				flex-shrink: 1;
-			}
-		}
-	}
 	$tmp: register-module();
 }
