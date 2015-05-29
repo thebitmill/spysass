@@ -1,5 +1,5 @@
 {
-  "name": "tcb-spysass",
+  "name": "spysass",
   "version": "0.8.0",
   "description": "SASS from the Code Bureau.",
   "main": "./lib/index.js",
