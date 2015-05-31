@@ -1,21 +1,21 @@
-@if load-module('spytext/niknus', 'themes') {
+@if load-module('sayer/niknus', 'themes') {
 	@import "mixins/utilities";
 	@import "niknus/variables";
 
-	.spytext-toolbar{
+	.sayer-toolbar{
 		@include clear;
 
 		position: fixed;
 		top: -100px;
-		height: $spytext-toolbar-height;
+		height: $sayer-toolbar-height;
 		width: auto;
 		display: block;
 		font-size: rem(15px);
-		background-color: $spytext-toolbar-background;
+		background-color: $sayer-toolbar-background;
 		padding: 5px;
 		margin: 0px auto;
 		z-index: 6010;
-		border: 2px solid $spytext-toolbar-border-color;
+		border: 2px solid $sayer-toolbar-border-color;
 		border-left: 0;
 		border-top: 0;
 		transition: top 0.5s;
@@ -31,8 +31,8 @@
 			margin:0;
 			padding:0;
 			margin-right:10px;
-			&.spytext-dropdown, &[st-dropdown-type] {
-				height: $spytext-button-height;
+			&.sayer-dropdown, &[st-dropdown-type] {
+				height: $sayer-button-height;
 				overflow: hidden;
 				&.expanded {
 					overflow: visible;
@@ -50,22 +50,22 @@
 					cursor: pointer; 
 				}
 				> li {
-					padding: 0 $spytext-dropdown-padding;
+					padding: 0 $sayer-dropdown-padding;
 					position: relative;
-					background: $spytext-dropdown-background;
-					border-bottom: 1px solid $spytext-dropdown-item-border-color;
-					height: $spytext-button-height + 1;
-					line-height: $spytext-button-height;
+					background: $sayer-dropdown-background;
+					border-bottom: 1px solid $sayer-dropdown-item-border-color;
+					height: $sayer-button-height + 1;
+					line-height: $sayer-button-height;
 					overflow: hidden;
-					&.active { background: $spytext-dropdown-item-active-background; }
+					&.active { background: $sayer-dropdown-item-active-background; }
 					&:last-child {
-						height: $spytext-button-height;
+						height: $sayer-button-height;
 						border: none;
 					}
 				}
 			}
 
-			&.spytext-button-group{
+			&.sayer-button-group{
 				> li {
 					display: block;
 					float: left;
@@ -74,8 +74,8 @@
 		}
 	}
 
-	.spytext-toolbar > .spytext-button-group {
-		button.spytext-button, button[st-button-type] {
+	.sayer-toolbar > .sayer-button-group {
+		button.sayer-button, button[st-button-type] {
 			@include wipe-button;
 			display: block;
 			vertical-align: baseline;
@@ -88,7 +88,7 @@
 			text-decoration: none;
 			text-align: center;
 
-			background-color: $spytext-button-background;
+			background-color: $sayer-button-background;
 			color: #333333;
 
 			box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
@@ -108,7 +108,7 @@
 			}
 			&:not(:disabled):not(.active):hover{
 				cursor: pointer;
-				background-color: $spytext-button-hover-background; 
+				background-color: $sayer-button-hover-background; 
 			}
 			&:before {
 				content: "";
@@ -266,7 +266,7 @@
 		z-index: 7999;
 	}
 
-	.spytext-error, .spytext-success{
+	.sayer-error, .sayer-success{
 		position: fixed;
 		right:10px;
 		z-index:9000;
@@ -283,12 +283,12 @@
 		-webkit-animation-fill-mode: forwards; 
 		animation-fill-mode: forwards;
 	}
-	.spytext-success{
+	.sayer-success{
 		color: darken(#90EE90, 50%);
 		background: #90EE90;
 		border-color: darken(#90EE90, 10%);
 	}
-	.spytext-error{
+	.sayer-error{
 		color: white;
 
 		background: #F80000;
