@@ -1,21 +1,42 @@
 
 @if load-module('flex-grid', 'components') {
+	// NOTE this grid does not allow for any of the columns to be fixed.
+
+	@import "mixins/utilities";
+
 	$global-gutter: 30px !default;
-	.column, .row {
+
+	.row {
 		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-start;
+		justify-content: space-around;
+		margin: 0 (-$global-gutter / 2);
+
 		> * {
-			flex: 1 0 0px;
-			margin: 0 $global-gutter / 2;
-			&:first-child {
-				margin-left: 0;
-			}
-			&:last-child {
-				margin-right: 0;
+			flex: 0 0 0px;
+			flex-basis: calc(100% - #{$global-gutter});
+			//margin: 0 ($global-gutter / 2);
+
+			@for $i from 1 through 12 {
+				&.m-#{$i} {
+					flex-basis: calc(#{100% * ($i / 12)} - #{$global-gutter});
+				}
 			}
 		}
-	}
-	.column {
-		flex-direction: column;
+		
+		&.collapse {
+			margin: 0;
+			> * {
+				flex: 1 0 0px;
+				flex-basis: calc(100%);
+				@for $i from 1 through 12 {
+					&.m-#{$i} {
+						flex-basis: #{100% * ($i / 12)};
+					}
+				}
+			}
+		}
 	}
 
 	$tmp: register-module();
