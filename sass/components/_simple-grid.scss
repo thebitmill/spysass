@@ -1,0 +1,39 @@
+@if load-module('simple-grid', 'components') {
+	// just tried using the flex-grid logic to create a floating grid
+	@import "mixins/utilities";
+
+	$gutter: 30px !default;
+
+	.row {
+		@include clear;
+		width: auto;
+		margin: 0 (-$global-gutter / 2);
+
+		> * {
+			float: left;
+			width: calc(100% - #{$global-gutter});
+			margin: 0 ($global-gutter / 2);
+
+			@for $i from 1 through 12 {
+				&.m-#{$i} {
+					width: calc(#{100% * ($i / 12)} - #{$global-gutter});
+				}
+			}
+		}
+		
+		&.collapse {
+			margin: 0;
+			> * {
+				width: calc(100%);
+				margin: 0;
+				@for $i from 1 through 12 {
+					&.m-#{$i} {
+						width: #{100% * ($i / 12)};
+					}
+				}
+			}
+		}
+	}
+
+	$tmp: register-module();
+}
