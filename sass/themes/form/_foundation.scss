@@ -112,28 +112,28 @@
 	}
 
 	/* Standard Forms */
-	form { margin: 0 0 $form-spacing; }
+	form { margin: 0 0 $global-padding; }
 
-	/* Using forms within rows, we need to set some defaults */
-	form .row {
-			.row {
-					margin: 0 ((-$form-spacing) / 2);
+	///* Using forms within rows, we need to set some defaults */
+	//form .row {
+	//		.row {
+	//				margin: 0 ((-$global-padding) / 2);
 
-					.col { padding: 0 $form-spacing / 2; }
+	//				.col { padding: 0 $global-padding / 2; }
 
-					// Use this to collapse the margins of a form row
-					&.collapse { margin: 0;
+	//				// Use this to collapse the margins of a form row
+	//				&.collapse { margin: 0;
 
-							.col { padding: 0; }
-							input {
-									@include side-radius($opposite-direction, 0);
-							}
+	//						.col { padding: 0; }
+	//						input {
+	//								@include side-radius($opposite-direction, 0);
+	//						}
 
-					}
-			}
-			input.col,
-			textarea.col { padding-#{$default-float}: $form-spacing / 2; }
-	}
+	//				}
+	//		}
+	//		input.col,
+	//		textarea.col { padding-#{$default-float}: $global-padding / 2; }
+	//}
 
 	/* Label Styles */
 	label {
@@ -240,7 +240,7 @@
 	input[type="tel"],
 	input[type="time"],
 	input[type="url"],
-	textarea, [data-st-field], [spytext-field], .spytext-field {
+	textarea, [data-st-field], [sayer-field], .sayer-field, [spytext-field], .spytext-field {
 			-webkit-appearance: none;
 			background-color: $input-bg-color;
 			font-family: $input-font-family;
@@ -282,7 +282,7 @@
 	}
 
 	/* Respect enforced amount of rows for textarea */
-	textarea[rows], [data-st-field], [spytext-field], .spytext-field {
+	textarea[rows], [data-st-field], [sayer-field], .sayer-field, [spytext-field], .spytext-field {
 		height: auto;
 	}
 
