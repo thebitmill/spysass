@@ -29,16 +29,20 @@
 
 		$line-height: false;
 
+		@if $padding != false and type-of($padding) != "list" {
+			$padding: $padding $padding;
+		}
+
 		@if $height != false {
 			@if $font-size != false {
 				$line-height: $height;
 
-				@if $padding == false {
+				@if $padding != false {
+					$padding: 0 nth($padding, 2);
+				} @else {
 					$padding: 0 0;
 				}
-
-				$padding: 0 nth($padding, 2);
-			} @else if $padding != false{
+			} @else if $padding != false {
 				$font-size: $height - nth($padding, 1);
 				$line-height: $height;
 				$padding: 0 nth($padding, 2);
@@ -46,11 +50,19 @@
 				@warn $error-message;
 			}
 		} @else if $font-size != false {
-			@if $padding == false {
+			@if $padding != false {
+				$height: $font-size + nth($padding, 1) * 2;
+				$padding: 0 nth($padding, 2)
+			} @else {
 				@warn $error-message;
 			}
 		} @else {
 			@warn $error-message;
+		}
+
+		@if $full-width == true {
+			$padding: nth($padding, 1) 0;
+			width: 100%;
 		}
 
 		@if $height != false {
@@ -92,7 +104,7 @@
 		text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
 
 		&:hover {
-			@include background(linear-gradient(top, lighten($color, 25%) 0%, lighten($color, 5%) 50%, darken($color, 5%) 50%, darken($color, 20%) 100%));
+			background: linear-gradient(top, lighten($color, 25%) 0%, lighten($color, 5%) 50%, darken($color, 5%) 50%, darken($color, 20%) 100%);
 		}
 
 		&:active {
