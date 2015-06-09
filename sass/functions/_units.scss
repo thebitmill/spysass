@@ -8,15 +8,39 @@
 	}
 
 	@function convert-to-em($value, $base-font-size: $base-font-size)  {
-		$value: strip-unit($value) / strip-unit($base-font-size) * 1em;
+		$value: strip-unit($value) / strip-unit($base-font-size) + 0em;
 		@if ($value == 0em) { $value: 0; }
 		@return $value;
 	}
 
 	@function convert-to-rem($value, $base-font-size: $base-font-size)  {
-		$value: strip-unit($value) / strip-unit($base-font-size) * 1rem;
+		$value: strip-unit($value) / strip-unit($base-font-size) + 0rem;
 		@if ($value == 0rem) { $value: 0; }
 		@return $value;
+	}
+
+	@function convert-to-px($value, $base-font-size: $base-font-size)  {
+		$value: strip-unit($value) * strip-unit($base-font-size) + 0px;
+		@if ($value == 0px) { $value: 0; }
+		@return $value;
+	}
+
+	@function px($values, $base-value: $base-font-size) {
+		$max: length($values);
+
+		$px-values: ();
+		@for $i from 1 through $max {
+			$value: nth($values, $i);
+			@if unit($value) != 'px' {
+				$px-values: append($px-values, convert-to-px($value, $base-value));
+			} @else {
+				$px-values: append($px-values, $value);
+			}
+		}
+
+		@if $max == 1 { $px-values: nth($px-values, 1); }
+
+		@return $px-values;
 	}
 
 	@function rem($values, $base-value: $base-font-size) {
