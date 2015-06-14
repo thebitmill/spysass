@@ -1,5 +1,40 @@
 @if load-module('forms', 'mixins') {
+
+	// setting $height and $vertical-padding will use $font-size and overwrite
+	// any values set to the other variable ie $height overrides
+	// $vertical-padding and the other way around. $height takes precedence
 	@mixin input-size(
-	) {} 
+		$height: false,
+		$horizontal-padding: 0px,
+		$vertical-padding: false,
+		$border-width: 0px,
+		$spacing: 1em,
+		$font-size: 1rem 
+	) {
+		$error-message: "You HAVE to supply at one of the following: $height, $vertical-padding.";
+
+		@if unit($font-size) == 'rem' {
+			$font-size: strip-unit($font-size) * $base-font-size + 0px;
+		}
+		
+		@if $height != false {
+			$vertical-padding: ($height - $font-size - $border-width * 2) / 2;
+		} @else if $vertical-padding != false {
+			$height: $vertical-padding * 2 + $border-width * 2 + $font-size;
+		} @else {
+			@warn $error-message;
+		}
+
+		@if $height != false and $vertical-padding != false {
+			display: block;
+			width: 100%;
+			padding: $vertical-padding $horizontal-padding;
+			border-width: $border-width;
+			margin: 0 0 $spacing 0;
+			font-size: $font-size;
+			height: $height;
+		}
+	} 
+
 	$tmp: register-module();
 }
