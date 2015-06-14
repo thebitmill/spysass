@@ -1,4 +1,5 @@
 @if load-module('buttons', 'mixins') {
+	@import "functions/units";
 	// Based on Foundation 5 buttons
 
 	//
@@ -20,62 +21,57 @@
 	// $full-width - We can set $full-width:true to remove side padding extend width - Default: false
 
 	@mixin button-size(
-		$height: false,
-		$font-size: false,
-		$padding: false,
-		$full-width: false
+		$height: 0,
+		$font-size: 0,
+		$padding: 0,
+		$full-width: false,
+		$border: 0
 	) {
 		$error-message: "You have to supply at least two of the following: $font-size, $height, $padding.";
 
 		$line-height: false;
 
-		@if $padding != false and type-of($padding) != "list" {
+		$padding: rem($padding);
+		$height: rem($height);
+		$font-size: rem($font-size);
+		$padding: rem($padding);
+		$border: rem($border);
+
+		@if type-of($padding) != "list" {
 			$padding: $padding $padding;
 		}
 
-		@if $height != false {
-			@if $font-size != false {
-				$line-height: $height;
-
-				@if $padding != false {
-					$padding: 0 nth($padding, 2);
-				} @else {
-					$padding: 0 0;
-				}
-			} @else if $padding != false {
-				$font-size: $height - nth($padding, 1);
-				$line-height: $height;
+		@if $height != 0 {
+			@if $font-size != 0 {
 				$padding: 0 nth($padding, 2);
+			} @else if nth($padding,1) != 0 {
+				$font-size: $height - nth($padding, 1);
 			} @else {
-				@warn $error-message;
+				@error $error-message;
 			}
-		} @else if $font-size != false {
-			@if $padding != false {
+			$padding: 0 nth($padding, 2);
+		} @else if $font-size != 0 {
+			@if nth($padding, 1) != 0 {
 				$height: $font-size + nth($padding, 1) * 2;
 				$padding: 0 nth($padding, 2)
 			} @else {
-				@warn $error-message;
+				@error $error-message;
 			}
 		} @else {
-			@warn $error-message;
+			@error $error-message;
 		}
 
+		$line-height: $height - 2 * $border;
+
 		@if $full-width == true {
-			$padding: nth($padding, 1) 0;
+			$padding: rem(nth($padding, 1) 0);
 			width: 100%;
 		}
 
-		@if $height != false {
-			height: $height;
-		}
-
-		@if $padding != false {
-			padding: $padding;
-		}
-
-		@if $font-size != false {
-			font-size: rem($font-size);
-		}
+		line-height: rem($line-height);
+		height: rem($height);
+		padding: rem($padding);
+		font-size: rem($font-size);
 	}
 
 	@mixin button-style-thoughtbot() {
