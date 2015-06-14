@@ -105,6 +105,23 @@
 
 		[data-dynamic-height], [data-dynamic-width]	{ overflow: hidden; }
 		.min		{ height: 0 !important; }
+
+		.animate-height {
+			overflow: hidden;
+			&.animate {
+				transition: all 0.5s;
+				transform-origin: 50% 100%;
+			}
+			&.enter:not(.active), &.leave.active {
+				height: 0 !important;
+			}
+			&.hidden {
+				display: none;
+			}
+			&.visible {
+				display: block;
+			}
+		}
 	}
 
 	$tmp: register-module();
