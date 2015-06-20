@@ -5,35 +5,42 @@
 	// $vertical-padding and the other way around. $height takes precedence
 	@mixin input-size(
 		$height: false,
-		$horizontal-padding: 0px,
-		$vertical-padding: false,
-		$border-width: 0px,
+		$padding: false,
+		$border: 0rem,
 		$spacing: 1em,
 		$font-size: 1rem 
 	) {
-		$error-message: "You HAVE to supply at one of the following: $height, $vertical-padding.";
-
-		@if unit($font-size) == 'rem' {
-			$font-size: strip-unit($font-size) * $base-font-size + 0px;
+		@if $height == false and $padding == false {
+			@error  "You HAVE to supply at least one of the following: $height, $padding.";
 		}
-		
+
+
+		@if $padding == false {
+			$padding: 0 0;
+		} @else if type-of($padding) != "list" {
+			$padding: $padding $padding;
+		}
+
+		$font-size: rem($font-size);
+		$border: rem($border);
+
 		@if $height != false {
-			$vertical-padding: ($height - $font-size - $border-width * 2) / 2;
-		} @else if $vertical-padding != false {
-			$height: $vertical-padding * 2 + $border-width * 2 + $font-size;
+			$height: rem($height);
+
+			$padding: ($height - $font-size - $border * 2) / 2 nth($padding, 2);
 		} @else {
-			@warn $error-message;
+			$padding: rem($padding);
+
+			$height: nth($padding, 1) * 2 + $border * 2 + $font-size;
 		}
 
-		@if $height != false and $vertical-padding != false {
-			display: block;
-			width: 100%;
-			padding: $vertical-padding $horizontal-padding;
-			border-width: $border-width;
-			margin: 0 0 $spacing 0;
-			font-size: $font-size;
-			height: $height;
-		}
+		display: block;
+		padding: $padding;
+		border-width: $border;
+		margin: 0 0 $spacing 0;
+		font-size: $font-size;
+		height: $height;
+		width: 100%;
 	} 
 
 	$tmp: register-module();
