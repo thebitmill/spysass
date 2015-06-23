@@ -1,6 +1,6 @@
 {
   "name": "spysass",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "SASS from the Code Bureau.",
   "main": "./lib/index.js",
   "scripts": {
