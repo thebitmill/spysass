@@ -110,7 +110,7 @@
 		}
 	}
 
-	@mixin button-style-clean-gray($color: #ccc) {
+	@mixin button-style-clean-grey($color: #ccc) {
 		background-color: $color;
 		background: linear-gradient(180deg, lighten($color, 13.3333%), $color);
 		border: 1px solid darken($color, 6.6667%);
