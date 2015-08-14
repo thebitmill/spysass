@@ -1,0 +1,304 @@
+.page.user-settings {
+}
+
+.page.gallery {
+	.collection {
+		width: 420px;
+		article {
+			$border: 5px;
+			overflow: hidden;
+			float: left;
+			margin: 0;
+			padding: 0;
+			width: 200px;
+			border-bottom: 1px solid white;
+			figure {
+				border: $border solid $color-unpublished;
+				img {
+					width: 190px;
+					max-width: none;
+					display: block;
+				}
+				figcaption {
+					font-size: rem(12px);
+					background: rgba(0,0,0,0.6);
+					color: white;
+					position: absolute;
+					bottom: $border;
+					left: $border;
+					right: $border;
+					padding: 5px 10px;
+				}
+			}
+			time {
+				display: none;
+			}
+			.controls {
+				top: $border;
+				right: $border;
+			}
+			&:nth-child(odd) {
+				border-right: 1px solid white;
+				width: 201px;
+			}
+			&[data-published="true"] {
+				figure {
+					border-color: $color-published;
+				}
+			}
+		}
+	}
+}
+
+.page.errors {
+	padding: $global-padding;
+	overflow-x: hidden;
+	overflow-y: auto;
+	.collection {
+		width: 100%;
+		article {
+			&.client {
+				background: lighten(orange, 30%);
+			}
+			&.server {
+				background: lighten(red, 30%);
+			}
+			&:not(:last-child) {
+				border-bottom: 1px solid white;
+			}
+			cursor: pointer;
+			width: 100%;
+			.info {
+				padding: $global-padding;
+			}
+			.summary {
+				width: 100%;
+				display: flex;
+
+				> * {
+					flex: 1 0 0px;
+					padding: $global-padding;
+				}
+				> .date-created {
+					flex: 0 0 auto;
+					width: 170px;
+				}
+				> .name {
+					flex: 0 0 auto;
+					width: 150px;
+				}
+				> .status {
+					flex: 0 0 auto;
+					width: 60px;
+				}
+				> .controls {
+					padding: 0 5px 0 0;
+					width: 45px;
+					flex: 0 0 auto;
+					display: flex;
+					align-items: center;
+				}
+			}
+			pre {
+				overflow-x: auto;
+			}
+			.info {
+				display: none;
+				&.visible {
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.page nav.front {
+	> ul {
+		@include wipe-list;
+		> li {
+			float: left;
+			width: 25%;
+			> a {
+				border: 15px solid white;
+				background: #ccc;
+				display: block;
+				padding: 50px 0;
+				text-align: center;
+				font-weight: bold;
+				text-decoration: none;
+				transform: background 0.5s;
+				&:hover {
+					background: #ddd;
+				}
+			}
+		}
+	}
+}
+
+.page.users {
+	.collection {
+		article {
+			padding: 5px $global-padding;
+			position: relative;
+			cursor: pointer;
+			.controls {
+				position: absolute;
+				top: 12px;
+				right: 0;
+			}
+			> header {
+				@include clear;
+				> * { display: inline-block; vertical-align: middle; }
+				> h1 {
+					font-size: rem(16);
+					margin: 0;
+					padding: 0;
+				}
+			
+
+			}
+			> ul {
+				font-size: rem(12);
+				list-style: none;
+				line-height: 1.2;
+				margin: 0;
+				padding: 0;
+			}
+			> .info {
+				display: none;
+				&.visible {
+					display: block;
+				}
+			}
+			&:nth-child(odd) {
+				background: #ddd;
+			}
+		}
+	}
+}
+
+.page.content {
+	.languages {
+		div.hidden {
+			display: none;
+		}
+	}
+}
+
+.page.teams {
+	.collection {
+		width: 500px;
+	}
+}
+.page.matches {
+	.collection {
+		width: 500px;
+	}
+}
+
+.page.trips {
+	.collection {
+		width: 500px;
+	}
+	form.trip {
+		select[multiple] {
+			width: 100%;
+			height: 300px;
+		}
+		ul.selected {
+			&:empty {
+				&:before {
+					content: "Inga matcher valda";
+					display: list-item;
+				}
+			}
+		}
+	}
+}
+
+//.page.news-articles {
+//	.spytext-field {
+//		height: 2000px;
+//	}
+//}
+//.page.test {
+//	display: flex;
+//	.left {
+//		flex: 2;
+//
+//		background: red;
+//		textarea {
+//			height: 2000px;
+//		}
+//	}
+//	.right {
+//		flex: 1;
+//		background: blue;
+//	}
+//}
+
+.page.orders {
+	//display: flex;
+	//flex-direction: column;
+	flex-basis: 0;
+	overflow-y: auto;
+	> h1 {
+		//flex: 0 0 auto;
+	}
+	> .collection {
+		//flex: 1 1 0px;
+		//overflow-y: scroll;
+		table {
+			width: 100%;
+			td {
+				&:first-child {
+					width: 80px;
+				}
+				&:nth-child(2) {
+					width: 160px;
+				}
+				&:nth-child(3) {
+					width: 230px;
+				}
+			}
+			tbody {
+				tr {
+					&.full {
+						> td {
+							> div {
+								padding: 0 15px;
+								display: flex;
+								overflow: hidden;
+								&.animate {
+									transition: all 0.5s;
+									transform-origin: 50% 100%;
+								}
+								&.enter:not(.active), &.leave.active {
+									height: 0 !important;
+								}
+								&.hidden {
+									display: none;
+								}
+							}
+						}
+					}
+					&.item {
+						> td {
+							padding: 5px 0;
+						}
+						transition: background 0.5s;
+						&:hover {
+							background: #c6c6c6 !important;
+							cursor: pointer;
+						}
+					}
+				}
+				&:nth-child(even) {
+					> tr {
+						background: #eee;
+					}
+				}
+			}
+		}
+	}
+}
