@@ -172,11 +172,13 @@ body > div.container {
 				background: #eee;
 				padding: 0 0 0 $global-padding;
 				position: relative;
+				height: 41px;
 				border-bottom: 1px solid #999;
 				box-shadow: 0 5px 0px 0px rgba(0,0,0,0.1);
 				overflow: hidden;
 				display: flex;
 				h1 {
+					line-height: 40px;
 					margin: 0;
 					flex-shrink: 1;
 					flex-grow: 1;
