@@ -1,4 +1,28 @@
 @if load-module('math', 'functions') {
+	// from http://stackoverflow.com/questions/15961089/how-to-convert-integer-to-hex-in-sass
+	/** Returns an at least one byte hex value */
+	@function dec-to-hex($d) {
+		$hexvals: "a" "b" "c" "d" "e" "f";
+		$base: 16;
+		$quotient: $d;
+		$result: "";
+		@if $d == 0 {
+			$result: "00";
+		}
+		@while $quotient != 0 {
+			$mod: $quotient % $base;
+			$quotient: floor($quotient / $base);
+			@if $mod > 9 {
+				$mod: nth($hexVals, $mod - 9);
+			}
+			@if $d < $base {
+				$result: "0" + $mod;
+			} @else {
+				$result: $mod + $result;
+			}
+		}
+		@return $result;
+	}
 	// SASSY MATH
 
 	@charset "UTF-8";
