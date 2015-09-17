@@ -1,0 +1,32 @@
+@if load-module('forms/fieldset/foundation', 'themes') {
+	// We use these to style the fieldset border and spacing.
+	$fieldset-border-style: solid !default;
+	$fieldset-border-width: 1px !default;
+	$fieldset-border-color: #ddd !default;
+	$fieldset-padding: rem(20) !default;
+	$fieldset-margin: rem(18 0) !default;
+
+	// We use these to style the legends when you use them
+	$legend-bg: #fff !default;
+	$legend-font-weight: bold !default;
+	$legend-padding: rem(0 3) !default;
+
+
+	/* We add basic fieldset styling */
+	fieldset {
+		border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+		padding: $fieldset-padding;
+		margin: $fieldset-margin;
+
+		// and legend styles
+		legend {
+			font-weight: $legend-font-weight;
+			background: $legend-bg;
+			padding: $legend-padding;
+			margin: 0;
+			margin-#{$default-float}: rem(-3);
+		}
+	}
+
+	$tmp: register-module();
+}

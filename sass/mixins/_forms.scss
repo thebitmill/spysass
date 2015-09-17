@@ -1,4 +1,5 @@
 @if load-module('forms', 'mixins') {
+	// NOTE does not set border, $border is only used for calculations
 
 	// setting $height and $vertical-padding will use $font-size and overwrite
 	// any values set to the other variable ie $height overrides
@@ -7,7 +8,7 @@
 		$height: false,
 		$padding: false,
 		$border: 0rem,
-		$spacing: 1em,
+		$spacing: 0,
 		$font-size: 1rem 
 	) {
 		@if $height == false and $padding == false {
@@ -35,8 +36,7 @@
 		}
 
 		display: block;
-		padding: $padding;
-		border-width: $border;
+		padding: 0 nth($padding, 2);
 		margin: 0 0 $spacing 0;
 		font-size: $font-size;
 		height: $height;
