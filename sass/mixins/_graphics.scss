@@ -6,7 +6,7 @@
 			background-image: none, img-url('#{$image}.svg');
 	}
 
-	@mixin triangle($triangle-height, $triangle-base:2*$triangle-height, $triangle-direction: left, $triangle-color:$color-main-1) {
+	@mixin triangle($triangle-height, $triangle-base:2*$triangle-height, $triangle-direction: left, $triangle-color:$base-color) {
 		width: 0;
 		height: 0;
 		@if ($triangle-direction == top) {
