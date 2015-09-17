@@ -37,8 +37,10 @@
 	$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 	@if length($input-padding) == 1 {
-		$input-padding: rem($input-padding $input-padding);
+		$input-padding: $input-padding $input-padding;
 	}
+
+	$input-padding: rem($input-padding);
 
 	$input-height: $input-font-size + (nth($input-padding, 1) + $input-border-width) * 2;
 
@@ -137,5 +139,38 @@
 		width:100%;
 	}
 
-	$tmp: register-module();
+	div.container {
+		margin-bottom: $form-spacing;
+		position: relative;
+		&.focus {
+
+		}
+		&.not-empty {
+			input {
+				padding-top: rem(10px);
+			}
+			textarea {
+				padding-top: rem(10px) + nth($input-padding, 2);
+			}
+			> label.placeholder {
+				display: block;
+			}
+			&.focus {
+				> label.placeholder {
+					color: blue;
+				}
+			}
+		}
+		> label.placeholder {
+			display: none;
+			color: #aaa;
+			font-size: 11px;
+			font-weight: bold;
+			top: 7px;
+			line-height: 1;
+			position: absolute;
+			left: $input-border-width;
+			padding-left: nth($input-padding, 2);
+		}
+	}
 }
