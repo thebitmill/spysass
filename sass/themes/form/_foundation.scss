@@ -16,6 +16,7 @@
 	$input-font-family: inherit !default;
 	$input-font-color: rgba(0,0,0,0.75) !default;
 	$input-font-size: 1rem !default;//14px for base font size 16
+	$input-placeholder-color: #aaa !default;
 	$input-bg-color: #fff !default;
 	$input-padding: rem(8) !default;
 	$input-focus-bg-color: scale-color(#fff, $lightness: -2%) !default;
@@ -92,8 +93,27 @@
 		}
 	}
 
+	input, textarea {
+		&:-ms-input-placeholder {
+			color: $input-placeholder-color;
+		}
+		&::-webkit-input-placeholder {
+			color: $input-placeholder-color;
+		}
+		&:-moz-placeholder {
+			opacity: 1;
+			color: $input-placeholder-color;
+		}
+		&::-moz-placeholder {
+			opacity: 1;
+			color: $input-placeholder-color;
+		}
+	}
+
+	$text-area-padding-top: nth($input-padding, 1) - rem(4px);
+
 	textarea, [spytext-field], .spytext-field {
-		padding: $input-padding;
+		padding: $text-area-padding-top nth($input-padding, 2);
 		height: auto;
 	}
 
