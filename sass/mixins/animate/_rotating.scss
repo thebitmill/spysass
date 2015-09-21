@@ -1,126 +1,156 @@
 // ---------------------------------------------------------------------------
 @mixin rotateIn {
-@include keyframes(rotateIn) {
-  0% {
-    @include transform-origin(center center);
-    @include rotate(-200deg);
-    opacity: 0; }
-  100% {
-    @include transform-origin(center center);
-    @include rotate(0);
-    opacity: 1; } }
+	@keyframes rotateIn {
+		0% {
+			transform-origin: center center;
+			rotate: -200deg;
+			opacity: 0;
+		}
+		100% {
+			transform-origin: center center;
+			rotate: 0;
+			opacity: 1;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateInDownLeft {
-@include keyframes(rotateInDownLeft) {
-  0% {
-    @include transform-origin(left bottom);
-    @include rotate(-90deg);
-    opacity: 0; }
-  100% {
-    @include transform-origin(left bottom);
-    @include rotate(0);
-    opacity: 1; } }
+	@keyframes rotateInDownLeft {
+		0% {
+			transform-origin: left bottom;
+			rotate: -90deg;
+			opacity: 0;
+		}
+		100% {
+			transform-origin: left bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateInUpLeft {
-@include keyframes(rotateInUpLeft) {
-  0% {
-    @include transform-origin(left bottom);
-    @include rotate(90deg);
-    opacity: 0; }
-  100% {
-    @include transform-origin(left bottom);
-    @include rotate(0);
-    opacity: 1; } }
+	@keyframes rotateInUpLeft {
+		0% {
+			transform-origin: left bottom;
+			rotate: 90deg;
+			opacity: 0;
+		}
+		100% {
+			transform-origin: left bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateInUpRight {
-@include keyframes(rotateInUpRight) {
-  0% {
-    @include transform-origin(right bottom);
-    @include rotate(-90deg);
-    opacity: 0; }
-  100% {
-    @include transform-origin(right bottom);
-    @include rotate(0);
-    opacity: 1; } }
+	@keyframes rotateInUpRight {
+		0% {
+			transform-origin: right bottom;
+			rotate: -90deg;
+			opacity: 0;
+		}
+		100% {
+			transform-origin: right bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateInDownRight {
-@include keyframes(rotateInDownRight) {
-  0% {
-    @include transform-origin(right bottom);
-    @include rotate(90deg);
-    opacity: 0; }
-  100% {
-    @include transform-origin(right bottom);
-    @include rotate(0);
-    opacity: 1; } }
-// ---------------------------------------------------------------------------
-@include keyframes(rotateOut) {
-  0% {
-    @include transform-origin(center center);
-    @include rotate(0);
-    opacity: 1; }
-  100% {
-    @include transform-origin(center center);
-    @include rotate(200deg);
-    opacity: 0; } }
+	@keyframes rotateInDownRight {
+		0% {
+			transform-origin: right bottom;
+			rotate: 90deg;
+			opacity: 0;
+		}
+		100% {
+			transform-origin: right bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+	}
+	// ---------------------------------------------------------------------------
+	@keyframes rotateOut {
+		0% {
+			transform-origin: center center;
+			rotate: 0;
+			opacity: 1;
+		}
+		100% {
+			transform-origin: center center;
+			rotate: 200deg;
+			opacity: 0;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateOutDownLeft {
-@include keyframes(rotateOutDownLeft) {
-  0% {
-    @include transform-origin(left bottom);
-    @include rotate(0);
-    opacity: 1; }
-  100% {
-    @include transform-origin(left bottom);
-    @include rotate(90deg);
-    opacity: 0; } }
+	@keyframes rotateOutDownLeft {
+		0% {
+			transform-origin: left bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+		100% {
+			transform-origin: left bottom;
+			rotate: 90deg;
+			opacity: 0;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateOutUpLeft {
-@include keyframes(rotateOutUpLeft) {
-  0% {
-    @include transform-origin(left bottom);
-    @include rotate(0);
-    opacity: 1; }
-  100% {
-    @include transform-origin(left bottom);
-    @include rotate(-90deg);
-    opacity: 0; } }
+	@keyframes rotateOutUpLeft {
+		0% {
+			transform-origin: left bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+		100% {
+			transform-origin: left bottom;
+			rotate: -90deg;
+			opacity: 0;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateOutDownRight {
-@include keyframes(rotateOutDownRight) {
-  0% {
-    @include transform-origin(right bottom);
-    @include rotate(0);
-    opacity: 1; }
-  100% {
-    @include transform-origin(right bottom);
-    @include rotate(-90deg);
-    opacity: 0; } }
+	@keyframes rotateOutDownRight {
+		0% {
+			transform-origin: right bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+		100% {
+			transform-origin: right bottom;
+			rotate: -90deg;
+			opacity: 0;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rotateOutUpRight {
-@include keyframes(rotateOutUpRight) {
-  0% {
-    @include transform-origin(right bottom);
-    @include rotate(0);
-    opacity: 1; }
-  100% {
-    @include transform-origin(right bottom);
-    @include rotate(90deg);
-    opacity: 0; } }
+	@keyframes rotateOutUpRight {
+		0% {
+			transform-origin: right bottom;
+			rotate: 0;
+			opacity: 1;
+		}
+		100% {
+			transform-origin: right bottom;
+			rotate: 90deg;
+			opacity: 0;
+		}
+	}
 }
