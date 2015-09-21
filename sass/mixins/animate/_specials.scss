@@ -1,58 +1,58 @@
 // ---------------------------------------------------------------------------
 @mixin hinge {
-	@include keyframes(hinge) {
+	@keyframes hinge {
 		0% {
-			@include rotate(0);
-			@include transform-origin(top left);
-			@include animation-timing-function(ease-in-out); 
+			rotate: 0;
+			transform-origin: top left;
+			animation-timing-function: ease-in-out; 
 		}
 		20%, 60% {
-			@include rotate(80deg);
-			@include transform-origin(top left);
-			@include animation-timing-function(ease-in-out); 
+			rotate: 80deg;
+			transform-origin: top left;
+			animation-timing-function: ease-in-out; 
 		}
 		40% {
-			@include rotate(60deg);
-			@include transform-origin(top left);
-			@include animation-timing-function(ease-in-out); 
+			rotate: 60deg;
+			transform-origin: top left;
+			animation-timing-function: ease-in-out; 
 		}
 		80% {
-			@include transform(rotate(60deg) translateY(0));
-			@include opacity(1);
-			@include transform-origin(top left);
-			@include animation-timing-function(ease-in-out); 
+			transform: rotate(60deg) translateY(0);
+			opacity: 1;
+			transform-origin: top left;
+			animation-timing-function: ease-in-out; 
 		}
 		100% {
-			@include translateY(700px);
-			@include opacity(0);
+			translateY: 700px;
+			opacity: 0;
 		}
 	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rollIn {
-	@include keyframes(rollIn) {
+	@keyframes rollIn {
 		0% {
-			@include opacity(0);
-			@include transform(translateX(-100%) rotate(-120deg)); 
+			opacity: 0;
+			transform: translateX(-100%) rotate(-120deg); 
 		}
 		100% {
-			@include opacity(1);
-			@include transform(translateX(0px) rotate(0deg)); 
+			opacity: 1;
+			transform: translateX(0px) rotate(0deg); 
 		} 
 	}
 }
 
 // ---------------------------------------------------------------------------
 @mixin rollOut {
-	@include keyframes(rollOut) {
+	@keyframes rollOut {
 		0% {
-			@include opacity(1);
-			@include transform(translateX(0px) rotate(0deg));
+			opacity: 1;
+			transform: translateX(0px) rotate(0deg);
 		}
 		100% {
-			@include opacity(0);
-			@include transform(translateX(-100%) rotate(-120deg)); 
+			opacity: 0;
+			transform: translateX(-100%) rotate(-120deg); 
 		} 
 	}
 }
