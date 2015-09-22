@@ -94,6 +94,17 @@
 	}
 
 	input, textarea {
+		// from http://stackoverflow.com/a/14739092/4273291
+		&::-ms-reveal {
+			display: none;
+			width: 0;
+			height: 0;
+		}
+		&::-ms-clear {
+			display: none;
+			width: 0;
+			height: 0;
+		}
 		&:-ms-input-placeholder {
 			color: $input-placeholder-color;
 		}
