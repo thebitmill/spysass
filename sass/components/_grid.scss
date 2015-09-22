@@ -173,7 +173,9 @@
 
 			.row {margin-left:0; margin-right:0;}
 		}
+	}
 
+	.row, .row-col, .row-col-pan {
 		.row {
 			@include grid-row($behavior:nest);
 			&.collapse { @include grid-row($behavior:nest-collapse); }
@@ -190,6 +192,20 @@
 		margin-#{$default-float}: 0;
 		margin-#{$opposite-direction}: 0;
 		width: 100%;
+	}
+
+	.row-col {
+		width: calc(100% - #{$column-gutter});
+		max-width: $row-max-width;
+		margin: 0 auto;
+		padding-left: $column-gutter / 2;
+		padding-right: $column-gutter / 2;
+	}
+
+	.row-col-pan {
+		width: calc(100% - #{$column-gutter});
+		max-width: $row-max-width - $column-gutter;
+		margin: 0 auto;
 	}
 
 	[class*="column"] + [class*="column"]:last-child { float: $opposite-direction; }
