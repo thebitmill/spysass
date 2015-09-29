@@ -126,7 +126,7 @@ button {
 
 		&[data-command="edit"] {
 			background-color: blue;
-			background-image: img-url('admin/icon-edit.svg');
+			background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2230%22%20height%3D%2230%22%20viewBox%3D%220%200%2030%2030%22%3E%3Cpath%20d%3D%22M23.983%2015.8V30H0V6.017h14.19l-2.914%202.91H2.91V27.09h18.162v-8.38l2.91-2.91zm-13.316-1.984l5.503%205.5-7.28%201.648%201.777-7.148zM30%205.666L17.893%2017.77l-5.67-5.668L24.33%200%2030%205.667z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E);
 			background-size: 25px auto;
 		}
 
