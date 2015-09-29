@@ -190,8 +190,18 @@ body > div.container {
 			overflow-y: auto;
 		}
 	}
+	&.crud {
+		display: flex;
+		flex-direction: row;
+		.form {
+			flex-grow: 1;
+		}
+		.collection {
+			width: 300px;
+		}
+	}
 
-	&.collection {
+	&.collection, .collection {
 		overflow-x: hidden;
 		overflow-y: auto;
 		.model {
