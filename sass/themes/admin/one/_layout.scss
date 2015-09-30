@@ -204,25 +204,54 @@ body > div.container {
 	&.collection, .collection {
 		overflow-x: hidden;
 		overflow-y: auto;
+		> header {
+			@include clear;
+			h1 {
+				float: left;
+			}
+			a.button.new {
+				&:before {
+					content: '+';
+					font-size: 32px;
+					display: inline-block;
+					vertical-align: middle;
+					padding-right: 10px;
+				}
+				background: green;
+				float: right;
+			}
+		}
 		.model {
 			&:hover {
 				cursor: pointer;
 			}
+			display: block;
+			text-decoration: none;
 			padding: 15px;
 			border-bottom: 1px solid white;
 			position: relative;
+			background: #ddd;
+			&:hover {
+				background: #bbb;
+			}
 			.controls {
 				position: absolute;
 				top: 0;
 				right: 0;
 			}
 
-			&[data-published="false"] {
+			&.unpublished {
 				background: $color-unpublished;
+				&:hover {
+					background: darken($color-unpublished, 15%);
+				}
 			}
 
-			&[data-published="true"] {
+			&.published {
 				background: $color-published;
+				&:hover {
+					background: desaturate(darken($color-published, 25%), 30%);
+				}
 			}
 
 			> header {

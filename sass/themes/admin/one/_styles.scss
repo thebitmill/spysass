@@ -41,9 +41,9 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-button {
+button, .button {
 	@include wipe-button;
-	@include button-size($font-size: 18px, $padding: 5px 15px);
+	@include button-size($font-size: 18px, $padding: 10px 20px);
 
 	cursor: pointer;
 	display: block;
