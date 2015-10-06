@@ -56,16 +56,17 @@
 	overflow-y: auto;
 	.collection {
 		width: 100%;
-		article {
-			&.client {
+		.model {
+			&[data-status^="4"] {
 				background: lighten(orange, 30%);
 			}
-			&.server {
+			&[data-status^="5"] {
 				background: lighten(red, 30%);
 			}
 			&:not(:last-child) {
 				border-bottom: 1px solid white;
 			}
+			padding: 0;
 			cursor: pointer;
 			width: 100%;
 			.info {
@@ -210,21 +211,6 @@
 //		height: 2000px;
 //	}
 //}
-//.page.test {
-//	display: flex;
-//	.left {
-//		flex: 2;
-//
-//		background: red;
-//		textarea {
-//			height: 2000px;
-//		}
-//	}
-//	.right {
-//		flex: 1;
-//		background: blue;
-//	}
-//}
 
 .page.orders {
 	//display: flex;
@@ -237,56 +223,41 @@
 	> .collection {
 		//flex: 1 1 0px;
 		//overflow-y: scroll;
-		table {
+		.th, .model > .summary {
 			width: 100%;
-			td {
-				&:first-child {
-					width: 80px;
+			display: flex;
+			> div {
+				padding: 5px 10px;
+				flex: 1;
+				&.number {
+					flex: 0 0 100px;
 				}
-				&:nth-child(2) {
-					width: 160px;
-				}
-				&:nth-child(3) {
-					width: 230px;
+				&.quantity {
+					flex: 0 0 60px;
+					text-align: center;
 				}
 			}
-			tbody {
-				tr {
-					&.full {
-						> td {
-							> div {
-								padding: 0 15px;
-								display: flex;
-								overflow: hidden;
-								&.animate {
-									transition: all 0.5s;
-									transform-origin: 50% 100%;
-								}
-								&.enter:not(.active), &.leave.active {
-									height: 0 !important;
-								}
-								&.hidden {
-									display: none;
-								}
-							}
-						}
-					}
-					&.item {
-						> td {
-							padding: 5px 0;
-						}
-						transition: background 0.5s;
-						&:hover {
-							background: #c6c6c6 !important;
-							cursor: pointer;
-						}
-					}
+		}
+		.model {
+			padding: 0;
+			> .details {
+				padding: 0 15px;
+				display: flex;
+				overflow: hidden;
+				&.animate {
+					transition: all 0.5s;
+					transform-origin: 50% 100%;
 				}
-				&:nth-child(even) {
-					> tr {
-						background: #eee;
-					}
+				&.enter:not(.active), &.leave.active {
+					height: 0 !important;
 				}
+				&.hidden {
+					display: none;
+				}
+			}
+			&:hover {
+				background: #c6c6c6 !important;
+				cursor: pointer;
 			}
 		}
 	}
