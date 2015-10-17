@@ -76,7 +76,7 @@ form select[multiple] {
 
 .controls {
 	@include clear;
-	button {
+	.button, button {
 		@include wipe-button;
 		&:not(:disabled) {
 			cursor: pointer;

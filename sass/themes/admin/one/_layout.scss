@@ -204,6 +204,14 @@ body > div.container {
 	&.collection, .collection {
 		overflow-x: hidden;
 		overflow-y: auto;
+		&:empty {
+			&:before {
+				content: 'No models found.';
+			}
+		}
+		.container:empty:before {
+			content: 'No models found.';
+		}
 		> header {
 			@include clear;
 			h1 {

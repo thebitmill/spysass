@@ -1,3 +1,26 @@
+.page nav.front {
+	> ul {
+		@include wipe-list;
+		> li {
+			float: left;
+			width: 25%;
+			> a {
+				border: 15px solid white;
+				background: #ccc;
+				display: block;
+				padding: 50px 0;
+				text-align: center;
+				font-weight: bold;
+				text-decoration: none;
+				transform: background 0.5s;
+				&:hover {
+					background: #ddd;
+				}
+			}
+		}
+	}
+}
+
 .page.user-settings {
 }
 
@@ -107,29 +130,6 @@
 				display: none;
 				&.visible {
 					display: block;
-				}
-			}
-		}
-	}
-}
-
-.page nav.front {
-	> ul {
-		@include wipe-list;
-		> li {
-			float: left;
-			width: 25%;
-			> a {
-				border: 15px solid white;
-				background: #ccc;
-				display: block;
-				padding: 50px 0;
-				text-align: center;
-				font-weight: bold;
-				text-decoration: none;
-				transform: background 0.5s;
-				&:hover {
-					background: #ddd;
 				}
 			}
 		}
