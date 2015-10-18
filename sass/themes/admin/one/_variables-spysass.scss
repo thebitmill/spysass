@@ -1,3 +1,6 @@
+$base-color: #0075a2;
+$nav-bg: #2b333d;
+
 // $button-display: inline-block;
 // $button-margin-bottom: 0px;
 // $button-padding-vertical: 1em;
@@ -93,14 +96,14 @@
 // $color-message: #333;
 // $color-error: #c89999;
 // $color-success: #628b1c;
-// $base-font-size: 16px;
+$base-font-size: 14px;
 // $base-line-height: 1.6;
 // $base-line-height-computed: $base-line-height * 1rem;
 // $body-font-color: #222;
-$body-font-family: "Arial", serif;
+$body-font-family: "Arial", sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
-// $body-bg: #fff;
+$body-bg: #f1f4f8;
 // $font-smoothing: subpixel-antialiased;
 // $heading-font-family: $body-font-family;
 // $heading-font-weight: bold;

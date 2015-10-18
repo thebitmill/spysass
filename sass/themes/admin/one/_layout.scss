@@ -1,4 +1,5 @@
 @import "functions/util";
+@import "mixins/graphics";
 
 html, body {
 	height: 100%;
@@ -47,99 +48,100 @@ body > header {
 
 body > div.container {
 	display: flex;
-	align-items: stretch;
 	flex-grow: 1;
-	> nav {
-		$width: 80px;
-		$sub-width: 120px;
+	align-items: stretch;
+	> div.left {
+		display: flex;
 		flex-shrink: 0;
-		//width: $width;
-		background-color: #555;
-		position: relative;
-		//transition: margin 0.5s, width 0.5s;
+		flex-direction: column;
+		background-color: $nav-bg;
+		> nav {
+			flex-grow: 1;
+			//$width: 140px;
+			//$sub-width: 120px;
+			position: relative;
+			height: 100%;
 
-		ul {
-			@include wipe-list;
-		}
-
-		> ul {
-			line-height: 1;
-			> li {
-				width: $width;
-				height: 70px;
-				border-bottom: 1px solid #777;
-				transition: margin 0.5s;
-				> a {
-					text-decoration: none;
-					background-color: #555;
-					height: 100%;
-					width: 100%;
-					display: block;
-					color: white;
-					color: test();
-					font-size: 14px;
-					transition: background 0.5s;
-					&:before {
-						content: "";
+			ul {
+				@include wipe-list;
+				display: block;
+				li {
+					> a {
 						display: block;
-						width: 100%;
-						height: 50px;
-						background-position: center center;
-						background-repeat: no-repeat;
-
+						text-decoration: none;
+						color: white;
+						transition: background 0.5s;
 					}
-					> span {
-						display: block;
-						height: 20px;
-						overflow: hidden;
-						width: 100%;
-						text-align: center;
+
+					&:hover {
+						> a {
+							background-color: darken($nav-bg, 10%);
+						}
 					}
 				}
-				> ul {
-					display: block;
-					position: absolute;
-					overflow: hidden;
-					left: $width;
-					top: 0;
-					width: 0;
-					background: #777;
-					height: 100%;
-					transition: width 0.5s;
-					> li {
-						line-height: 1;
-						width: $sub-width;
-						border-bottom: 1px solid #999;
-						a {
-							transition: background 0.5s;
-							color: white;
-							text-decoration: none;
-							display: block;
-							padding: 5px 0px 5px 5px;
-							background: #777;
+			}
+
+			> ul {
+				font-size: 12px;
+				line-height: 1;
+				> li {
+					$icon-size: 30px;
+					transition: margin 0.5s;
+					> a {
+						padding-right: 25px;
+						position: relative;
+						&:before {
+							content: "";
+							display: inline-block;
+							vertical-align: middle;
+							width: $icon-size;
+							height: $icon-size;
+							margin: 3px 9px;
+							background-size: 100% auto;
+							background-position: center center;
+							background-repeat: no-repeat;
 						}
-						&.current, &:hover {
-							> a {
-								background-color: #aaa;
+						&:after {
+							$triangle-size: 14px;
+							content: '';
+							display: block;
+							position: absolute;
+							right: -$triangle-size / 2;
+							transition: right 0.5s;
+							top: ($icon-size + 3px - $triangle-size / 2) / 2;
+							@include triangle($height: $triangle-size / 2, $color: $body-bg);
+						}
+					}
+					&.current {
+						> a {
+							background-color: $base-color;
+							&:after {
+								right: 0;
 							}
 						}
 					}
-				}
-				@import "images/navigation";
-				&.current, &:hover {
-					> a {
-						background-color: #777;
-					}
-				}
-
-				&.current {
-					&.sub {
-						//width: $sub-width + $width;
-						margin-right: $sub-width;
+					&:not(.current):not(:hover) {
+						> ul {
+							height: 0 !important;
+						}
 					}
 					> ul {
-						width: $sub-width;
+						overflow: hidden;
+						display: block;
+						background: lighten($nav-bg, 10%);
+						transition: height 0.5s;
+						> li {
+							> a {
+								padding: 4px 0px 4px 20px;
+							}
+							&.current {
+								> a {
+									background: transparentize($base-color, 0.4);
+								}
+							}
+						}
 					}
+					@import "images/navigation";
 				}
 			}
 		}
