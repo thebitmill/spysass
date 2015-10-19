@@ -1,6 +1,11 @@
 @import "mixins/buttons";
 @import "functions/util";
 
+a {
+	color: $base-color;
+	text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	&:first-child {
 		margin-top: 0;
@@ -201,6 +206,78 @@ form select[multiple] {
 	}
 }
 
+.pagination {
+	$transition-time: 0.2s;
+	display: flex;
+	justify-content: center;
+	ul {
+		@include wipe-list;
+		@include clear;
+		flex: 0 0 auto;
+		> li {
+			display: block;
+			float: left;
+			top: 0;
+			height: 25px;
+			width: 25px;
+			//position: relative;
+			//transition: top $transition-time, background $transition-time;
+			&:not(:last-child) {
+				margin-right: 1px;
+			}
+			> a {
+				background: grey;
+				transition: top $transition-time, background $transition-time, padding $transition-time, height $transition-time;
+				display: block;
+				color: white;
+				text-align: center;
+				position: relative;
+				//position: absolute;
+				//left: 0;
+				//top: 0;
+				//right: 0;
+				//bottom: 0;
+				padding: 0;
+				top: 0;
+				height: 26px;
+				line-height: 26px;
+				text-decoration: none;
+				&:not(.nav) {
+					background: lighten(grey, 20%);
+				}
+			}
+			&.current, &:hover {
+				> a.nav {
+					height: 32px;
+					top: -3px;
+					padding-top: 3px;
+					//bottom: -3px;
+					font-weight: bold;
+				}
+			}
+			&.current {
+				> a.nav {
+					background: darken(grey, 20%);
+				}
+			}
+			&:hover:not(.current) {
+				> a.nav {
+					background: darken(grey, 10%);
+				}
+			}
+		}
+		//&:hover > li.current:not(:hover) {
+		//	> a {
+		//		background: grey;
+		//		padding: 0px;
+		//		top: 0;
+		//		height: 26px;
+		//		font-weight: normal;
+		//	}
+		//}
+	}
+}
+
 fieldset {
 	&:first-child {
 		margin-top: 0;
@@ -255,6 +332,130 @@ div > input {
 			display: inline-block;
 			padding: 0 3px;
 
+		}
+	}
+}
+
+	&.form {
+		display: flex;
+		flex-direction: column;
+		//flex-grow: 1;
+		overflow: hidden;
+		header {
+			background: #eee;
+			padding: 0 0 0 $global-padding;
+			position: relative;
+			height: 41px;
+			border-bottom: 1px solid #999;
+			box-shadow: 0 5px 0px 0px rgba(0,0,0,0.1);
+			overflow: hidden;
+			display: flex;
+			h1 {
+				line-height: 40px;
+				margin: 0;
+				flex-shrink: 1;
+				flex-grow: 1;
+			}
+			.controls {
+				flex-shrink: 0;
+			}
+		}
+		form  {
+			flex-grow: 1;
+			flex-basis: 0;
+			padding: $global-padding;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+	}
+
+.collection.list {
+	&:empty {
+		&:before {
+			content: 'No models found.';
+		}
+	}
+
+	.container:empty:before {
+		content: 'No models found.';
+	}
+
+	> header {
+		@include clear;
+		h1 {
+			float: left;
+		}
+		a.button.new {
+			&:before {
+				content: '+';
+				font-size: 32px;
+				display: inline-block;
+				vertical-align: middle;
+				padding-right: 10px;
+			}
+			background: green;
+			float: right;
+		}
+	}
+
+	.model {
+		$border-color: #dddfe3;
+		display: block;
+		text-decoration: none;
+		padding: 15px;
+		border: 1px solid $border-color;
+		border-bottom: none;
+		&:last-child {
+			border-bottom: 1px solid $border-color;
+		}
+		position: relative;
+		background: #fff;
+
+		//&:hover {
+		//	cursor: pointer;
+		//	background: #bbb;
+		//}
+
+		.controls {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		//&.unpublished {
+		//	background: $color-unpublished;
+		//	&:hover {
+		//		background: darken($color-unpublished, 15%);
+		//	}
+		//}
+
+		//&.published {
+		//	background: $color-published;
+		//	&:hover {
+		//		background: desaturate(darken($color-published, 25%), 30%);
+		//	}
+		//}
+
+		> header {
+			h1 {
+				font-size: rem(16);
+				margin: 0;
+				padding: 0;
+				margin-right: 80px - $global-padding;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			ul {
+				@include wipe-list;
+				font-size: rem(12);
+				color: #666;
+				line-height: 1.2;
+			}
+		}
+
+		> .content {
+			display: none;
 		}
 	}
 }
