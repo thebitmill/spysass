@@ -160,38 +160,6 @@ body > div.container {
 	padding: $global-padding;
 	position: relative;
 
-	&.form {
-		display: flex;
-		flex-direction: column;
-		//flex-grow: 1;
-		overflow: hidden;
-		header {
-			background: #eee;
-			padding: 0 0 0 $global-padding;
-			position: relative;
-			height: 41px;
-			border-bottom: 1px solid #999;
-			box-shadow: 0 5px 0px 0px rgba(0,0,0,0.1);
-			overflow: hidden;
-			display: flex;
-			h1 {
-				line-height: 40px;
-				margin: 0;
-				flex-shrink: 1;
-				flex-grow: 1;
-			}
-			.controls {
-				flex-shrink: 0;
-			}
-		}
-		form  {
-			flex-grow: 1;
-			flex-basis: 0;
-			padding: $global-padding;
-			overflow-x: hidden;
-			overflow-y: auto;
-		}
-	}
 	&.crud {
 		display: flex;
 		flex-direction: row;
@@ -203,88 +171,9 @@ body > div.container {
 		}
 	}
 
-	&.collection, .collection {
+	&.collection {
 		overflow-x: hidden;
 		overflow-y: auto;
-		&:empty {
-			&:before {
-				content: 'No models found.';
-			}
-		}
-		.container:empty:before {
-			content: 'No models found.';
-		}
-		> header {
-			@include clear;
-			h1 {
-				float: left;
-			}
-			a.button.new {
-				&:before {
-					content: '+';
-					font-size: 32px;
-					display: inline-block;
-					vertical-align: middle;
-					padding-right: 10px;
-				}
-				background: green;
-				float: right;
-			}
-		}
-		.model {
-			&:hover {
-				cursor: pointer;
-			}
-			display: block;
-			text-decoration: none;
-			padding: 15px;
-			border-bottom: 1px solid white;
-			position: relative;
-			background: #ddd;
-			&:hover {
-				background: #bbb;
-			}
-			.controls {
-				position: absolute;
-				top: 0;
-				right: 0;
-			}
-
-			&.unpublished {
-				background: $color-unpublished;
-				&:hover {
-					background: darken($color-unpublished, 15%);
-				}
-			}
-
-			&.published {
-				background: $color-published;
-				&:hover {
-					background: desaturate(darken($color-published, 25%), 30%);
-				}
-			}
-
-			> header {
-				h1 {
-					font-size: rem(16);
-					margin: 0;
-					padding: 0;
-					margin-right: 80px - $global-padding;
-					white-space: nowrap;
-					text-overflow: ellipsis;
-					overflow: hidden;
-				}
-				ul {
-					@include wipe-list;
-					font-size: rem(12);
-					color: #666;
-					line-height: 1.2;
-				}
-			}
-			> .content {
-				display: none;
-			}
-		}
 	}
 }
 
