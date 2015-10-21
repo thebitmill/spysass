@@ -25,49 +25,24 @@
 }
 
 .page.gallery {
-	.collection {
-		width: 420px;
-		article {
-			$border: 5px;
-			overflow: hidden;
-			float: left;
-			margin: 0;
-			padding: 0;
-			width: 200px;
-			border-bottom: 1px solid white;
-			figure {
-				border: $border solid $color-unpublished;
-				img {
-					width: 190px;
-					max-width: none;
-					display: block;
-				}
-				figcaption {
-					font-size: rem(12px);
-					background: rgba(0,0,0,0.6);
-					color: white;
-					position: absolute;
-					bottom: $border;
-					left: $border;
-					right: $border;
-					padding: 5px 10px;
-				}
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.model {
+			flex: 0 0 24%;
+			padding-bottom: 1%;
+			position: relative;
+			img {
+				display: block;
 			}
-			time {
+			time, figcaption {
 				display: none;
 			}
 			.controls {
-				top: $border;
-				right: $border;
-			}
-			&:nth-child(odd) {
-				border-right: 1px solid white;
-				width: 201px;
-			}
-			&[data-published="true"] {
-				figure {
-					border-color: $color-published;
-				}
+				position: absolute;
+				top: 5px;
+				right: 5px;
 			}
 		}
 	}
