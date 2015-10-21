@@ -147,18 +147,45 @@ body > div.container {
 		}
 	}
 	> main {
-		flex-grow: 1;
 		display: flex;
+		flex-grow: 1;
 		flex-direction: column;
-		> .page {
-			flex-grow: 1;
-		}
 	}
 }
 
 .page {
-	padding: $global-padding;
-	position: relative;
+	display: flex;
+	flex: 1 0 auto;
+	flex-direction: column;
+	overflow: hidden;
+
+	> header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex: 0 0 auto;
+		background: #e6f1f6;
+		padding: 0 $global-padding;
+		border-bottom: 1px solid #c1dce8;
+		//box-shadow: 0 5px 0px 0px rgba(0,0,0,0.1);
+		h1 {
+			color: darken($base-color, 10%);
+			line-height: 50px;
+			margin: 0;
+			flex: 0 1 auto;
+		}
+		> button, > .button {
+			display: block;
+			flex: 0 0 auto;
+		}
+	}
+	
+	> div.content {
+		flex: 1 0 0px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: $global-padding;
+	}
 
 	&.crud {
 		display: flex;
@@ -171,10 +198,7 @@ body > div.container {
 		}
 	}
 
-	&.collection {
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
+
 }
 
 body > footer {
