@@ -7,7 +7,7 @@
 	$fieldset-margin: rem(18 0) !default;
 
 	// We use these to style the legends when you use them
-	$legend-bg: #fff !default;
+	$legend-bg: $body-bg !default;
 	$legend-font-weight: bold !default;
 	$legend-padding: rem(0 3) !default;
 
