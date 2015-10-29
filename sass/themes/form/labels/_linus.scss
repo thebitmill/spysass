@@ -1,0 +1,77 @@
+@import "mixins/graphics";
+
+form {
+	$color: $base-color;
+	$icon-width: 20px;
+
+	label.checkable {
+		> input {
+			margin-right: 10px;
+			margin-bottom: 0;
+			vertical-align: top;
+		}
+	}
+
+	textarea {
+		min-height: 200px;
+	}
+
+	div.container {
+		$transition-time: 0.3s;
+		margin: 0 0 $form-spacing 0;
+		position: relative;
+
+		&.no-spacing {
+			margin: 0;
+		}
+
+		select {
+			color: $input-placeholder-color;
+			option {
+				color: black;
+			}
+		}
+
+		&.not-empty {
+			$offset: rem(12px);
+
+			select {
+				color: $input-font-color;
+			}
+
+			input, select:not([multiple]) {
+				padding-top: $offset;
+			}
+
+			textarea {
+				padding-top: $offset / 2 + $text-area-padding-top;
+			}
+
+			> label.placeholder {
+				opacity: 1;
+			}
+		}
+
+		input, select, textarea {
+			transition: padding $transition-time;
+		}
+
+		> label:not(.checkable) {
+			cursor: text;
+		}
+
+		> label.placeholder {
+			display: block;
+			transition: opacity $transition-time, color $transition-time;
+			opacity: 0;
+			color: #aaa;
+			font-size: 11px;
+			font-weight: bold;
+			top: 8px;
+			line-height: 1;
+			position: absolute;
+			left: $input-border-width + nth($input-padding, 2);
+		}
+
+	}
+}
