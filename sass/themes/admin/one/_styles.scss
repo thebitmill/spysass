@@ -73,8 +73,10 @@ $button-color-cyan: adjust-hue($button-color-green, 60deg);
 $button-color-purple: adjust-hue($button-color-green, 180deg);
 $button-color-yellow: saturate(adjust-hue($button-color-green, -60deg), 20%);
 $button-color-orange: lighten(saturate(adjust-hue($button-color-green, -80deg), 20%), 10%);
-$button-color-red: saturate(lighten(adjust-hue($button-color-green, -100deg), 5%), 10%);
+$button-color-red: $color-red;
+//$button-color-red: saturate(lighten(adjust-hue($button-color-green, -100deg), 5%), 10%);
 
+@warn $button-color-red;
 button, .button {
 	@include wipe-button;
 	@include button-size($font-size: 13px, $padding: 12px 20px, $border: 1px);
@@ -113,6 +115,9 @@ button, .button {
 	display: flex;
 	flex: 0 0 auto;
 	.button, button {
+		&.hidden {
+			display: none;
+		}
 		&:not(:disabled) {
 			cursor: pointer;
 		}
@@ -262,6 +267,14 @@ button, .button {
 	$transition-time: 0.2s;
 	display: flex;
 	justify-content: center;
+	&:first-child {
+		margin-bottom: $global-padding;
+	}
+
+	&:last-child {
+		margin-top: $global-padding;
+	}
+
 	ul {
 		@include wipe-list;
 		@include clear;

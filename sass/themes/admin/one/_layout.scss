@@ -90,6 +90,7 @@ body > div.container {
 					> a {
 						padding-right: 25px;
 						position: relative;
+						overflow: hidden;
 						&:before {
 							content: "";
 							display: inline-block;
@@ -158,6 +159,12 @@ body > div.container {
 	flex: 1 0 auto;
 	flex-direction: column;
 	overflow: hidden;
+
+	&.form {
+		> div.content {
+			padding-top: 45px + $global-padding;
+		}
+	}
 
 	> header {
 		display: flex;

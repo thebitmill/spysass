@@ -1,5 +1,16 @@
+@import "functions/units";
+
+$base-font-size: 14px;
+$body-font-family: "Arial", sans-serif;
+$body-bg: #f1f4f8;
 $base-color: #0075a2;
+$color-red: #c84f45;
 $nav-bg: #2b333d;
+$input-padding: rem(14px 12px);
+$form-valid-color: $base-color;
+$form-invalid-color: $color-red;
+$form-valid-icon: 'admin/form-valid' !default;
+$form-invalid-icon: 'admin/form-warning' !default;
 
 // $button-display: inline-block;
 // $button-margin-bottom: 0px;
@@ -96,14 +107,11 @@ $nav-bg: #2b333d;
 // $color-message: #333;
 // $color-error: #c89999;
 // $color-success: #628b1c;
-$base-font-size: 14px;
 // $base-line-height: 1.6;
 // $base-line-height-computed: $base-line-height * 1rem;
 // $body-font-color: #222;
-$body-font-family: "Arial", sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
-$body-bg: #f1f4f8;
 // $font-smoothing: subpixel-antialiased;
 // $heading-font-family: $body-font-family;
 // $heading-font-weight: bold;
