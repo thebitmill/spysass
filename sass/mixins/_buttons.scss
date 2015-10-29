@@ -90,7 +90,7 @@
 		}
 	}
 	// modified thoughtbot
-	@mixin button-style-glossy($color: $color-main-1) {
+	@mixin button-style-glossy($color: $base-color) {
 		background: $color;
 		background: linear-gradient(180deg, lighten($color, 10%) 0%, $color 50%, darken($color, 5%) 50%, darken($color, 15%) 100%);
 		border: 1px solid darken($color, 15%);
