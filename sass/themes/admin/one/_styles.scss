@@ -76,7 +76,6 @@ $button-color-orange: lighten(saturate(adjust-hue($button-color-green, -80deg), 
 $button-color-red: $color-red;
 //$button-color-red: saturate(lighten(adjust-hue($button-color-green, -100deg), 5%), 10%);
 
-@warn $button-color-red;
 button, .button {
 	@include wipe-button;
 	@include button-size($font-size: 13px, $padding: 12px 20px, $border: 1px);
