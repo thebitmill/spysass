@@ -195,6 +195,7 @@
 	}
 
 	.row-col {
+		position: relative;
 		width: calc(100% - #{$column-gutter});
 		max-width: $row-max-width;
 		margin: 0 auto;
@@ -203,6 +204,7 @@
 	}
 
 	.row-col-pan {
+		position: relative;
 		width: calc(100% - #{$column-gutter});
 		max-width: $row-max-width - $column-gutter;
 		margin: 0 auto;
