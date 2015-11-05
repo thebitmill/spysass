@@ -15,7 +15,6 @@
 //@import "styles";
 //@import "content";
 
-
 header {
 	nav {
 		ul {
@@ -28,6 +27,10 @@ header {
 			padding: 5px 20px;
 			line-height: 1;
 			text-decoration: none;
+		}
+
+		.current > a {
+			background: yellow
 		}
 
 		> ul {
@@ -43,8 +46,8 @@ header {
 				> ul {
 					display: none;
 					position: absolute;
-					top: 100%;
-					left: 0;
+					top: calc(100% + 1px);
+					left: -1px;
 					background: white;
 					border: 1px solid blue;
 					border-top: none;
@@ -76,7 +79,6 @@ body > main {
 		width: 100%;
 		position: relative;
 		left: 0;
-
 		&.animate {
 			transition: left 0.5s;
 			float: left;
@@ -84,16 +86,16 @@ body > main {
 		}
 
 		&.enter {
-			left: -100%;
-			&.back {
-				left: 100%;
-			}
-		}
-		
-		&.leave.active {
 			left: 100%;
 			&.back {
 				left: -100%;
+			}
+		}
+
+		&.leave.active {
+			left: -100%;
+			&.back {
+				left: 100%;
 			}
 		}
 
