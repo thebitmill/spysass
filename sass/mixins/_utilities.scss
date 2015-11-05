@@ -8,6 +8,15 @@
 		}
 	}
 
+	@mixin stretch($top: 0, $right: 0, $bottom: 0, $left: 0) {
+		position: absolute;
+		top: $top;
+		right: $right;
+		bottom: $bottom;
+		left: $left;
+	}
+
+
 	@mixin ratio($ratio, $initial-width: 100%, $pseudo: 'before') {
 		&:#{$pseudo} {
 			content: '';
@@ -43,6 +52,7 @@
 		padding: 0;
 		text-align: left;
 		text-decoration: none;
+		text-transform: inherit;
 		text-indent: 0;
 	}
 
