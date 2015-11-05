@@ -19,7 +19,7 @@
 	$h6-font-size: 1.0rem !default;
 
 	$paragraph-font-family: $body-font-family !default;
-	$paragraph-font-weight: normal !default;
+	$paragraph-font-weight: $body-font-weight !default;
 	$paragraph-font-size: 1.0rem !default;
 	$paragraph-line-height: $base-line-height !default;
 	$paragraph-margin: 0 0 ($base-line-height-computed / 2) !default;
