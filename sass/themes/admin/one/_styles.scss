@@ -266,13 +266,8 @@ button, .button {
 	$transition-time: 0.2s;
 	display: flex;
 	justify-content: center;
-	&:first-child {
-		margin-bottom: $global-padding;
-	}
-
-	&:last-child {
-		margin-top: $global-padding;
-	}
+	margin-top: $global-padding;
+	margin-bottom: $global-padding;
 
 	ul {
 		@include wipe-list;
@@ -322,6 +317,27 @@ button, .button {
 					background: darken(grey, 10%);
 				}
 			}
+		}
+	}
+}
+
+table {
+	width: 100%;
+	&.collection {
+		border: 1px solid red;
+		td, th {
+			$border-color: #dddfe3;
+			border: 1px solid $border-color;
+			padding: 15px;
+		}
+		tbody tr:nth-child(2n) td {
+			background: #eee;
+		}
+		th {
+			color: darken($base-color, 10%);
+			background: #e6f1f6;
+			font-weight: bold;
+			text-align: center;
 		}
 	}
 }
