@@ -322,20 +322,35 @@ button, .button {
 }
 
 table {
+	$border-color-blue: #c1dce8;
+	$border-color: #dddfe3;
 	width: 100%;
 	&.collection {
-		border: 1px solid red;
 		td, th {
-			$border-color: #dddfe3;
-			border: 1px solid $border-color;
-			padding: 15px;
+			padding: 10px;
 		}
-		tbody tr:nth-child(2n) td {
-			background: #eee;
+
+		thead {
+			border: 1px solid $border-color-blue;
+			background: #e6f1f6;
+		}
+
+		tbody {
+			> tr {
+				border: 1px solid $border-color-blue;
+				border-top: none;
+				border-bottom-color: $border-color;
+				&:last-child {
+					border-bottom-color: $border-color-blue;
+				}
+
+				&:nth-child(2n) {
+					background: #eee;
+				}
+			}
 		}
 		th {
 			color: darken($base-color, 10%);
-			background: #e6f1f6;
 			font-weight: bold;
 			text-align: center;
 		}
