@@ -103,28 +103,6 @@
 		.text-justify	{ text-align: justify !important; }
 		.hide   { display: none; }//hide
 		.no-margin	{ margin: 0 !important; }
-
-		// Classes for help with CSS3 animation
-
-		[data-dynamic-height], [data-dynamic-width]	{ overflow: hidden; }
-		.min		{ height: 0 !important; }
-
-		.animate-height {
-			overflow: hidden;
-			&.animate {
-				transition: all 0.5s;
-				transform-origin: 50% 100%;
-			}
-			&.enter:not(.active), &.leave.active {
-				height: 0 !important;
-			}
-			&.hidden {
-				display: none;
-			}
-			&.visible {
-				display: block;
-			}
-		}
 	}
 
 	$tmp: register-module();
