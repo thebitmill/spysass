@@ -3,6 +3,7 @@
 
 html, body {
 	height: 100%;
+	width: 100%;
 }
 
 body {
@@ -156,7 +157,7 @@ body > div.container {
 
 .page {
 	display: flex;
-	flex: 1 0 auto;
+	flex: 1 0 100%;
 	flex-direction: column;
 	overflow: hidden;
 
