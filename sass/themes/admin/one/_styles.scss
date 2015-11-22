@@ -237,15 +237,19 @@ button, .button {
 		}
 
 		> header {
-			flex: 1 1 auto;
+			flex: 1 1 100%;
 			h1 {
 				font-size: rem(16);
 				margin: 0;
 				padding: 0;
 				margin-right: 80px - $global-padding;
-				white-space: nowrap;
+				//white-space: nowrap;
 				text-overflow: ellipsis;
 				overflow: hidden;
+				a {
+					//white-space: nowrap;
+					text-overflow: ellipsis;
+				}
 			}
 
 			ul {
