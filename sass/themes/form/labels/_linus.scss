@@ -32,7 +32,7 @@ form {
 			}
 		}
 
-		&.not-empty {
+		&.never-empty, &.not-empty {
 			$offset: rem(12px);
 
 			select {
