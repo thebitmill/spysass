@@ -269,14 +269,20 @@ button, .button {
 .pagination {
 	$transition-time: 0.2s;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
 	margin-top: $global-padding;
 	margin-bottom: $global-padding;
+	.results {
+		.number {
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+	}
 
 	ul {
 		@include wipe-list;
 		@include clear;
-		flex: 0 0 auto;
 		> li {
 			display: block;
 			float: left;
