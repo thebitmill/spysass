@@ -1,25 +1,4 @@
 @if load-module('buttons', 'mixins') {
-	@import "functions/units";
-	// Based on Foundation 5 buttons
-
-	//
-	// @variables
-	//
-
-	//
-	// @MIXIN
-	//
-	// We use this mixin to create a default button base.
-	//
-	// $style - Sets base styles. Can be set to false. Default: true.
-	// $display - Used to control display property. Default: $button-display || inline-block
-
-	//
-	// We use this mixin to add button size styles
-	//
-	// $padding - Used to build padding for buttons Default: $button-med ||= em-calc(12)
-	// $full-width - We can set $full-width:true to remove side padding extend width - Default: false
-
 	@mixin button-size(
 		$height: 0,
 		$font-size: 0,

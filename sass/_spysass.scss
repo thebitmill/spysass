@@ -4,6 +4,9 @@ $loading: () !global;
 
 $warn-already-loaded: false !default;
 
+$base-font-size: 16px !default;
+$img-url: '/img' !default;
+
 @function loaded-modules() {
 	$str: 'Spysass Loaded Modules';
 	$nl: '
@@ -77,3 +80,5 @@ $warn-already-loaded: false !default;
 
 	@return true;
 }
+
+@import "default-functions";

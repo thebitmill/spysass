@@ -3,13 +3,9 @@
 	// Base Variables
 	//
 
-	$include-base-classes: true !default;
-
-	$make-image-inline-block: false !default;
 	$default-float: left !default;
 	$opposite-direction: right !default;
 	$text-direction: left !default;
-	$global-radius: 0 !default;
 
 	$base-color: #0066c6 !default;
 	$color-1: #0066c6 !default;
@@ -21,7 +17,6 @@
 
 	// This needs to be a px value since rem and em-calc use it. It is translated
 	// to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
-	$base-font-size: 16px !default;
 	$base-line-height: 1.6 !default;
 	$base-line-height-computed: $base-line-height * 1rem !default;
 
@@ -58,51 +53,19 @@
 		position: relative;
 	}
 
-	// Override outline from normalize, we don't like it
-	a:focus { outline: none; }
-
-	// Grid Defaults to get images and embeds to work properly
 	img,
 	object,
 	embed { max-width: 100%; height: auto; }
 
 	object,
 	embed { height: 100%; }
+
 	img { -ms-interpolation-mode: bicubic; }
 
-	@if $make-image-inline-block {
-		// Get rid of gap under images by making them display: inline-block; by default
-		img {
-			display:inline-block;
-			vertical-align: middle;
-		}
-	}
-
-	#map_canvas,
-	.map_canvas {
-		img,
-		embed,
-		object { max-width: none !important; }
-	}
-
-	//
-	// Base Classes
-	//
-
-	@if $include-base-classes {
-		// Miscellaneous useful HTML classes
-		.clear-both	{ clear: both !important; }
-		.clear-left	{ clear: left !important; }
-		.clear-right	{ clear: right !important; }
-		.float-left	{ float: left !important; }
-		.float-right	{ float: right !important; }
-		.full-width	{ width: 100% !important; }
-		.text-left	{ text-align: left !important; }
-		.text-right	{ text-align: right !important; }
-		.text-center	{ text-align: center !important; }
-		.text-justify	{ text-align: justify !important; }
-		.hide   { display: none; }//hide
-		.no-margin	{ margin: 0 !important; }
+	// Get rid of gap under images by making them display: inline-block; by default
+	img {
+		display:inline-block;
+		vertical-align: middle;
 	}
 
 	$tmp: register-module();
