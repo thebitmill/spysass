@@ -1,6 +1,4 @@
 @if load-module('graphics', 'mixins') {
-	@import "functions/util";
-
 	@mixin svg-bg($image) {
 			background-image: img-url('#{$image}.png');
 			background-image: none, img-url('#{$image}.svg');

@@ -1,0 +1,83 @@
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function convert-to-em($value, $base-font-size: $base-font-size)  {
+	$value: strip-unit($value) / strip-unit($base-font-size) + 0em;
+	@if ($value == 0em) { $value: 0; }
+	@return $value;
+}
+
+@function convert-to-rem($value, $base-font-size: $base-font-size)  {
+	$value: strip-unit($value) / strip-unit($base-font-size) + 0rem;
+	@if ($value == 0rem) { $value: 0; }
+	@return $value;
+}
+
+@function convert-to-px($value, $base-font-size: $base-font-size)  {
+	$value: strip-unit($value) * strip-unit($base-font-size) + 0px;
+	@if ($value == 0px) { $value: 0; }
+	@return $value;
+}
+
+@function px($values, $base-value: $base-font-size) {
+	$max: length($values);
+
+	$px-values: ();
+	@for $i from 1 through $max {
+		$value: nth($values, $i);
+		@if unit($value) != 'px' {
+			$px-values: append($px-values, convert-to-px($value, $base-value));
+		} @else {
+			$px-values: append($px-values, $value);
+		}
+	}
+
+	@if $max == 1 { $px-values: nth($px-values, 1); }
+
+	@return $px-values;
+}
+
+@function rem($values, $base-value: $base-font-size) {
+	$max: length($values);
+
+	$rem-values: ();
+	@for $i from 1 through $max {
+		$value: nth($values, $i);
+		@if unit($value) != 'rem' and unit($value) != 'em' {
+			$rem-values: append($rem-values, convert-to-rem($value, $base-value));
+		} @else {
+			$rem-values: append($rem-values, $value);
+		}
+	}
+
+	@if $max == 1 { $rem-values: nth($rem-values, 1); }
+
+	@return $rem-values;
+}
+
+@function em($values, $base-value: $base-font-size) {
+	$max: length($values);
+
+	$em-values: ();
+	@for $i from 1 through $max {
+		$value: nth($values, $i);
+		@if unit($value) != 'rem' and unit($value) != 'em' {
+			$em-values: append($em-values, convert-to-em($value, $base-value));
+		} @else {
+			$em-values: append($em-values, $value);
+		}
+	}
+
+	@if $max == 1 { $em-values: nth($em-values, 1); }
+
+	@return $em-values;
+}
+
+@function img-url($path) {
+	@if str-index($path, '/') != 1 {
+		$path: '/' + $path;
+	}
+	$path: $img-url + $path;
+	@return url(#{$path});
+}
