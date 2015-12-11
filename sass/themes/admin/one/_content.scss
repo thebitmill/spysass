@@ -55,24 +55,16 @@
 }
 
 .page.errors {
-	padding: $global-padding;
-	overflow-x: hidden;
-	overflow-y: auto;
 	.collection {
-		width: 100%;
 		.model {
+			padding: 0;
+			flex-direction: column;
 			&[data-status^="4"] {
 				background: lighten(orange, 30%);
 			}
 			&[data-status^="5"] {
 				background: lighten(red, 30%);
 			}
-			&:not(:last-child) {
-				border-bottom: 1px solid white;
-			}
-			padding: 0;
-			cursor: pointer;
-			width: 100%;
 			.info {
 				padding: $global-padding;
 			}
