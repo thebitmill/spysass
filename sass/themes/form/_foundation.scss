@@ -9,24 +9,27 @@
 	// @variables
 	//
 	// We use this to set the base for lots of form spacing and positioning styles
-	$form-spacing: rem(16) !default;
+	$form-spacing: 16px !default;
 
 	// We use these to style the labels in different ways
 	$input-font-family: inherit !default;
 	$input-font-color: rgba(0,0,0,0.75) !default;
-	$input-font-size: 1rem !default;//14px for base font size 16
+	$input-font-size: $base-font-size !default;//14px for base font size 16
 	$input-placeholder-color: #aaa !default;
 	$input-bg-color: #fff !default;
-	$input-padding: rem(8) !default;
+	$input-padding: 8px !default;
 	$input-focus-bg-color: scale-color(#fff, $lightness: -2%) !default;
 	$input-border-color: scale-color(#fff, $lightness: -20%) !default;
 	$input-focus-border-color: scale-color(#fff, $lightness: -40%) !default;
 	$input-border-style: solid !default;
-	$input-border-width: rem(1px) !default;
+	$input-border-width: 1px !default;
 	$input-border-radius: 0 !default;
 	$input-disabled-bg: #ddd !default;
 	$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 	$input-include-glowing-effect: true !default;
+
+	@warn $input-padding;
+	$textarea-padding-top: nth($input-padding, 1) - 4px !default;
 
 	// We use this to style the glowing effect of inputs when focused
 	$glowing-effect-fade-time: 0.45s !default;
@@ -37,7 +40,7 @@
 	$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 	@if length($input-padding) == 1 {
-		$input-padding: rem($input-padding $input-padding);
+		$input-padding: $input-padding $input-padding;
 	}
 
 	$input-height: $input-font-size + (nth($input-padding, 1) + $input-border-width) * 2;
@@ -120,10 +123,8 @@
 		}
 	}
 
-	$text-area-padding-top: nth($input-padding, 1) - rem(4px);
-
 	textarea, [spytext-field], .spytext-field {
-		padding: $text-area-padding-top nth($input-padding, 2);
+		padding: $textarea-padding-top nth($input-padding, 2);
 		height: auto;
 	}
 
@@ -134,7 +135,7 @@
 		background-repeat: no-repeat !important;
 
 		transition: background 0.5s;
-		padding: 0 nth($input-padding, 2) - rem(4px);
+		padding: 0 nth($input-padding, 2) - 4px;
 
 		&:hover, &:focus {
 			background-color: $select-hover-bg-color;

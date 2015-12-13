@@ -7,9 +7,9 @@
 	@mixin input-size(
 		$height: false,
 		$padding: false,
-		$border: 0rem,
+		$border: 0px,
 		$spacing: 0,
-		$font-size: 1rem 
+		$font-size: $base-font-size
 	) {
 		@if $height == false and $padding == false {
 			@error  "You HAVE to supply at least one of the following: $height, $padding.";
@@ -22,22 +22,22 @@
 			$padding: $padding $padding;
 		}
 
-		$font-size: rem($font-size);
-		$border: rem($border);
+		$font-size: px($font-size);
+		$border: px($border);
 
 		@if $height != false {
-			$height: rem($height);
+			$height: px($height);
 
 			$padding: ($height - $font-size - $border * 2) / 2 nth($padding, 2);
 		} @else {
-			$padding: rem($padding);
+			$padding: px($padding);
 
 			$height: nth($padding, 1) * 2 + $border * 2 + $font-size;
 		}
 
 		display: block;
-		padding: 0 nth($padding, 2);
-		margin: 0 0 $spacing 0;
+		padding: rem(0 nth($padding, 2));
+		margin: rem(0 0 $spacing 0);
 		font-size: $font-size;
 		height: $height;
 		width: 100%;

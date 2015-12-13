@@ -28,7 +28,7 @@ form {
 			}
 		}
 		textarea {
-			padding-right: rem($icon-width) + nth($input-padding, 2);
+			padding-right: $icon-width + nth($input-padding, 2);
 			&:before {
 				content: '';
 				display: block;

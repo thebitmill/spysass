@@ -109,9 +109,12 @@ button, .button {
 	}
 }
 
-.controls {
+div.controls {
 	display: flex;
 	flex: 0 0 auto;
+}
+
+.controls {
 	.button, button {
 		&.hidden {
 			display: none;
