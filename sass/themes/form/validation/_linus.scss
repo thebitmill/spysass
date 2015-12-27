@@ -3,6 +3,8 @@ $form-invalid-color: red !default;
 $form-valid-icon: 'form-valid' !default;
 $form-invalid-icon: 'form-invalid' !default;
 
+@import "mixins/graphics";
+
 form {
 	$color: $base-color;
 	$icon-width: 20px;
