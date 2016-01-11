@@ -31,7 +31,7 @@ form {
 			}
 		}
 
-		&.never-empty, &.not-empty {
+		&.never-empty, &.filled {
 			$offset: 12px;
 
 			input {

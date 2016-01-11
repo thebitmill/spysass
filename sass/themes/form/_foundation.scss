@@ -60,6 +60,7 @@
 	input[type="url"],
 	select,
 	textarea,
+	[data-spytext],
 	.spytext-field {
 		@include input-size(
 			$height: $input-height,
