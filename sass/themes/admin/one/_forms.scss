@@ -1,11 +1,17 @@
-fieldset {
-	&:first-child {
-		margin-top: 0;
+form {
+	button {
+		@include button-size($font-size: 13px, $height: $input-height, $padding: 12px 20px, $border: 1px);
 	}
-}
 
-[data-spytext] {
-	min-height: 200px;
+	fieldset {
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	[data-spytext] {
+		min-height: 200px;
+	}
 }
 
 .image-upload {
