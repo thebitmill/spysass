@@ -1,15 +1,15 @@
 @if load-module('forms/fieldset/foundation', 'themes') {
 	// We use these to style the fieldset border and spacing.
-	$fieldset-border-style: solid !default;
-	$fieldset-border-width: 1px !default;
-	$fieldset-border-color: #ddd !default;
-	$fieldset-padding: rem(20) !default;
-	$fieldset-margin: rem(18 0) !default;
+	$fieldset-border-style: solid !global !default;
+	$fieldset-border-width: 1px !global !default;
+	$fieldset-border-color: #ddd !global !default;
+	$fieldset-padding: rem(20) !global !default;
+	$fieldset-margin: rem(18 0) !global !default;
 
 	// We use these to style the legends when you use them
-	$legend-bg: $body-bg !default;
-	$legend-font-weight: bold !default;
-	$legend-padding: rem(0 3) !default;
+	$legend-bg: $body-bg !global !default;
+	$legend-font-weight: bold !global !default;
+	$legend-padding: rem(0 3) !global !default;
 
 
 	/* We add basic fieldset styling */

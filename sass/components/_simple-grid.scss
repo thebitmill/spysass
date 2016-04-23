@@ -2,7 +2,7 @@
 	// just tried using the flex-grid logic to create a floating grid
 	@import "mixins/utilities";
 
-	$gutter: 30px !default;
+	$gutter: 30px !global !default;
 
 	.row {
 		@include clear;

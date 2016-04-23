@@ -1,8 +1,8 @@
-@if load-module('spytext/niknus', 'themes') {
-	@import "mixins/utilities";
-	@import "mixins/buttons";
-	@import "niknus/variables";
+@import "mixins/utilities";
+@import "mixins/buttons";
+@import "niknus/variables";
 
+@if load-module('spytext/niknus', 'themes') {
 	.spytext-toolbar{
 
 		display: flex;

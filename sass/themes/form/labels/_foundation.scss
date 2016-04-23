@@ -6,13 +6,13 @@
 
 
 	// We use these to style the labels in different ways
-	$form-label-pointer: pointer !default;
-	$form-label-font-size: $base-font-size !default;//14px for base font size 16
-	$form-label-font-weight: normal !default;
-	$form-label-line-height: 1.5 !default;
-	$form-label-font-color: scale-color(#000, $lightness: 30%) !default;
-	$form-label-small-transform: capitalize !default;
-	$form-label-bottom-margin: 0 !default;
+	$form-label-pointer: pointer !global !default;
+	$form-label-font-size: $base-font-size !global !default;//14px for base font size 16
+	$form-label-font-weight: normal !global !default;
+	$form-label-line-height: 1.5 !global !default;
+	$form-label-font-color: scale-color(#000, $lightness: 30%) !global !default;
+	$form-label-small-transform: capitalize !global !default;
+	$form-label-bottom-margin: 0 !global !default;
 
 	label {
 		font-size: $form-label-font-size;

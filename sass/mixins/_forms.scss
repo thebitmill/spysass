@@ -1,47 +1,43 @@
-@if load-module('forms', 'mixins') {
-	// NOTE does not set border, $border is only used for calculations
+// NOTE does not set border, $border is only used for calculations
 
-	// setting $height and $vertical-padding will use $font-size and overwrite
-	// any values set to the other variable ie $height overrides
-	// $vertical-padding and the other way around. $height takes precedence
-	@mixin input-size(
-		$height: false,
-		$padding: false,
-		$border: 0px,
-		$spacing: 0,
-		$font-size: $base-font-size
-	) {
-		@if $height == false and $padding == false {
-			@error  "You HAVE to supply at least one of the following: $height, $padding.";
-		}
+// setting $height and $vertical-padding will use $font-size and overwrite
+// any values set to the other variable ie $height overrides
+// $vertical-padding and the other way around. $height takes precedence
+@mixin input-size(
+  $height: false,
+  $padding: false,
+  $border: 0px,
+  $spacing: 0,
+  $font-size: $base-font-size
+) {
+  @if $height == false and $padding == false {
+    @error  "You HAVE to supply at least one of the following: $height, $padding.";
+  }
 
 
-		@if $padding == false {
-			$padding: 0 0;
-		} @else if type-of($padding) != "list" {
-			$padding: $padding $padding;
-		}
+  @if $padding == false {
+    $padding: 0 0;
+  } @else if type-of($padding) != "list" {
+    $padding: $padding $padding;
+  }
 
-		$font-size: px($font-size);
-		$border: px($border);
+  $font-size: px($font-size);
+  $border: px($border);
 
-		@if $height != false {
-			$height: px($height);
+  @if $height != false {
+    $height: px($height);
 
-			$padding: ($height - $font-size - $border * 2) / 2 nth($padding, 2);
-		} @else {
-			$padding: px($padding);
+    $padding: ($height - $font-size - $border * 2) / 2 nth($padding, 2);
+  } @else {
+    $padding: px($padding);
 
-			$height: nth($padding, 1) * 2 + $border * 2 + $font-size;
-		}
+    $height: nth($padding, 1) * 2 + $border * 2 + $font-size;
+  }
 
-		display: block;
-		padding: rem(0 nth($padding, 2));
-		margin: rem(0 0 $spacing 0);
-		font-size: $font-size;
-		height: $height;
-		width: 100%;
-	} 
-
-	$tmp: register-module();
-}
+  display: block;
+  padding: rem(0 nth($padding, 2));
+  margin: rem(0 0 $spacing 0);
+  font-size: $font-size;
+  height: $height;
+  width: 100%;
+} 

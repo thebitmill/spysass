@@ -1,12 +1,12 @@
 @if load-module('forms/prefix/foundation', 'themes') {
 	// We use these to style the prefix and postfix input elements
-	$input-prefix-bg: scale-color(#fff, $lightness: -5%) !default;
-	$input-prefix-border-color: scale-color(#fff, $lightness: -20%) !default;
-	$input-prefix-border-size: 1px !default;
-	$input-prefix-border-type: solid !default;
-	$input-prefix-overflow: hidden !default;
-	$input-prefix-font-color: #333 !default;
-	$input-prefix-font-color-alt: #fff !default;
+	$input-prefix-bg: scale-color(#fff, $lightness: -5%) !global !default;
+	$input-prefix-border-color: scale-color(#fff, $lightness: -20%) !global !default;
+	$input-prefix-border-size: 1px !global !default;
+	$input-prefix-border-type: solid !global !default;
+	$input-prefix-overflow: hidden !global !default;
+	$input-prefix-font-color: #333 !global !default;
+	$input-prefix-font-color-alt: #fff !global !default;
 
 	.prefix, .postfix {
 		display: block;

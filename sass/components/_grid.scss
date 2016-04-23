@@ -10,10 +10,10 @@
 	// @variables
 	//
 
-	$column-gutter: 30px !default;
-	$row-max-width: 1000px !default;
-	$row-min-width: false !default;
-	$total-columns: 12 !default;
+	$column-gutter: 30px !global !default;
+	$row-max-width: 1000px !global !default;
+	$row-min-width: false !global !default;
+	$total-columns: 12 !global !default;
 
 	//
 	// Grid Functions

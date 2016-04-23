@@ -1,5 +1,1 @@
-@if load-module('admin/one', 'themes') {
-	@import 'one/main';
-
-	$tmp: register-module();
-}
+@import 'one/main';

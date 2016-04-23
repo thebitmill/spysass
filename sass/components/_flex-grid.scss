@@ -1,10 +1,10 @@
+@import "mixins/utilities";
 
 @if load-module('flex-grid', 'components') {
 	// NOTE this grid does not allow for any of the columns to be fixed.
 
-	@import "mixins/utilities";
 
-	$global-gutter: 30px !default;
+	$global-gutter: 30px !global !default;
 
 	.row {
 		display: flex;
