@@ -57,6 +57,9 @@
 
 @mixin wipe-button {
   @include wipe;
+  &:focus {
+    outline: 0;
+  }
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
