@@ -9,7 +9,7 @@ form {
 	$color: $base-color;
 	$icon-width: 20px;
 
-	div.container {
+	div.field-container {
 		&.hide-errors {
 			div.invalid {
 				label.icon:not(:hover) {
