@@ -1,0 +1,34 @@
+$content-max-width: 1000px !default;
+$global-gutter: 30px !default;
+
+@mixin container($max-width: $content-max-width) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin cell($cells, $gutter: $global-gutter, $span: 1) {
+  flex: 0 0 0px;
+  flex-basis: calc(#{$span / $cells * 100%} - #{$gutter});
+}
+
+@mixin row() {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@mixin nested-row() {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 -15px;
+}
+
+
+@mixin column() {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
