@@ -40,7 +40,13 @@ The only functions allowed to deviate from this paradigm are `em()` and `rem()`
 (from units) which uses the `$base-font-size` as `$base-value` if it is not
 provided.
 
-## Modules
+## Mixins
+
+### Flex-Grid
+
+Sample: <http://codepen.io/lohfu/pen/reEeJa>
+
+## Modules (CAUTION: The Modules Are Being Deprecated)
 
 SpySASS is built around modules and module files. As such, ALL SCSS files
 (except `_spysass.scss`) in SpySASS are module files. A module file is simply a
