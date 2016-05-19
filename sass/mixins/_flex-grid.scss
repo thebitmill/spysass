@@ -12,18 +12,41 @@ $global-gutter: 30px !default;
   flex-basis: calc(#{$span / $cells * 100%} - #{$gutter});
 }
 
-@mixin row() {
+@mixin simple-row($gutter: $global-gutter) {
+	display: flex;
+	> .cell {
+		flex: 1 1 0px;
+    margin-right: $gutter;
+		&:last-child {
+      margin-right: 0;
+		}
+	}
+}
+
+@mixin row($cells: false) {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+
+  @if $cells {
+    > .cell {
+      @include cell($cells: $cells);
+    }
+  }
 }
 
-@mixin nested-row() {
+@mixin nested-row($cells: false, $gutter: $global-gutter) {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
-  margin: 0 -15px;
+  margin: 0 (-$gutter / 2);
+
+  @if $cells {
+    > .cell {
+      @include cell($cells: $cells);
+    }
+  }
 }
 
 
