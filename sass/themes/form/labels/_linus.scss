@@ -20,7 +20,7 @@ form {
 		$transition-time: 0.3s;
 		margin: 0 0 $form-spacing 0;
 		position: relative;
-		&.no-spacing {
+		&:last-child, &.no-spacing {
 			margin: 0;
 		}
 
@@ -75,6 +75,7 @@ form {
 			top: 8px;
 			line-height: 1;
 			position: absolute;
+      z-index: 9999;
 			left: $input-border-width + nth($input-padding, 2) - 1px;
 		}
 
