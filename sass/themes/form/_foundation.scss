@@ -135,7 +135,6 @@
 		background-repeat: no-repeat !important;
 
 		transition: background 0.5s;
-		padding: 0 nth($input-padding, 2) - 4px;
 
 		&:hover, &:focus {
 			background-color: $select-hover-bg-color;
