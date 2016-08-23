@@ -1,8 +1,8 @@
 $content-max-width: 1000px !default;
 $global-gutter: 30px !default;
 
-@mixin container($max-width: $content-max-width) {
-  width: 100%;
+@mixin container($max-width: $content-max-width, $gutter: 0px) {
+  width: calc(100% - #{$gutter});
   max-width: $max-width;
   margin: 0 auto;
 }
@@ -14,6 +14,10 @@ $global-gutter: 30px !default;
 
 @mixin simple-row($gutter: $global-gutter) {
 	display: flex;
+  flex-wrap: wrap;
+  > .full {
+    width: 100%;
+  }
 	> .cell {
 		flex: 1 1 0px;
     margin-right: $gutter;
