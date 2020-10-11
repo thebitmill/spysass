@@ -1,9 +1,7 @@
+@use '../../../mixins/graphics';
+
 $form-valid-color: green !default;
 $form-invalid-color: red !default;
-$form-valid-icon: 'form-valid' !default;
-$form-invalid-icon: 'form-invalid' !default;
-
-@import 'mixins/graphics';
 
 form {
   $color: $base-color;
@@ -139,7 +137,7 @@ form {
         top: 100%;
         height: 0;
         width: 0;
-        @include right-angle-triangle(5px, $form-invalid-color, 'top');
+        @include graphics.right-angle-triangle(5px, $form-invalid-color, 'top');
       }
     }
 
@@ -169,12 +167,12 @@ form {
         background-position: center center;
       }
       &:before {
-        @include svg-bg($form-invalid-icon);
+        background-image: url($form-invalid-icon);
         z-index: 2;
         transform: rotateX(-180deg);
       }
       &:after {
-        @include svg-bg($form-valid-icon);
+        background-image: url($form-valid-icon);
         transform: rotateX(-180deg);
       }
     }

@@ -1,82 +1,78 @@
-@if load-module('base', 'components') {
-  //
-  // Base Variables
-  //
+//
+// Base Variables
+//
 
-  $default-float: left !default !global;
-  $opposite-direction: right !default !global;
-  $text-direction: left !default !global;
+$default-float: left !default;
+$opposite-direction: right !default;
+$text-direction: left !default;
 
-  $base-color: #0066c6 !default !global;
-  $color-1: #0066c6 !default !global;
-  $color-2: #0066c6 !default !global;
-  $color-3: #0066c6 !default !global;
-  $color-message: #333 !default !global;
-  $color-error: #c89999 !default !global;
-  $color-success: #628b1c !default !global;
+$base-color: #0066c6 !default;
+$color-1: #0066c6 !default;
+$color-2: #0066c6 !default;
+$color-3: #0066c6 !default;
+$color-message: #333 !default;
+$color-error: #c89999 !default;
+$color-success: #628b1c !default;
 
-  // This needs to be a px value since rem and em-calc use it. It is translated
-  // to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
-  $base-line-height: 1.6 !default !global;
-  $base-line-height-computed: $base-line-height * 1rem !default !global;
+// This needs to be a px value since rem and em-calc use it. It is translated
+// to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
+$base-line-height: 1.6 !default;
+$base-line-height-computed: $base-line-height * 1rem !default;
 
-  $body-font-color: #222 !default !global;
-  $body-font-family: 'Times New Roman', sans-serif !default !global;
-  $body-font-weight: normal !default !global;
-  $body-font-style: normal !default !global;
-  $body-bg: #fff !default !global;
+$body-font-color: #222 !default;
+$body-font-family: 'Times New Roman', sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+$body-bg: #fff !default;
 
-  $font-smoothing: subpixel-antialiased !default !global;
+$font-smoothing: subpixel-antialiased !default;
 
-  //
-  // Base Styling
-  //
+//
+// Base Styling
+//
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: border-box;
-  }
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
-  html,
-  body {
-    font-size: $base-font-size;
-  }
+html,
+body {
+  font-size: $base-font-size;
+}
 
-  // Default body styles
-  body {
-    background: $body-bg;
-    color: $body-font-color;
-    padding: 0;
-    margin: 0;
-    font-family: $body-font-family;
-    font-weight: $body-font-weight;
-    font-style: $body-font-style;
-    line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
-    position: relative;
-  }
+// Default body styles
+body {
+  background: $body-bg;
+  color: $body-font-color;
+  padding: 0;
+  margin: 0;
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
+  font-style: $body-font-style;
+  line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+  position: relative;
+}
 
-  img,
-  object,
-  embed {
-    max-width: 100%;
-    height: auto;
-  }
+img,
+object,
+embed {
+  max-width: 100%;
+  height: auto;
+}
 
-  object,
-  embed {
-    height: 100%;
-  }
+object,
+embed {
+  height: 100%;
+}
 
-  img {
-    -ms-interpolation-mode: bicubic;
-  }
+img {
+  -ms-interpolation-mode: bicubic;
+}
 
-  // Get rid of gap under images by making them display: inline-block; by default
-  img {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  $tmp: register-module();
+// Get rid of gap under images by making them display: inline-block; by default
+img {
+  display: inline-block;
+  vertical-align: middle;
 }

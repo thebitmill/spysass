@@ -1,28 +1,24 @@
-@if load-module('media-queries', 'components') {
-  // Need to be in pixels for IE8
-  $small-range: 0px, 639px !default !global;
-  $medium-range: 640px, 1023px !default !global;
-  $large-range: 1024px, 1439px !default !global;
-  $xlarge-range: 1440px, 1920px !default !global;
-  $xxlarge-range: 1921px, 999999px !default !global;
+// Need to be in pixels for IE8
+$small-range: 0px, 639px !default;
+$medium-range: 640px, 1023px !default;
+$large-range: 1024px, 1439px !default;
+$xlarge-range: 1440px, 1920px !default;
+$xxlarge-range: 1921px, 999999px !default;
 
-  //
-  // Media Queries
-  //
+//
+// Media Queries
+//
 
-  $screen: 'only screen' !default !global;
-  $small-only: '#{$screen} and (min-width: #{min($small-range...)}) and (max-width: #{max($small-range...)})' !default !global;
-  $small-up: '#{$screen} and (min-width: #{min($small-range...)})' !default !global;
-  $medium-only: '#{$screen} and (min-width: #{min($medium-range...)}) and (max-width: #{max($medium-range...)})' !default !global;
-  $medium-up: '#{$screen} and (min-width: #{min($medium-range...)})' !default !global;
-  $medium-down: '#{$screen} and (max-width: #{max($medium-range...)})' !default !global;
-  $large-only: '#{$screen} and (min-width: #{min($large-range...)}) and (max-width: #{max($large-range...)})' !default !global;
-  $large-up: '#{$screen} and (min-width: #{min($large-range...)})' !default !global;
-  $large-down: '#{$screen} and (max-width: #{max($large-range...)})' !default !global;
-  //$xlarge-only: "only screen and (min-width: #{min($xlarge-range...)})" !global !default;
-  $xlarge-up: '#{$screen} and (min-width: #{min($xlarge-range...)})' !default !global;
-  $landscape: '#{$screen} and (orientation: landscape)' !default !global;
-  $portrait: '#{$screen} and (orientation: portrait)' !default !global;
-
-  $tmp: register-module();
-}
+$screen: 'only screen' !default;
+$small-only: '#{$screen} and (min-width: #{min($small-range...)}) and (max-width: #{max($small-range...)})' !default;
+$small-up: '#{$screen} and (min-width: #{min($small-range...)})' !default;
+$medium-only: '#{$screen} and (min-width: #{min($medium-range...)}) and (max-width: #{max($medium-range...)})' !default;
+$medium-up: '#{$screen} and (min-width: #{min($medium-range...)})' !default;
+$medium-down: '#{$screen} and (max-width: #{max($medium-range...)})' !default;
+$large-only: '#{$screen} and (min-width: #{min($large-range...)}) and (max-width: #{max($large-range...)})' !default;
+$large-up: '#{$screen} and (min-width: #{min($large-range...)})' !default;
+$large-down: '#{$screen} and (max-width: #{max($large-range...)})' !default;
+//$xlarge-only: "only screen and (min-width: #{min($xlarge-range...)})" !default;
+$xlarge-up: '#{$screen} and (min-width: #{min($xlarge-range...)})' !default;
+$landscape: '#{$screen} and (orientation: landscape)' !default;
+$portrait: '#{$screen} and (orientation: portrait)' !default;

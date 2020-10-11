@@ -1,13 +1,15 @@
-@mixin button-size($height: 0, $font-size: 0, $padding: 0, $full-width: false, $border: 0) {
+@use '../functions/font';
+
+@mixin size($height: 0, $font-size: 0, $padding: 0, $full-width: false, $border: 0) {
   $error-message: 'You have to supply at least two of the following: $font-size, $height, $padding.';
 
   $line-height: false;
 
-  $padding: rem($padding);
-  $height: rem($height);
-  $font-size: rem($font-size);
-  $padding: rem($padding);
-  $border: rem($border);
+  $padding: font.rem($padding);
+  $height: font.rem($height);
+  $font-size: font.rem($font-size);
+  $padding: font.rem($padding);
+  $border: font.rem($border);
 
   @if type-of($padding) != 'list' {
     $padding: $padding $padding;
@@ -36,22 +38,22 @@
   $line-height: $height - 2 * $border;
 
   @if $full-width == true {
-    $padding: rem(nth($padding, 1) 0);
+    $padding: font.rem(nth($padding, 1) 0);
     width: 100%;
   }
 
-  line-height: rem($line-height);
-  height: rem($height);
-  padding: rem($padding);
-  font-size: rem($font-size);
+  line-height: font.rem($line-height);
+  height: font.rem($height);
+  padding: font.rem($padding);
+  font-size: font.rem($font-size);
 }
 
-@mixin button-style-thoughtbot() {
-  color: $button-font-color;
+@mixin style-thoughtbot($font-color) {
+  color: $font-color;
   background-color: #ee432e;
   background: linear-gradient(180deg, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
-  border: rem(1px) solid #951100;
-  border-radius: rem(5px);
+  border: font.rem(1px) solid #951100;
+  border-radius: font.rem(5px);
   box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
   &:hover {
@@ -64,7 +66,7 @@
   }
 }
 // modified thoughtbot
-@mixin button-style-glossy($color: $base-color) {
+@mixin style-glossy($color: $base-color) {
   background: $color;
   background: linear-gradient(
     180deg,
@@ -102,7 +104,7 @@
   }
 }
 
-@mixin button-style-clean-grey($color: #ccc) {
+@mixin style-clean-grey($color: #ccc) {
   background-color: $color;
   background: linear-gradient(180deg, lighten($color, 13.3333%), $color);
   border: 1px solid darken($color, 6.6667%);

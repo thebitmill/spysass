@@ -1,4 +1,4 @@
-@import 'mixins/graphics';
+@use '../../../functions/font';
 
 form {
   $color: $base-color;
@@ -38,7 +38,7 @@ form {
 
       input,
       select {
-        padding-left: rem(nth($input-padding, 2));
+        padding-left: font.rem(nth($input-padding, 2));
       }
 
       select {
