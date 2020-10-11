@@ -2,9 +2,9 @@
   "name": "spysass",
   "version": "0.12.0",
   "description": "SASS from Bitmill",
-  "main": "./sass/_spysass.scss",
+  "main": "./_spysass.scss",
   "scripts": {
-    "format": "prettier --write \"*.{js,json,md,ts}\" \"sass/**/*\"",
+    "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
