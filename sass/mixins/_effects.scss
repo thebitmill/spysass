@@ -1,4 +1,4 @@
-@mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($base-color, .25)) {
+@mixin block-glowing-effect($selector: focus, $fade-time: 300ms, $glowing-effect-color: fade-out($base-color, 0.25)) {
   transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
   &:#{$selector} {
     box-shadow: 0 0 5px $glowing-effect-color;

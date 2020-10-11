@@ -2,8 +2,9 @@
   "name": "spysass",
   "version": "0.12.0",
   "description": "SASS from the Code Bureau.",
-  "main": "./lib/index.js",
+  "main": "./sass/_spysass.scss",
   "scripts": {
+    "format": "prettier --write \"*.{js,json,md,ts}\" \"sass/**/*\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/thecodebureau/spysass/issues"
   },
-  "homepage": "https://github.com/thecodebureau/spysass"
+  "homepage": "https://github.com/thecodebureau/spysass",
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
 }

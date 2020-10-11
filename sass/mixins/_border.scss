@@ -1,5 +1,5 @@
 @mixin side-radius($direction, $radius) {
-  @if($direction == left) {
+  @if ($direction == left) {
     border-top-left-radius: $radius;
     border-bottom-left-radius: $radius;
   } @else if($direction == right) {

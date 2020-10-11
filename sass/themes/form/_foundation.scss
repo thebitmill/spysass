@@ -4,168 +4,176 @@
 @import 'mixins/forms';
 
 @if load-module('forms/foundation', 'themes') {
-	// Based on Foundation 5.3.0
-	//
-	// @variables
-	//
-	// We use this to set the base for lots of form spacing and positioning styles
-	$form-spacing: 16px !global !default;
+  // Based on Foundation 5.3.0
+  //
+  // @variables
+  //
+  // We use this to set the base for lots of form spacing and positioning styles
+  $form-spacing: 16px !default !global;
 
-	// We use these to style the labels in different ways
-	$input-font-family: inherit !global !default;
-	$input-font-color: rgba(0,0,0,0.75) !global !default;
-	$input-font-size: $base-font-size !global !default;//14px for base font size 16
-	$input-placeholder-color: #aaa !global !default;
-	$input-bg-color: #fff !global !default;
-	$input-padding: 8px !global !default;
-	$input-focus-bg-color: scale-color(#fff, $lightness: -2%) !global !default;
-	$input-border-color: scale-color(#fff, $lightness: -20%) !global !default;
-	$input-focus-border-color: scale-color(#fff, $lightness: -40%) !global !default;
-	$input-border-style: solid !global !default;
-	$input-border-width: 1px !global !default;
-	$input-border-radius: 0 !global !default;
-	$input-disabled-bg: #ddd !global !default;
-	$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !global !default;
-	$input-include-glowing-effect: true !global !default;
+  // We use these to style the labels in different ways
+  $input-font-family: inherit !default !global;
+  $input-font-color: rgba(0, 0, 0, 0.75) !default !global;
+  $input-font-size: $base-font-size !default !global; //14px for base font size 16
+  $input-placeholder-color: #aaa !default !global;
+  $input-bg-color: #fff !default !global;
+  $input-padding: 8px !default !global;
+  $input-focus-bg-color: scale-color(#fff, $lightness: -2%) !default !global;
+  $input-border-color: scale-color(#fff, $lightness: -20%) !default !global;
+  $input-focus-border-color: scale-color(#fff, $lightness: -40%) !default !global;
+  $input-border-style: solid !default !global;
+  $input-border-width: 1px !default !global;
+  $input-border-radius: 0 !default !global;
+  $input-disabled-bg: #ddd !default !global;
+  $input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !default !global;
+  $input-include-glowing-effect: true !default !global;
 
-	$textarea-padding-top: nth($input-padding, 1) - 4px !global !default;
+  $textarea-padding-top: nth($input-padding, 1) - 4px !default !global;
 
-	// We use this to style the glowing effect of inputs when focused
-	$glowing-effect-fade-time: 0.45s !global !default;
-	$glowing-effect-color: $input-focus-border-color !global !default;
+  // We use this to style the glowing effect of inputs when focused
+  $glowing-effect-fade-time: 0.45s !default !global;
+  $glowing-effect-color: $input-focus-border-color !default !global;
 
-	// Select variables
-	$select-bg-color: #fafafa !global !default;
-	$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !global !default;
+  // Select variables
+  $select-bg-color: #fafafa !default !global;
+  $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default !global;
 
-	@if length($input-padding) == 1 {
-		$input-padding: $input-padding $input-padding !global;
-	}
+  @if length($input-padding) == 1 {
+    $input-padding: $input-padding $input-padding !global;
+  }
 
-	$input-height: $input-font-size + (nth($input-padding, 1) + $input-border-width) * 2 !global !default;
+  $input-height: $input-font-size + (nth($input-padding, 1) + $input-border-width) * 2 !default !global;
 
-	/* We use this to get basic styling on all basic form elements */
-	input[type="text"],
-	input[type="password"],
-	input[type="date"],
-	input[type="datetime"],
-	input[type="datetime-local"],
-	input[type="month"],
-	input[type="week"],
-	input[type="email"],
-	input[type="number"],
-	input[type="search"],
-	input[type="tel"],
-	input[type="time"],
-	input[type="url"],
-	select,
-	textarea,
-	[data-spytext],
-	.spytext-field {
-		@include input-size(
-			$height: $input-height,
-			$padding: $input-padding,
-			$border: $input-border-width,
-			$font-size: $input-font-size,
-			$spacing: 0
-		);
-		border: $input-border-width $input-border-style $input-border-color;
-		appearance: none !important;
-		background-color: $input-bg-color;
-		font-family: $input-font-family;
-		box-shadow: $input-box-shadow;
-		color: $input-font-color;
-		border-radius: 0;
+  /* We use this to get basic styling on all basic form elements */
+  input[type='text'],
+  input[type='password'],
+  input[type='date'],
+  input[type='datetime'],
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='email'],
+  input[type='number'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='time'],
+  input[type='url'],
+  select,
+  textarea,
+  [data-spytext],
+  .spytext-field {
+    @include input-size(
+      $height: $input-height,
+      $padding: $input-padding,
+      $border: $input-border-width,
+      $font-size: $input-font-size,
+      $spacing: 0
+    );
+    border: $input-border-width $input-border-style $input-border-color;
+    appearance: none !important;
+    background-color: $input-bg-color;
+    font-family: $input-font-family;
+    box-shadow: $input-box-shadow;
+    color: $input-font-color;
+    border-radius: 0;
 
-		@if $input-include-glowing-effect {
-			@include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
-		}
+    @if $input-include-glowing-effect {
+      @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
+    }
 
-		// Basic focus styles
-		&:focus {
-			background: $input-focus-bg-color;
-			border-color: $input-focus-border-color;
-			outline: none;
-		}
+    // Basic focus styles
+    &:focus {
+      background: $input-focus-bg-color;
+      border-color: $input-focus-border-color;
+      outline: none;
+    }
 
-		// Disabled background input background color
-		&[disabled], fieldset[disabled] & { background-color: $input-disabled-bg; }
-		@if $input-include-glowing-effect == false {
-			transition: all 0.15s linear;
-		}
-	}
+    // Disabled background input background color
+    &[disabled],
+    fieldset[disabled] & {
+      background-color: $input-disabled-bg;
+    }
+    @if $input-include-glowing-effect == false {
+      transition: all 0.15s linear;
+    }
+  }
 
-	input, textarea {
-		// from http://stackoverflow.com/a/14739092/4273291
-		&::-ms-reveal {
-			display: none;
-			width: 0;
-			height: 0;
-		}
-		&::-ms-clear {
-			display: none;
-			width: 0;
-			height: 0;
-		}
-		&:-ms-input-placeholder {
-			color: $input-placeholder-color;
-		}
-		&::-webkit-input-placeholder {
-			color: $input-placeholder-color;
-		}
-		&:-moz-placeholder {
-			opacity: 1;
-			color: $input-placeholder-color;
-		}
-		&::-moz-placeholder {
-			opacity: 1;
-			color: $input-placeholder-color;
-		}
-	}
+  input,
+  textarea {
+    // from http://stackoverflow.com/a/14739092/4273291
+    &::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    &::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    &:-ms-input-placeholder {
+      color: $input-placeholder-color;
+    }
+    &::-webkit-input-placeholder {
+      color: $input-placeholder-color;
+    }
+    &:-moz-placeholder {
+      opacity: 1;
+      color: $input-placeholder-color;
+    }
+    &::-moz-placeholder {
+      opacity: 1;
+      color: $input-placeholder-color;
+    }
+  }
 
-	textarea, [spytext-field], .spytext-field {
-		padding: $textarea-padding-top nth($input-padding, 2);
-		height: auto;
-	}
+  textarea,
+  [spytext-field],
+  .spytext-field {
+    padding: $textarea-padding-top nth($input-padding, 2);
+    height: auto;
+  }
 
-	select {
-		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 9.9999996 5.0000003"><path d="M0 0h10L5 5 0 0z" fill="#aaa" fill-rule="evenodd"/></svg>') !important;
-		background-color: $select-bg-color !important;
-		background-position: if($text-direction == 'rtl', 5px, calc(100% - 5px)) center !important;
-		background-repeat: no-repeat !important;
+  select {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 9.9999996 5.0000003"><path d="M0 0h10L5 5 0 0z" fill="#aaa" fill-rule="evenodd"/></svg>') !important;
+    background-color: $select-bg-color !important;
+    background-position: if($text-direction == 'rtl', 5px, calc(100% - 5px)) center !important;
+    background-repeat: no-repeat !important;
 
-		transition: background 0.5s;
+    transition: background 0.5s;
 
-		&:hover, &:focus {
-			background-color: $select-hover-bg-color;
-			border-color: $input-focus-border-color;
-		}
+    &:hover,
+    &:focus {
+      background-color: $select-hover-bg-color;
+      border-color: $input-focus-border-color;
+    }
 
-		&:focus {
-			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 9.9999996 5.0000003"><path d="M10 5H0l5-5 5 5z" fill="#888" fill-rule="evenodd"/></svg>') !important;
-		}
-		&::-ms-expand {
-				display:none;
-		}
-	}
+    &:focus {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 9.9999996 5.0000003"><path d="M10 5H0l5-5 5 5z" fill="#888" fill-rule="evenodd"/></svg>') !important;
+    }
+    &::-ms-expand {
+      display: none;
+    }
+  }
 
-	select, textarea {
-		line-height: 1.6;
-	}
+  select,
+  textarea {
+    line-height: 1.6;
+  }
 
-	input[type="checkbox"] + label,
-	input[type="radio"] + label {
-		display: inline-block;
-		margin-#{$default-float}: $form-spacing * .5;
-		margin-#{$opposite-direction}: $form-spacing;
-		margin-bottom: 0;
-		vertical-align: baseline;
-	}
+  input[type='checkbox'] + label,
+  input[type='radio'] + label {
+    display: inline-block;
+    margin-#{$default-float}: $form-spacing * 0.5;
+    margin-#{$opposite-direction}: $form-spacing;
+    margin-bottom: 0;
+    vertical-align: baseline;
+  }
 
-	/* Normalize file input width */
-	input[type="file"] {
-		width:100%;
-	}
+  /* Normalize file input width */
+  input[type='file'] {
+    width: 100%;
+  }
 
-	$tmp: register-module();
+  $tmp: register-module();
 }

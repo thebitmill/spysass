@@ -34,7 +34,7 @@ all vendor prefixes.
 
 SpySASS tries to apply "functional programming" paradigms. This mainly means
 all mixins and functions avoid changing state and mutating data, but also avoids
-using $variables from an external scope.
+using \$variables from an external scope.
 
 The only functions allowed to deviate from this paradigm are `em()` and `rem()`
 (from units) which uses the `$base-font-size` as `$base-value` if it is not
@@ -74,7 +74,7 @@ There are currently 4 types of module files:
 	// All imorts
 	@import "functions/one";
 	@import "mixins/one";
-		
+
 	// All module code
 
 	$tmp: register-module();
@@ -111,4 +111,3 @@ Components generate CSS, but do not register any new functions or mixins.
 
 Themes are essentially packages of components. Themes should be complete
 CSS for a site or type of HTML (eg. forms).
-

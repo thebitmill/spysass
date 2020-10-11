@@ -1,16 +1,8 @@
 {
   "name": "spysass",
   "version": "0.6.0-pre.2",
-  "authors": [
-    "Linus Miller <linus.miller@thecodebureau.com>"
-  ],
+  "authors": ["Linus Miller <linus.miller@thecodebureau.com>"],
   "description": "SASS from the Code Bureau",
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"]
 }

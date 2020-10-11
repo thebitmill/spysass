@@ -1,11 +1,5 @@
-@mixin button-size(
-  $height: 0,
-  $font-size: 0,
-  $padding: 0,
-  $full-width: false,
-  $border: 0
-) {
-  $error-message: "You have to supply at least two of the following: $font-size, $height, $padding.";
+@mixin button-size($height: 0, $font-size: 0, $padding: 0, $full-width: false, $border: 0) {
+  $error-message: 'You have to supply at least two of the following: $font-size, $height, $padding.';
 
   $line-height: false;
 
@@ -15,14 +9,14 @@
   $padding: rem($padding);
   $border: rem($border);
 
-  @if type-of($padding) != "list" {
+  @if type-of($padding) != 'list' {
     $padding: $padding $padding;
   }
 
   @if $height != 0 {
     @if $font-size != 0 {
       $padding: 0 nth($padding, 2);
-    } @else if nth($padding,1) != 0 {
+    } @else if nth($padding, 1) != 0 {
       $font-size: $height - nth($padding, 1);
     } @else {
       @error $error-message;
@@ -31,7 +25,7 @@
   } @else if $font-size != 0 {
     @if nth($padding, 1) != 0 {
       $height: $font-size + nth($padding, 1) * 2;
-      $padding: 0 nth($padding, 2)
+      $padding: 0 nth($padding, 2);
     } @else {
       @error $error-message;
     }
@@ -56,7 +50,9 @@
   color: $button-font-color;
   background-color: #ee432e;
   background: linear-gradient(180deg, #ee432e 0%, #c63929 50%, #b51700 50%, #891100 100%);
-  border: rem(1px) solid #951100; border-radius: rem(5px); box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+  border: rem(1px) solid #951100;
+  border-radius: rem(5px);
+  box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
   &:hover {
     background: linear-gradient(180deg, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
@@ -64,13 +60,19 @@
   &:active {
     background-color: #d43c28;
     background: linear-gradient(to bottom, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
-    box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4); 
+    box-shadow: inset 0 0 0 1px rgba(255, 115, 100, 0.4);
   }
 }
 // modified thoughtbot
 @mixin button-style-glossy($color: $base-color) {
   background: $color;
-  background: linear-gradient(180deg, lighten($color, 10%) 0%, $color 50%, darken($color, 5%) 50%, darken($color, 15%) 100%);
+  background: linear-gradient(
+    180deg,
+    lighten($color, 10%) 0%,
+    $color 50%,
+    darken($color, 5%) 50%,
+    darken($color, 15%) 100%
+  );
   border: 1px solid darken($color, 15%);
   border-radius: 5px;
   color: #fff;
@@ -78,11 +80,23 @@
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.8);
 
   &:hover {
-    background: linear-gradient(to bottom, lighten($color, 25%) 0%, lighten($color, 5%) 50%, darken($color, 5%) 50%, darken($color, 20%) 100%);
+    background: linear-gradient(
+      to bottom,
+      lighten($color, 25%) 0%,
+      lighten($color, 5%) 50%,
+      darken($color, 5%) 50%,
+      darken($color, 20%) 100%
+    );
   }
 
   &:active {
-    background: linear-gradient(to bottom, darken($color, 4%) 0%, darken($color,2%) 50%, darken($color, 10%) 50%, darken($color, 18%) 100%);
+    background: linear-gradient(
+      to bottom,
+      darken($color, 4%) 0%,
+      darken($color, 2%) 50%,
+      darken($color, 10%) 50%,
+      darken($color, 18%) 100%
+    );
     //background: linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
     box-shadow: inset 0 0 0 1px rgba(lighten($color, 20%), 0.4);
   }
@@ -101,14 +115,15 @@
     background: linear-gradient(to bottom, lighten($color, 6.6667%), darken($color, 6.6667%));
     border-color: darken($color, 13.3333%);
     border-bottom-color: #888;
-    text-shadow: 0 1px 0 #ddd; 
+    text-shadow: 0 1px 0 #ddd;
   }
   &:active:not(:disabled):not(.disabled) {
     border: 1px solid #999;
     border-bottom: 1px solid #777;
     box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
   }
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     background-color: lighten($color, 6.6667%);
     background: linear-gradient(180deg, lighten($color, 20%), lighten($color, 6.6667%));
     border-color: lighten($color, 6.6667%);

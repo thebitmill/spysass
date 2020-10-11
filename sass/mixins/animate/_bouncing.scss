@@ -1,186 +1,184 @@
 // ---------------------------------------------------------------------------
 @mixin bounceIn() {
-	@keyframes bounceIn {
-		0% {
-			opacity: 0;
-			scale: 0.3;
-		}
-		50% {
-			opacity: 1;
-			scale: 1.05; 
-		}
-		70% {
-			scale: 0.9; 
-		}
-		100% {
-			scale: 1;
-		}
-	}
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      scale: 0.3;
+    }
+    50% {
+      opacity: 1;
+      scale: 1.05;
+    }
+    70% {
+      scale: 0.9;
+    }
+    100% {
+      scale: 1;
+    }
+  }
 }
-
 
 @mixin bounceInDown {
-	@keyframes bounceInDown {
-		0% {
-			opacity: 0;
-			translateY: -2000px;
-		}
-		60% {
-			opacity: 1;
-			translateY: 30px;
-		}
-		80% {
-			translateY: -10px;
-		}
-		100% {
-			translateY: 0;
-		}
-	}
+  @keyframes bounceInDown {
+    0% {
+      opacity: 0;
+      translatey: -2000px;
+    }
+    60% {
+      opacity: 1;
+      translatey: 30px;
+    }
+    80% {
+      translatey: -10px;
+    }
+    100% {
+      translatey: 0;
+    }
+  }
 }
 
-
-
-
 @mixin bounceInUp {
-	@keyframes bounceInUp {
-		0% {
-			opacity: 0;
-			translateY: 2000px;
-		}
-		60% {
-			opacity: 1;
-			translateY: -30px;
-		}
-		80% {
-			translateY: 10px;
-		}
-		100% {
-			translateY: 0;
-		}
-	}
+  @keyframes bounceInUp {
+    0% {
+      opacity: 0;
+      translatey: 2000px;
+    }
+    60% {
+      opacity: 1;
+      translatey: -30px;
+    }
+    80% {
+      translatey: 10px;
+    }
+    100% {
+      translatey: 0;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 @mixin bounceInRight {
-	@keyframes bounceInRight {
-		0% {
-			opacity: 0;
-			translateX: 2000px;
-		}
-		60% {
-			opacity: 1;
-			translateX: -30px;
-		}
-		80% {
-			translateX: 10px;
-		}
-		100% {
-			translateX: 0;
-	} }
+  @keyframes bounceInRight {
+    0% {
+      opacity: 0;
+      translatex: 2000px;
+    }
+    60% {
+      opacity: 1;
+      translatex: -30px;
+    }
+    80% {
+      translatex: 10px;
+    }
+    100% {
+      translatex: 0;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 @mixin bounceInLeft {
-	@keyframes bounceInLeft {
-		0% {
-			opacity: 0;
-			translateX: -2000px;
-		}
-		60% {
-			opacity: 1;
-			translateX: 30px;
-		}
-		80% {
-			translateX: -10px;
-		}
-		100% {
-			translateX: 0;
-		}
-	}
+  @keyframes bounceInLeft {
+    0% {
+      opacity: 0;
+      translatex: -2000px;
+    }
+    60% {
+      opacity: 1;
+      translatex: 30px;
+    }
+    80% {
+      translatex: -10px;
+    }
+    100% {
+      translatex: 0;
+    }
+  }
 }
 // ---------------------------------------------------------------------------
 @mixin bounceOut {
-	@keyframes bounceOut {
-		0% {
-			scale: 1;
-		}
-		25% {
-			scale: 0.95;
-		}
-		50% {
-			opacity: 1;
-			scale: 1.1;
-		}
-		100% {
-			opacity: 0;
-			scale: 0.3;
-	} }
+  @keyframes bounceOut {
+    0% {
+      scale: 1;
+    }
+    25% {
+      scale: 0.95;
+    }
+    50% {
+      opacity: 1;
+      scale: 1.1;
+    }
+    100% {
+      opacity: 0;
+      scale: 0.3;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 @mixin bounceOutUp {
-	@keyframes bounceOutUp {
-		0% {
-			translateY: 0;
-		}
-		20% {
-			opacity: 1;
-			translateY: 20px;
-		}
-		100% {
-			opacity: 0;
-			translateY: -2000px;
-		}
-	}
+  @keyframes bounceOutUp {
+    0% {
+      translatey: 0;
+    }
+    20% {
+      opacity: 1;
+      translatey: 20px;
+    }
+    100% {
+      opacity: 0;
+      translatey: -2000px;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 @mixin bounceOutDown {
-	@keyframes bounceOutDown {
-		0% {
-			translateY: 0;
-		}
-		20% {
-			opacity: 1;
-			translateY: -20px;
-		}
-		100% {
-			opacity: 0;
-			translateY: 2000px;
-		}
-	}
+  @keyframes bounceOutDown {
+    0% {
+      translatey: 0;
+    }
+    20% {
+      opacity: 1;
+      translatey: -20px;
+    }
+    100% {
+      opacity: 0;
+      translatey: 2000px;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 @mixin bounceOutLeft {
-	@keyframes bounceOutLeft {
-		0% {
-			translateX: 0;
-		}
-		20% {
-			opacity: 1;
-			translateX: 20px;
-		}
-		100% {
-			opacity: 0;
-			translateX: -2000px;
-		}
-	}
+  @keyframes bounceOutLeft {
+    0% {
+      translatex: 0;
+    }
+    20% {
+      opacity: 1;
+      translatex: 20px;
+    }
+    100% {
+      opacity: 0;
+      translatex: -2000px;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 @mixin bounceOutRight {
-	@keyframes bounceOutRight {
-		0% {
-			translateX: 0;
-		}
-		20% {
-			opacity: 1;
-			translateX: -20px;
-		}
-		100% {
-			opacity: 0;
-			translateX: 2000px;
-		}
-	}
+  @keyframes bounceOutRight {
+    0% {
+      translatex: 0;
+    }
+    20% {
+      opacity: 1;
+      translatex: -20px;
+    }
+    100% {
+      opacity: 0;
+      translatex: 2000px;
+    }
+  }
 }

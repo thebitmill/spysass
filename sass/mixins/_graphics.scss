@@ -1,9 +1,9 @@
 @mixin svg-bg($image) {
-    background-image: img-url('#{$image}.png');
-    background-image: none, img-url('#{$image}.svg');
+  background-image: img-url('#{$image}.png');
+  background-image: none, img-url('#{$image}.svg');
 }
 
-@mixin triangle($height, $base:2*$height, $direction: left, $color:$base-color) {
+@mixin triangle($height, $base: 2 * $height, $direction: left, $color: $base-color) {
   width: 0;
   height: 0;
   @if ($direction == top) {
