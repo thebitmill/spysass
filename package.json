@@ -1,7 +1,7 @@
 {
   "name": "spysass",
   "version": "0.12.0",
-  "description": "SASS from the Code Bureau.",
+  "description": "SASS from Bitmill",
   "main": "./sass/_spysass.scss",
   "scripts": {
     "format": "prettier --write \"*.{js,json,md,ts}\" \"sass/**/*\"",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thecodebureau/spysass"
+    "url": "git+https://github.com/thebitmill/spysass.git"
   },
   "keywords": [
     "SASS",
     "CSS3"
   ],
-  "author": "The Code Bureau <info@thecodebureau.com>",
+  "author": "Bitmill <info@bitmill.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thecodebureau/spysass/issues"
+    "url": "https://github.com/thebitmill/spysass/issues"
   },
-  "homepage": "https://github.com/thecodebureau/spysass",
+  "homepage": "https://github.com/thebitmill/spysass#readme",
   "devDependencies": {
     "prettier": "^2.1.2"
   }
