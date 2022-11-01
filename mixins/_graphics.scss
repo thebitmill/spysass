@@ -1,30 +1,32 @@
+@use 'sass:math';
+
 @mixin svg-bg($image) {
   background-image: img-url('#{$image}.png');
   background-image: none, img-url('#{$image}.svg');
 }
 
-@mixin triangle($height, $base: 2 * $height, $direction: left, $color: $base-color) {
+@mixin triangle($height, $base: 2 * $height, $direction: left, $color) {
   width: 0;
   height: 0;
   @if ($direction == top) {
-    border-left: $base / 2 solid transparent;
+    border-left: math.div($base, 2) solid transparent;
     border-bottom: $height solid $color;
-    border-right: $base / 2 solid transparent;
+    border-right: math.div($base, 2) solid transparent;
   }
   @if ($direction == bottom) {
-    border-left: $base / 2 solid transparent;
+    border-left: math.div($base, 2) solid transparent;
     border-top: $height solid $color;
-    border-right: $base / 2 solid transparent;
+    border-right: math.div($base, 2) solid transparent;
   }
   @if ($direction == left) {
-    border-top: $base / 2 solid transparent;
+    border-top: math.div($base, 2) solid transparent;
     border-right: $height solid $color;
-    border-bottom: $base / 2 solid transparent;
+    border-bottom: math.div($base, 2) solid transparent;
   }
   @if ($direction == right) {
-    border-top: $base / 2 solid transparent;
+    border-top: math.div($base, 2) solid transparent;
     border-left: $height solid $color;
-    border-bottom: $base / 2 solid transparent;
+    border-bottom: math.div($base, 2) solid transparent;
   }
 }
 
