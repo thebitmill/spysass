@@ -1,26 +1,28 @@
-$base: 16px !default;
+@use 'sass:math';
+
+$base-font-size: 16px !default;
 
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return math.div($num, ($num * 0 + 1));
 }
 
-@function convert-to-em($value, $base: $base) {
-  $value: strip-unit($value) / strip-unit($base) + 0em;
+@function convert-to-em($value, $base: $base-font-size) {
+  $value: math.div(strip-unit($value), strip-unit($base)) + 0em;
   @if ($value == 0em) {
     $value: 0;
   }
   @return $value;
 }
 
-@function convert-to-rem($value, $base: $base) {
-  $value: strip-unit($value) / strip-unit($base) + 0rem;
+@function convert-to-rem($value, $base: $base-font-size) {
+  $value: math.div(strip-unit($value), strip-unit($base)) + 0rem;
   @if ($value == 0rem) {
     $value: 0;
   }
   @return $value;
 }
 
-@function convert-to-px($value, $base: $base) {
+@function convert-to-px($value, $base: $base-font-size) {
   $value: strip-unit($value) * strip-unit($base) + 0px;
   @if ($value == 0px) {
     $value: 0;
@@ -28,14 +30,14 @@ $base: 16px !default;
   @return $value;
 }
 
-@function px($values, $base-value: $base) {
+@function px($values, $base: $base-font-size) {
   $max: length($values);
 
   $px-values: ();
   @for $i from 1 through $max {
     $value: nth($values, $i);
     @if unit($value) != 'px' {
-      $px-values: append($px-values, convert-to-px($value, $base-value));
+      $px-values: append($px-values, convert-to-px($value, $base));
     } @else {
       $px-values: append($px-values, $value);
     }
@@ -48,14 +50,14 @@ $base: 16px !default;
   @return $px-values;
 }
 
-@function rem($values, $base-value: $base) {
+@function rem($values, $base: $base-font-size) {
   $max: length($values);
 
   $rem-values: ();
   @for $i from 1 through $max {
     $value: nth($values, $i);
     @if unit($value) != 'rem' and unit($value) != 'em' {
-      $rem-values: append($rem-values, convert-to-rem($value, $base-value));
+      $rem-values: append($rem-values, convert-to-rem($value, $base));
     } @else {
       $rem-values: append($rem-values, $value);
     }
@@ -68,14 +70,14 @@ $base: 16px !default;
   @return $rem-values;
 }
 
-@function em($values, $base-value: $base) {
+@function em($values, $base: $base-font-size) {
   $max: length($values);
 
   $em-values: ();
   @for $i from 1 through $max {
     $value: nth($values, $i);
     @if unit($value) != 'rem' and unit($value) != 'em' {
-      $em-values: append($em-values, convert-to-em($value, $base-value));
+      $em-values: append($em-values, convert-to-em($value, $base));
     } @else {
       $em-values: append($em-values, $value);
     }

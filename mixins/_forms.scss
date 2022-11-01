@@ -1,5 +1,5 @@
 @use 'sass:list';
-@use '../functions/font';
+@use '../functions/units';
 // NOTE does not set border, $border is only used for calculations
 
 // setting $height and $vertical-padding will use $font-size and overwrite
@@ -16,22 +16,22 @@
     $padding: $padding $padding;
   }
 
-  $font-size: font.px($font-size);
-  $border: font.px($border);
+  $font-size: units.px($font-size);
+  $border: units.px($border);
 
   @if $height != false {
-    $height: font.px($height);
+    $height: units.px($height);
 
     $padding: ($height - $font-size - $border * 2) / 2 list.nth($padding, 2);
   } @else {
-    $padding: font.px($padding);
+    $padding: units.px($padding);
 
     $height: list.nth($padding, 1) * 2 + $border * 2 + $font-size;
   }
 
   display: block;
-  padding: font.rem(0 list.nth($padding, 2));
-  margin: font.rem(0 0 $spacing 0);
+  padding: units.rem(0 list.nth($padding, 2));
+  margin: units.rem(0 0 $spacing 0);
   font-size: $font-size;
   height: $height;
   width: 100%;
