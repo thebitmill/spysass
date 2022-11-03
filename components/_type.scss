@@ -1,14 +1,15 @@
+@use 'sass:math';
 @use '../mixins/utils';
 
 @use './base';
 
-$heading-font-family: $body-font-family !default;
+$heading-font-family: base.$body-font-family !default;
 $heading-font-weight: bold !default;
 $heading-font-style: normal !default;
-$heading-font-color: $body-font-color !default;
+$heading-font-color: base.$body-font-color !default;
 $heading-text-rendering: optimizeLegibility !default;
 $heading-top-margin: base.$base-line-height-computed !default;
-$heading-bottom-margin: base.$base-line-height-computed / 2 !default;
+$heading-bottom-margin: math.div(base.$base-line-height-computed, 2) !default;
 $heading-line-height: 1.2 !default;
 
 $h1-font-size: 2.5rem !default; //40px when base-font-size is 16px
@@ -22,7 +23,7 @@ $paragraph-font-family: base.$body-font-family !default;
 $paragraph-font-weight: base.$body-font-weight !default;
 $paragraph-font-size: 1rem !default;
 $paragraph-line-height: base.$base-line-height !default;
-$paragraph-margin: 0 0 (base.$base-line-height-computed / 2) !default;
+$paragraph-margin: 0 0 math.div(base.$base-line-height-computed, 2) !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 /* Default header styles */
@@ -147,7 +148,7 @@ ul,
 ol {
   line-height: $paragraph-line-height;
   margin-top: 0;
-  margin-bottom: (base.$base-line-height-computed / 2);
+  margin-bottom: math.div(base.$base-line-height-computed, 2);
   padding-left: base.$base-line-height-computed;
   ul,
   ol {
