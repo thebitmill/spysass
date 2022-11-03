@@ -1,7 +1,10 @@
-@use '../../../functions/font';
+@use 'sass:math';
+@use '../../../components/base';
+@use '../foundation';
+@use '../../../functions/units';
 
 form {
-  $color: $base-color;
+  $color: base.$base-color;
   $icon-width: 20px;
 
   label.checkable {
@@ -18,7 +21,7 @@ form {
 
   div.field-container {
     $transition-time: 0.3s;
-    margin: 0 0 $form-spacing 0;
+    margin: 0 0 foundation.$form-spacing 0;
     position: relative;
     &:last-child,
     &.no-spacing {
@@ -26,7 +29,7 @@ form {
     }
 
     select {
-      color: $input-placeholder-color;
+      color: foundation.$input-placeholder-color;
       option {
         color: black;
       }
@@ -38,11 +41,11 @@ form {
 
       input,
       select {
-        padding-left: font.rem(nth($input-padding, 2));
+        padding-left: units.rem(nth(foundation.$input-padding, 2));
       }
 
       select {
-        color: $input-font-color;
+        color: foundation.$input-font-color;
       }
 
       input,
@@ -51,12 +54,12 @@ form {
       }
 
       textarea {
-        padding-top: $offset / 2 + $textarea-padding-top;
+        padding-top: math.div($offset, 2) + foundation.$textarea-padding-top;
       }
 
       > label.placeholder {
         opacity: 1;
-        left: $input-border-width + nth($input-padding, 2);
+        left: foundation.$input-border-width + nth(foundation.$input-padding, 2);
       }
     }
 
@@ -81,7 +84,7 @@ form {
       line-height: 1;
       position: absolute;
       z-index: 9999;
-      left: $input-border-width + nth($input-padding, 2) - 1px;
+      left: foundation.$input-border-width + nth(foundation.$input-padding, 2) - 1px;
     }
   }
 }

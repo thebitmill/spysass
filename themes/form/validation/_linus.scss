@@ -1,11 +1,17 @@
+@use 'sass:list';
 @use '../../../mixins/graphics';
+@use '../../../components/base';
+@use '../foundation';
 
+$form-icon-width: 20px;
+$form-icon-height: $form-icon-width;
 $form-valid-color: green !default;
 $form-invalid-color: red !default;
+$form-valid-icon: url() !default;
+$form-invalid-icon: url() !default;
 
 form {
-  $color: $base-color;
-  $icon-width: 20px;
+  $color: base.$base-color;
 
   div.field-container {
     &.hide-errors {
@@ -23,21 +29,21 @@ form {
         content: '';
         display: block;
         float: right;
-        width: $icon-width;
-        height: $icon-width;
+        width: $form-icon-width;
+        height: $form-icon-height;
       }
     }
     textarea {
-      padding-right: $icon-width + nth($input-padding, 2);
+      padding-right: $form-icon-width + extract(foundation.$input-padding, 2);
       &:before {
         content: '';
         display: block;
         float: right;
-        width: $icon-width;
-        height: $icon-width;
+        width: $form-icon-width;
+        height: $form-icon-width;
       }
     }
-    &.valid {
+    &.valid.touched {
       &.focus {
         > label.placeholder {
           color: $form-valid-color;
@@ -68,7 +74,7 @@ form {
       }
     }
 
-    &.invalid {
+    &.invalid.touched {
       &.focus {
         > label.placeholder {
           color: $form-invalid-color;
@@ -137,7 +143,7 @@ form {
         top: 100%;
         height: 0;
         width: 0;
-        @include graphics.right-angle-triangle(5px, $form-invalid-color, 'top');
+        @include graphics.right-angle-triangle(5px, $form-invalid-color, top);
       }
     }
 
@@ -147,9 +153,9 @@ form {
       opacity: 0;
       position: absolute;
       top: 0;
-      right: nth($input-padding, 2);
-      width: $icon-width;
-      height: $input-height;
+      right: list.nth(foundation.$input-padding, 2);
+      width: $form-icon-width;
+      height: foundation.$input-height;
       perspective: 1000px;
       &:before,
       &:after {
@@ -162,23 +168,23 @@ form {
         left: 0;
         width: 100%;
         height: 100%;
-        background-size: 18px auto;
+        background-size: $form-icon-width $form-icon-height;
         background-repeat: no-repeat;
         background-position: center center;
       }
       &:before {
-        background-image: url($form-invalid-icon);
+        background-image: $form-invalid-icon;
         z-index: 2;
         transform: rotateX(-180deg);
       }
       &:after {
-        background-image: url($form-valid-icon);
+        background-image: $form-valid-icon;
         transform: rotateX(-180deg);
       }
     }
 
     > select ~ label.icon {
-      right: nth($input-padding, 2) * 2;
+      right: list.nth(foundation.$input-padding, 2) * 2;
     }
   }
 }
