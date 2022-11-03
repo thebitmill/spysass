@@ -1,6 +1,12 @@
+@use '../../../functions/units';
+@use '../../../mixins/buttons';
+@use '../../../mixins/forms';
+@use '../../../mixins/utils';
+@use '../../form/foundation';
+
 form {
   button {
-    @include button-size($font-size: 13px, $height: $input-height, $padding: 12px 20px, $border: 1px);
+    @include buttons.size($font-size: 13px, $height: foundation.$input-height, $padding: 12px 20px, $border: 1px);
   }
 
   fieldset {
@@ -28,9 +34,9 @@ form {
     max-height: 200px;
   }
   ul {
-    @include wipe-list;
+    @include utils.wipe-list;
     list-style: none;
     line-height: 1.3;
-    font-size: rem(12);
+    font-size: units.rem(12);
   }
 }

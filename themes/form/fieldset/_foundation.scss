@@ -1,14 +1,17 @@
+@use '../../../functions/units';
+@use '../../../components/base';
+
 // We use these to style the fieldset border and spacing.
 $fieldset-border-style: solid !default;
 $fieldset-border-width: 1px !default;
 $fieldset-border-color: #ddd !default;
-$fieldset-padding: rem(20) !default;
-$fieldset-margin: rem(18 0) !default;
+$fieldset-padding: units.rem(20) !default;
+$fieldset-margin: units.rem(18 0) !default;
 
 // We use these to style the legends when you use them
-$legend-bg: $body-bg !default;
+$legend-bg: base.$body-bg !default;
 $legend-font-weight: bold !default;
-$legend-padding: rem(0 3) !default;
+$legend-padding: units.rem(0 3) !default;
 
 /* We add basic fieldset styling */
 fieldset {
@@ -22,6 +25,6 @@ fieldset {
     background: $legend-bg;
     padding: $legend-padding;
     margin: 0;
-    margin-#{$default-float}: rem(-3);
+    margin-#{base.$default-float}: units.rem(-3);
   }
 }

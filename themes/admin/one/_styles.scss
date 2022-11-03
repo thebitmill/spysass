@@ -1,7 +1,11 @@
-@import 'mixins/buttons';
+@use './variables' as v;
+@use '../../form/foundation';
+@use '../../../components/base';
+@use '../../../mixins/buttons';
+@use '../../../mixins/utils';
 
 a {
-  color: $base-color;
+  color: base.$base-color;
   text-decoration: none;
 }
 
@@ -22,9 +26,9 @@ h6 {
 
   width: 100%;
   border-radius: 5px;
-  background: lighten($color-message, 47%);
-  color: $color-message;
-  border: 1px solid lighten($color-message, 20%);
+  background: lighten(base.$color-message, 47%);
+  color: base.$color-message;
+  border: 1px solid lighten(base.$color-message, 20%);
   color: #777;
   > h4 {
     color: inherit;
@@ -39,14 +43,14 @@ h6 {
     margin: 0;
   }
   &.error {
-    background: lighten($color-error, 47%);
-    color: $color-error;
-    border-color: lighten($color-error, 20%);
+    background: lighten(base.$color-error, 47%);
+    color: base.$color-error;
+    border-color: lighten(base.$color-error, 20%);
   }
   &.success {
-    background: lighten($color-success, 47%);
-    color: $color-success;
-    border-color: lighten($color-success, 20%);
+    background: lighten(base.$color-success, 47%);
+    color: base.$color-success;
+    border-color: lighten(base.$color-success, 20%);
   }
 }
 
@@ -76,13 +80,13 @@ $button-color-cyan: adjust-hue($button-color-green, 60deg);
 $button-color-purple: adjust-hue($button-color-green, 180deg);
 $button-color-yellow: saturate(adjust-hue($button-color-green, -60deg), 20%);
 $button-color-orange: lighten(saturate(adjust-hue($button-color-green, -80deg), 20%), 10%);
-$button-color-red: $color-red;
+$button-color-red: v.$color-red;
 //$button-color-red: saturate(lighten(adjust-hue($button-color-green, -100deg), 5%), 10%);
 
 button,
 .button {
-  @include wipe-button;
-  @include button-size($font-size: 13px, $padding: 12px 20px, $border: 1px);
+  @include utils.wipe-button;
+  @include buttons.size($font-size: 13px, $padding: 12px 20px, $border: 1px);
   display: inline-block;
   font-weight: bold;
   color: #333;
@@ -101,7 +105,7 @@ button,
 
   &.base,
   &.blue {
-    $color: desaturate(lighten($base-color, 20%), 45%);
+    $color: desaturate(lighten(base.$base-color, 20%), 45%);
     @include button-color($color: $color);
   }
 
@@ -129,9 +133,9 @@ button.icon,
   &:not(:disabled) {
     cursor: pointer;
   }
-  flex: 0 0 $input-height;
-  width: $input-height;
-  height: $input-height;
+  flex: 0 0 foundation.$input-height;
+  width: foundation.$input-height;
+  height: foundation.$input-height;
   padding: 0;
   text-indent: -9999px;
   position: relative;
@@ -250,7 +254,7 @@ button.icon,
         font-size: rem(16);
         margin: 0;
         padding: 0;
-        margin-right: 80px - $global-padding;
+        margin-right: 80px - v.$global-padding;
         //white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -261,7 +265,7 @@ button.icon,
       }
 
       ul {
-        @include wipe-list;
+        @include utils.wipe-list;
         font-size: rem(12);
         color: #666;
         line-height: 1.2;
@@ -279,8 +283,8 @@ button.icon,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: $global-padding;
-  margin-bottom: $global-padding;
+  margin-top: v.$global-padding;
+  margin-bottom: v.$global-padding;
   .results {
     .number {
       font-size: 1.2em;
@@ -289,8 +293,8 @@ button.icon,
   }
 
   ul {
-    @include wipe-list;
-    @include clear;
+    @include utils.wipe-list;
+    @include utils.clear;
     > li {
       display: block;
       float: left;
@@ -370,7 +374,7 @@ table {
       }
     }
     th {
-      color: darken($base-color, 10%);
+      color: darken(base.$base-color, 10%);
       font-weight: bold;
       text-align: center;
     }

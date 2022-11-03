@@ -1,6 +1,12 @@
+@use '../../../components/base';
+@use '../../../mixins/utils';
+@use '../../form/validation/linus' as validation;
+@use './variables' as v;
+
+
 .page nav.front {
   > ul {
-    @include wipe-list;
+    @include utils.wipe-list;
     > li {
       float: left;
       width: 25%;
@@ -23,7 +29,7 @@
 
 .page.error {
   > div {
-    padding: $global-padding;
+    padding: v.$global-padding;
   }
 }
 
@@ -68,7 +74,7 @@
         background: lighten(red, 30%);
       }
       .info {
-        padding: $global-padding;
+        padding: v.$global-padding;
       }
       .summary {
         width: 100%;
@@ -76,7 +82,7 @@
 
         > * {
           flex: 1 0 0px;
-          padding: $global-padding;
+          padding: v.$global-padding;
         }
         > .date-created {
           flex: 0 0 auto;
@@ -114,7 +120,7 @@
 .page.users {
   .collection {
     article {
-      padding: 5px $global-padding;
+      padding: 5px v.$global-padding;
       position: relative;
       cursor: pointer;
       .controls {
@@ -123,7 +129,7 @@
         right: 0;
       }
       > header {
-        @include clear;
+        @include utils.clear;
         > * {
           display: inline-block;
           vertical-align: middle;
@@ -198,9 +204,9 @@
       > .container {
         padding: 15px 5px;
         border-radius: 5px;
-        border: 1px solid lighten($base-color, 20%);
-        background: lighten($base-color, 50%);
-        color: $base-color;
+        border: 1px solid lighten(base.$base-color, 20%);
+        background: lighten(base.$base-color, 50%);
+        color: base.$base-color;
         font-size: rem(20);
         text-align: center;
         min-height: 36px;
@@ -249,9 +255,9 @@
     &.error {
       padding: 15px 5px;
       border-radius: 5px;
-      border: 1px solid lighten($form-invalid-color, 20%);
-      background: lighten($form-invalid-color, 50%);
-      color: $form-invalid-color;
+      border: 1px solid lighten(validation.$form-invalid-color, 20%);
+      background: lighten(validation.$form-invalid-color, 50%);
+      color: validation.$form-invalid-color;
       font-size: rem(20);
       text-align: center;
       min-height: 36px;
