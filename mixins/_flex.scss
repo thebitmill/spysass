@@ -1,0 +1,61 @@
+@use 'sass:math';
+
+$gutter: 30px !default;
+$max-width: 1000px !default;
+
+@mixin container($max-width: $max-width, $gutter: $gutter) {
+  width: calc(100% - #{$gutter});
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin grid($gutter: $gutter, $direction: row, $justify: flex-start) {
+  display: flex;
+  flex-flow: $direction wrap;
+  justify-content: $justify;
+
+  @if $direction != column {
+    margin-left: math.div(-$gutter, 2);
+    margin-right: math.div(-$gutter, 2);
+  } @else {
+    margin-top: math.div(-$gutter, 2);
+    margin-bottom: math.div(-$gutter, 2);
+  }
+}
+
+@mixin cell($count: 5, $gutter: $gutter, $span: 1, $direction: row) {
+  flex: 0 0 0px;
+  @if $span > 1 {
+    flex-basis: calc(((100% - #{$gutter * $count}) / #{$count}) * #{$span} + #{($span - 1) * $gutter});
+  } @else {
+    flex-basis: calc(#{math.div(100%, $count)} - #{$gutter});
+  }
+
+  @if $direction != column {
+    margin-left: math.div($gutter, 2);
+    margin-right: math.div($gutter, 2);
+  } @else {
+    margin-top: math.div($gutter, 2);
+    margin-bottom: math.div($gutter, 2);
+  }
+}
+
+
+// not to be used with grid above
+@mixin simple-cell($gutter: $gutter, $direction: row) {
+  flex: 1 1 0px;
+
+  @if $direction != column {
+    margin-right: $gutter;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  } @else {
+    margin-bottom: $gutter;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
