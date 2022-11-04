@@ -8,12 +8,6 @@ $opposite-direction: right !default;
 $text-direction: left !default;
 
 $base-color: #0066c6 !default;
-$color-1: #0066c6 !default;
-$color-2: #0066c6 !default;
-$color-3: #0066c6 !default;
-$color-message: #333 !default;
-$color-error: #c89999 !default;
-$color-success: #628b1c !default;
 
 // This needs to be a px value since rem and em-calc use it. It is translated
 // to a percante unit for html and body font-sizing like so: strip-unit($base-font-size) / 16 * 100%;
