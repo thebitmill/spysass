@@ -26,8 +26,6 @@ $body-font-weight: normal !default;
 $body-font-style: normal !default;
 $body-bg: #fff !default;
 
-$font-smoothing: subpixel-antialiased !default;
-
 //
 // Base Styling
 //
@@ -66,10 +64,6 @@ embed {
 object,
 embed {
   height: 100%;
-}
-
-img {
-  -ms-interpolation-mode: bicubic;
 }
 
 // Get rid of gap under images by making them display: inline-block; by default
